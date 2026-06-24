@@ -1,11 +1,14 @@
+import OurService from "./components/OurService";
+import Student from "./components/Student";
+
 
 function App() {
   return (
     <>
-
-    <h1 className="bg-red-500">Hello</h1>
+    <OurService/>
     </>
-  )
+
+  );
 }
 
-export default App
+export default App;
