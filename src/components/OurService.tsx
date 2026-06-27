@@ -34,9 +34,14 @@ const OurService = () => {
       </section>
 
       <div className="gap-7 pt-20 px-25">
-        <p className="text-yellow-500 uppercase tracking-[3px]">
-            OUR COMPREHENISVE SERVICES
-        </p>
+        <div className='flex items-center gap-3'>
+             <div className='border-t-4 w-14 border-[#396cb8] rounded-full'>
+
+            </div>
+            <p className="text-yellow-500 uppercase tracking-[3px]">
+            Our Comprehensive Services
+            </p>
+           </div>
         <h1 className="text-[#396cb8] text-4xl pt-5 font-medium">
             End-to-End Study Abroad Solutions
         </h1>
@@ -331,7 +336,7 @@ const OurService = () => {
             </div>
         </section>
 
-        
+        {/* Last Part */}
         <section className='pt-5 bg-[#F6FAFC] pb-30'>
             <div>
                 <h1 className='text-4xl font-md flex justify-center text-[#396cb8] pt-10'>

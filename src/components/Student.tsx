@@ -30,9 +30,14 @@ const Student = () => {
       </section>
 
       <div className="gap-7 pt-20 px-25">
-        <p className="text-yellow-500 uppercase tracking-[3px]">
+        <div className='flex items-center gap-3'>
+             <div className='border-t-4 w-14 border-[#396cb8] rounded-full'>
+
+            </div>
+            <p className="text-yellow-500 uppercase tracking-[3px]">
             Student Visa
-        </p>
+            </p>
+           </div>
         <h1 className="text-[#396cb8] text-4xl pt-5 font-medium">
            Simplifying Your Study Abroad Journey
         </h1>
@@ -555,7 +560,7 @@ const Student = () => {
 
         <div>
                 {/* Ready */}
-            <div className='w-110 h-fit border border-gray-200 shadow-sm rounded-2xl bg-gray-100 p-5'>
+            <div className='sticky top-5 w-110 h-fit border border-gray-200 shadow-sm rounded-2xl bg-gray-100 p-5'>
                 <PiGlobeSimpleBold className='text-[#0078BD] text-5xl'/>
                 <h1 className='font-medium py-5'> 
                     Ready to begin ?
@@ -572,7 +577,7 @@ const Student = () => {
             </div>
 
             {/* Help */}
-            <div className='w-110 h-fit border border-gray-200 shadow-sm rounded-2xl bg-gray-100 p-5 mt-10'>
+            <div className='sticky top-80 w-110 h-fit border border-gray-200 shadow-sm rounded-2xl bg-gray-100 p-5 mt-10'>
                 <p className='font-medium pb-3'>
                     Need Help ?
                 </p>
