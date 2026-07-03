@@ -12,12 +12,14 @@ import { RiBookLine } from "react-icons/ri";
 import { GoGlobe } from "react-icons/go";
 import { FaDollarSign } from "react-icons/fa";
 import { FaNetworkWired } from "react-icons/fa";
+import MiniPannel from '../Pages/MiniPannel';
 
 
 
 const OurService = () => {
   return (
     <>
+    {/* Top */}
         <section className="h-125 bg-cover bg-center bg-no-repeat relative" 
         style={{backgroundImage:"url('https://himaaus.com/images/WEBSITE-2.png')"}}>
 
@@ -33,23 +35,13 @@ const OurService = () => {
       </div>
       </section>
 
-      <div className="gap-7 pt-20 px-25">
-        <div className='flex items-center gap-3'>
-             <div className='border-t-4 w-14 border-[#396cb8] rounded-full'>
-
-            </div>
-            <p className="text-yellow-500 uppercase tracking-[3px]">
-            Our Comprehensive Services
-            </p>
-           </div>
-        <h1 className="text-[#396cb8] text-4xl pt-5 font-medium">
-            End-to-End Study Abroad Solutions
-        </h1>
-        <p className="pt-5">
-            From initial counseling to post-arrival support, we provide complete guidance for 
-          your international education journey.
-        </p>
-    </div>
+      <div>
+        <MiniPannel
+        head={"Our Comprehensive Services"}
+        subHead={"End-to-End Study Abroad Solutions"}
+        body={"From initial counseling to post-arrival support, we provide complete guidance for your international education journey."}
+        />
+      </div>
 
     <section className="grid grid-cols-4 p-20 gap-20 max-w-6xl mx-auto text-center">
       <div className=" bg-white rounded-3xl shadow-md py-12 hover:bg-sky-200">
