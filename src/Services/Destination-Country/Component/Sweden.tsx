@@ -1,65 +1,65 @@
 import Description from "../../../Pages/Description";
 import Key from "../../../Pages/Key";
 import Table, { type KeyInfoArray } from "../../../Pages/Table";
-import australiaImg from "../../../assets/Australia.png";
+import SwedenImg from "../../../assets/Sweden.png";
 
-const Australia = () => {
+const Sweden = () => {
   const keyInfos: KeyInfoArray = [
     {
       title: "Country",
-      value: "Australia",
+      value: "Sweden",
     },
     {
       title: "Popular Language",
-      value: "English",
+      value: "Swedish (many programs in English)",
     },
     {
       title: "Degree Options",
-      value: "Bachelor's, Master's, PhD, Vocational",
+      value: "Bachelor's, Master's, PhD",
     },
     {
       title: "Popular Programs",
-      value: "Business, IT, Engineering, Healthcare, Hospitality",
+      value: "Technology, Engineering, Business, Sustainability",
     },
     {
       title: "Main Intakes",
-      value: "February, July, November",
+      value: "Autumn (Aug/Sep), Spring (Jan)",
     },
     {
       title: "English Proficiency",
-      value: "IELTS 6.0–7.0 overall / PTE 50–65",
+      value: "IELTS 6.5-7.0 / TOEFL 90-100",
     },
     {
       title: "Application Deadlines",
-      value: "4–8 months before intake",
+      value: "Jan 15 (Autumn), Aug 15 (Spring)",
     },
     {
       title: "Application Fee",
-      value: "AUD 50–150",
+      value: "SEK 900",
     },
     {
       title: "Average Tuition Fee",
-      value: "AUD 20,000-45,000/year (undergrad ~AUD 20k-40k, postgrad up to AUD 45k+)",
+      value: "SEK 80,000-140,000/year (non-EU/EEA)",
     },
     {
       title: "Scholarships",
-      value: "Australia Awards, university merit-based",
+      value: "Swedish Institute, university-specific",
     },
     {
       title: "Living Costs",
-      value: "AUD 24,000–36,000/year",
+      value: "SEK 120,000-144,000/year",
     },
     {
       title: "Work Rights",
-      value: "48 hours/fortnight during studies",
+      value: "No limit during studies",
     },
     {
       title: "Post-Study Work",
-      value: "2-6 years (Temporary Graduate Visa Subclass 485)",
+      value: "12 months residence permit to seek employment",
     },
     {
       title: "PR Pathway",
-      value: "Skilled migration, points-tested visas, state nomination",
+      value: "After qualifying residence periods",
     },
   ];
 
@@ -71,8 +71,8 @@ const Australia = () => {
       <div>
         {/* Heading */}
       <Description
-        title="Study in Australia"
-        description="Australia remains a top choice for international students with world-class universities, practical learning, strong job markets, and clear pathways to post-study work and permanent residency."
+        title="Study in Sweden"
+        description="New Zealand provides safe, high-quality education with strong post-study work options and pathways to residency in a welcoming environment."
       />
         {/* Left */}
       <div>
@@ -85,20 +85,20 @@ const Australia = () => {
 
       <Key
           topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-          heading="Top Universities"
-          title="Multiple universities in global top 100 (QS 2025)"
+          heading="High-Quality & English-Taught"
+          title="Innovative programs, research excellence"
         />
 
       <Key
       topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-      heading="Popular Fields"
-      title="Business, IT, Engineering, Healthcare, Hospitality"
+      heading="Career Opportunities"
+      title="Unlimited part-time work, industry links"
       />
 
       <Key
       topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-      heading="Work Opportunities"
-      title="Unlimited part-time work (48 hours/fortnight from mid-2023 policy)"
+      heading="Pathway to PR"
+      title="Residence permit extensions possible"
       />
         </div>
 
@@ -112,16 +112,16 @@ const Australia = () => {
                 Intake
               </h2>
               <p className="text-[#1F2736]">
-                February (main), July <br /> (secondary), November (limited)
+                Autumn (Aug/Sep), Spring (Jan)
               </p>
             </div>
 
            <div>
             <h2 className="font-medium pb-2">
-              Scholership
+              Popular Field
             </h2> 
             <p className="text-[#1F2736]">
-              Australia Awards, Destination Australia, university-specific
+              Technology, Engineering, Business, Sustainability
             </p>
            </div>
 
@@ -130,11 +130,12 @@ const Australia = () => {
               Living Cost
             </h2> 
             <p className="text-[#1F2736]">
-              AUD 24,000–36,000/year (visa minimum ~AUD 29,710 for <br /> 2025/26)
+              SEK 120,000–144,000/year (~SEK 10,000–12,000/month)
             </p>
            </div>
           </div>
         </div>
+        
       </div>
 
         {/* Right */}
@@ -142,7 +143,7 @@ const Australia = () => {
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
-              backgroundImage: `url(${australiaImg})`,
+              backgroundImage: `url(${SwedenImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "410px",
@@ -154,14 +155,15 @@ const Australia = () => {
             {/* Bottom Card */}
             <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
               <h2 className="text-l font-bold text-gray-900">
-                2–6 Years
+                Unlimited 
               </h2>
 
               <p className="text-gray-600">
-                Post-Study Work Visa
+                Part-Time Work Hours
               </p>
             </div>
           </div>
+
         </div>
 
       </section>
@@ -169,4 +171,4 @@ const Australia = () => {
   );
 };
 
-export default Australia;
+export default Sweden;

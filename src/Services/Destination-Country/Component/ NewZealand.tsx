@@ -1,13 +1,13 @@
 import Description from "../../../Pages/Description";
 import Key from "../../../Pages/Key";
 import Table, { type KeyInfoArray } from "../../../Pages/Table";
-import australiaImg from "../../../assets/Australia.png";
+import NewZerlandImg from "../../../assets/ NewZealand.png";
 
-const Australia = () => {
+const NewZealand = () => {
   const keyInfos: KeyInfoArray = [
     {
       title: "Country",
-      value: "Australia",
+      value: "New Zealand",
     },
     {
       title: "Popular Language",
@@ -15,51 +15,51 @@ const Australia = () => {
     },
     {
       title: "Degree Options",
-      value: "Bachelor's, Master's, PhD, Vocational",
+      value: "Bachelor's, Master's, PhD, Diplomas",
     },
     {
       title: "Popular Programs",
-      value: "Business, IT, Engineering, Healthcare, Hospitality",
+      value: "IT, Business, Healthcare, Engineering, Tourism",
     },
     {
       title: "Main Intakes",
-      value: "February, July, November",
+      value: "February, July",
     },
     {
       title: "English Proficiency",
-      value: "IELTS 6.0–7.0 overall / PTE 50–65",
+      value: "IELTS 6.0-6.5 / PTE 50-58",
     },
     {
       title: "Application Deadlines",
-      value: "4–8 months before intake",
+      value: "3-6 months before intake",
     },
     {
       title: "Application Fee",
-      value: "AUD 50–150",
+      value: "NZD 50-150",
     },
     {
       title: "Average Tuition Fee",
-      value: "AUD 20,000-45,000/year (undergrad ~AUD 20k-40k, postgrad up to AUD 45k+)",
+      value: "NZD 22,000-35,000/year",
     },
     {
       title: "Scholarships",
-      value: "Australia Awards, university merit-based",
+      value: "New Zealand Scholarships, university awards",
     },
     {
       title: "Living Costs",
-      value: "AUD 24,000–36,000/year",
+      value: "NZD 20,000-27,000/year",
     },
     {
       title: "Work Rights",
-      value: "48 hours/fortnight during studies",
+      value: "20 hours/week during studies",
     },
     {
       title: "Post-Study Work",
-      value: "2-6 years (Temporary Graduate Visa Subclass 485)",
+      value: "1-3 years depending on qualification",
     },
     {
       title: "PR Pathway",
-      value: "Skilled migration, points-tested visas, state nomination",
+      value: "Skilled Migrant Category, Work to Residence",
     },
   ];
 
@@ -71,8 +71,8 @@ const Australia = () => {
       <div>
         {/* Heading */}
       <Description
-        title="Study in Australia"
-        description="Australia remains a top choice for international students with world-class universities, practical learning, strong job markets, and clear pathways to post-study work and permanent residency."
+        title="Study in New Zealand"
+        description="New Zealand provides safe, high-quality education with strong post-study work options and pathways to residency in a welcoming environment."
       />
         {/* Left */}
       <div>
@@ -85,24 +85,23 @@ const Australia = () => {
 
       <Key
           topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-          heading="Top Universities"
-          title="Multiple universities in global top 100 (QS 2025)"
+          heading="High-Quality Education"
+          title="Globally recognized qualifications"
         />
 
       <Key
       topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-      heading="Popular Fields"
-      title="Business, IT, Engineering, Healthcare, Hospitality"
+      heading="Post-Study Work Visa"
+      title="Up to 3 years depending on level"
       />
 
       <Key
       topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
-      heading="Work Opportunities"
-      title="Unlimited part-time work (48 hours/fortnight from mid-2023 policy)"
+      heading="PR Pathways"
+      title="Skilled Migrant Category, Work to Residence"
       />
-        </div>
 
-        <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
+      <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
           <h1 className="py-5 font-bold">
             Additional Details
           </h1>
@@ -112,16 +111,16 @@ const Australia = () => {
                 Intake
               </h2>
               <p className="text-[#1F2736]">
-                February (main), July <br /> (secondary), November (limited)
+                February & July (main)
               </p>
             </div>
 
            <div>
             <h2 className="font-medium pb-2">
-              Scholership
+              Popular Field
             </h2> 
             <p className="text-[#1F2736]">
-              Australia Awards, Destination Australia, university-specific
+              IT, Business, Healthcare, <br /> Engineering, Tourism
             </p>
            </div>
 
@@ -130,10 +129,13 @@ const Australia = () => {
               Living Cost
             </h2> 
             <p className="text-[#1F2736]">
-              AUD 24,000–36,000/year (visa minimum ~AUD 29,710 for <br /> 2025/26)
+              NZD 20,000–27,000/year (visa min. NZD 20,000)
             </p>
            </div>
           </div>
+        </div>
+
+
         </div>
       </div>
 
@@ -142,7 +144,7 @@ const Australia = () => {
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
-              backgroundImage: `url(${australiaImg})`,
+              backgroundImage: `url(${NewZerlandImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "410px",
@@ -154,7 +156,7 @@ const Australia = () => {
             {/* Bottom Card */}
             <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
               <h2 className="text-l font-bold text-gray-900">
-                2–6 Years
+                Up to 3 Years
               </h2>
 
               <p className="text-gray-600">
@@ -169,4 +171,4 @@ const Australia = () => {
   );
 };
 
-export default Australia;
+export default NewZealand;

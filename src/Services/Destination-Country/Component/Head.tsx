@@ -1,5 +1,4 @@
 import React from 'react'
-import MiniPannel from '../../../Pages/MiniPannel'
 
 const Head = () => {
   return (
@@ -16,14 +15,11 @@ const Head = () => {
           multiple countries and achieve top scores in international examinations.
         </p>
       </div>
+
       </section>
-        <div>
-        <MiniPannel
-        head={"Counselling Service"} 
-        subHead={"Multi Destination Counselling"}
-        body={"We provide expert counselling services for students aspiring to study abroad across multiple countries and achieve top scores in international examinations."}  
-        />
-        </div>
+
+
+      
     </>
   )
 }

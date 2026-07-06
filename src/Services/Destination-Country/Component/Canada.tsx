@@ -1,65 +1,65 @@
 import Description from "../../../Pages/Description";
 import Key from "../../../Pages/Key";
 import Table, { type KeyInfoArray } from "../../../Pages/Table";
-import australiaImg from "../../../assets/Australia.png";
+import canadaImg from "../../../assets/Canada.png";
 
-const Australia = () => {
+const Canada = () => {
   const keyInfos: KeyInfoArray = [
     {
       title: "Country",
-      value: "Australia",
+      value: "Canada",
     },
     {
       title: "Popular Language",
-      value: "English",
+      value: "English & French",
     },
     {
       title: "Degree Options",
-      value: "Bachelor's, Master's, PhD, Vocational",
+      value: "Undergraduate, Postgraduate, PhD, Diplomas",
     },
     {
       title: "Popular Programs",
-      value: "Business, IT, Engineering, Healthcare, Hospitality",
+      value: "IT, Business, Healthcare, Engineering, Data Science",
     },
     {
       title: "Main Intakes",
-      value: "February, July, November",
+      value: "January, May, September",
     },
     {
       title: "English Proficiency",
-      value: "IELTS 6.0–7.0 overall / PTE 50–65",
+      value: "IELTS 6.0-7.0 / TOEFL 80-100",
     },
     {
       title: "Application Deadlines",
-      value: "4–8 months before intake",
+      value: "6-12 months before intake",
     },
     {
       title: "Application Fee",
-      value: "AUD 50–150",
+      value: "CAD 100-250",
     },
     {
       title: "Average Tuition Fee",
-      value: "AUD 20,000-45,000/year (undergrad ~AUD 20k-40k, postgrad up to AUD 45k+)",
+      value: "CAD 15,000-35,000/year",
     },
     {
       title: "Scholarships",
-      value: "Australia Awards, university merit-based",
+      value: "Merit-based, need-based, provincial",
     },
     {
       title: "Living Costs",
-      value: "AUD 24,000–36,000/year",
+      value: "CAD 20,000-25,000/year",
     },
     {
       title: "Work Rights",
-      value: "48 hours/fortnight during studies",
+      value: "20 hours/week during studies",
     },
     {
       title: "Post-Study Work",
-      value: "2-6 years (Temporary Graduate Visa Subclass 485)",
+      value: "Up to 3 years (PGWP)",
     },
     {
       title: "PR Pathway",
-      value: "Skilled migration, points-tested visas, state nomination",
+      value: "Express Entry, Provincial Nominee Programs",
     },
   ];
 
@@ -71,8 +71,8 @@ const Australia = () => {
       <div>
         {/* Heading */}
       <Description
-        title="Study in Australia"
-        description="Australia remains a top choice for international students with world-class universities, practical learning, strong job markets, and clear pathways to post-study work and permanent residency."
+        title="Study in Canada"
+        description="Canada offers high-quality education, welcoming policies, affordable options compared to neighbors, and strong PR pathways via Express Entry."
       />
         {/* Left */}
       <div>
@@ -112,16 +112,16 @@ const Australia = () => {
                 Intake
               </h2>
               <p className="text-[#1F2736]">
-                February (main), July <br /> (secondary), November (limited)
+                January, May, September
               </p>
             </div>
 
            <div>
             <h2 className="font-medium pb-2">
-              Scholership
+              Popular Field
             </h2> 
             <p className="text-[#1F2736]">
-              Australia Awards, Destination Australia, university-specific
+              IT, Business, Healthcare, Engineering, Data & AI
             </p>
            </div>
 
@@ -130,11 +130,12 @@ const Australia = () => {
               Living Cost
             </h2> 
             <p className="text-[#1F2736]">
-              AUD 24,000–36,000/year (visa minimum ~AUD 29,710 for <br /> 2025/26)
+              CAD 20,000–25,000/year (visa min. CAD 22,895 from Sep 2025)
             </p>
            </div>
           </div>
         </div>
+
       </div>
 
         {/* Right */}
@@ -142,7 +143,7 @@ const Australia = () => {
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
-              backgroundImage: `url(${australiaImg})`,
+              backgroundImage: `url(${canadaImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "410px",
@@ -154,7 +155,7 @@ const Australia = () => {
             {/* Bottom Card */}
             <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
               <h2 className="text-l font-bold text-gray-900">
-                2–6 Years
+                Up to 3 Years
               </h2>
 
               <p className="text-gray-600">
@@ -169,4 +170,4 @@ const Australia = () => {
   );
 };
 
-export default Australia;
+export default Canada;
