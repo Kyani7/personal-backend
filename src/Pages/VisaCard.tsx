@@ -1,10 +1,9 @@
 import { LuCircleCheckBig } from "react-icons/lu";
-
 type MiniVisaCardProps = {
-  number : string;
+  number : React.ReactNode;
   title : string;
   description : string;
-  features : string;
+  features : string[];
 }
 const MiniVisaCard = ({ number, title, description, features,} : MiniVisaCardProps) => {
   return (
