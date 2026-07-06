@@ -1,7 +1,10 @@
-import React from 'react'
 import { LuCircleCheckBig } from 'react-icons/lu'
 
-const Features = ({text, colorClass}) => {
+type FeaturesProps = {
+  text : string;
+  colorClass : string;
+}
+const Features = ({text, colorClass} : FeaturesProps) => {
   return (
     <>
     <div className="flex mt-1 space-y-3 px-5 gap-3">

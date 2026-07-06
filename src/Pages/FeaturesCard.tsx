@@ -1,6 +1,10 @@
-import React from 'react'
+type FeaturesCardProps = {
+    icon : string;
+    title : string;
+    description : string;
+}
 
-const FeaturesCard = ({icon, title, description}) => {
+const FeaturesCard = ({icon, title, description} : FeaturesCardProps) => {
   return (
         <div className='flex bg-white rounded-3xl border border-gray-200 shadow-md '>
             <div className='mt-7'>

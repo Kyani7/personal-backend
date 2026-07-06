@@ -14,8 +14,8 @@ const Main = () => {
   return (
   <>
   <Head />
-  <section className="sticky top-0 z-50 bg-white">
-  <div className="relative overflow-hidden">
+  <section className="z-50 min-h-200 bg-white">
+  <div className="sticky top-0 z-50 bg-white">
         <MiniPannel
         head={"Counselling Service"} 
         subHead={"Multi Destination Counselling"}

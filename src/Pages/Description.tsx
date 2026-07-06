@@ -1,6 +1,9 @@
-import React from 'react'
+type DescriptionProps = {
+  title : string;
+  description : string;
+}
 
-const Description = ({title, description}) => {
+const Description = ({title, description} : DescriptionProps) => {
   return (
     <>
     <div className='pb-5'>
@@ -15,4 +18,4 @@ const Description = ({title, description}) => {
   )
 }
 
-export default Description
+export default Description;

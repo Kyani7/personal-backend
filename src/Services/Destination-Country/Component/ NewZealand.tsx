@@ -84,19 +84,16 @@ const NewZealand = () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="High-Quality Education"
           title="Globally recognized qualifications"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Post-Study Work Visa"
       title="Up to 3 years depending on level"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="PR Pathways"
       title="Skilled Migrant Category, Work to Residence"
       />
@@ -140,7 +137,7 @@ const NewZealand = () => {
       </div>
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
@@ -156,7 +153,7 @@ const NewZealand = () => {
             {/* Bottom Card */}
             <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
               <h2 className="text-l font-bold text-gray-900">
-                Up to 3 Years
+                Up to 3 Yearsz
               </h2>
 
               <p className="text-gray-600">

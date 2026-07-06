@@ -84,19 +84,16 @@ const Canada = () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="Top Universities"
           title="Multiple universities in global top 100 (QS 2025)"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Popular Fields"
       title="Business, IT, Engineering, Healthcare, Hospitality"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Work Opportunities"
       title="Unlimited part-time work (48 hours/fortnight from mid-2023 policy)"
       />
@@ -139,7 +136,7 @@ const Canada = () => {
       </div>
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{

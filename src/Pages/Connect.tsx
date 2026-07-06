@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Connect = () => {
   return (
     <section className='pt-5 bg-[#F6FAFC] pb-30 mt-10'>
@@ -24,4 +22,4 @@ const Connect = () => {
   )
 }
 
-export default Connect
+export default Connect;

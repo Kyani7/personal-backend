@@ -84,19 +84,16 @@ const Sweden = () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="High-Quality & English-Taught"
           title="Innovative programs, research excellence"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Career Opportunities"
       title="Unlimited part-time work, industry links"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Pathway to PR"
       title="Residence permit extensions possible"
       />
@@ -135,11 +132,11 @@ const Sweden = () => {
            </div>
           </div>
         </div>
-        
+
       </div>
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{

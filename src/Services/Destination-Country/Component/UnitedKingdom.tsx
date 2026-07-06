@@ -70,7 +70,7 @@ const UK= () => {
       <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
@@ -112,19 +112,16 @@ const UK= () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="Shorter Degrees"
           title="Bachelor's 3 years, Master's 1 year"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Graduate Route Visa"
       title="2 years post-study (PhD 3 years; potential changes)"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Globally Recognized Degrees"
       title="High employability worldwide"
       />

@@ -70,7 +70,7 @@ const USA = () => {
       <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
@@ -112,19 +112,16 @@ const USA = () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="Top-Ranked Universities"
           title="Many Ivy League and global leaders"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="STEM OPT Extension"
       title="Up to 3 years post-study work for STEM fields"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Career Exposure"
       title="Internships, CPT, on-campus jobs"
       />
