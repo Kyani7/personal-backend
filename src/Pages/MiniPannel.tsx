@@ -20,7 +20,7 @@ const MiniPannel = ({head, subHead, body}) => {
             </h2>
 
             {/* Description */}
-            <p className="text-lg text-[#111828] leading-relaxed max-w-6xl mb-10">
+            <p className="text-lg text-[#111828] leading-relaxed max-w-6xl mb-5">
               {body}
             </p>
           </div>

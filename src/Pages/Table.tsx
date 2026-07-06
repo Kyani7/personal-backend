@@ -15,7 +15,7 @@ const Table = ({keyInfos}: Props) => {
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
       {/* Heading */}
       <div className="px-7 py-5 border-b border-gray-200">
-        <h2 className="text-3xl font-bold text-gray-900">Key Information</h2>
+        <h2 className="text-xl font-bold text-gray-900">Key Information</h2>
       </div>
 
       {/* Table */}
@@ -26,11 +26,11 @@ const Table = ({keyInfos}: Props) => {
               key={index}
               className="border-b border-gray-200 last:border-b-0"
             >
-              <td className="w-[32%] px-7 py-6 font-semibold text-gray-900">
+              <td className="w-[32%] p-5 font-semibold text-gray-900">
                 {item.title}
               </td>
 
-              <td className="px-7 py-6 text-gray-700 leading-8">
+              <td className="p-5 text-gray-700 leading-8">
                 {item.value}
               </td>
             </tr>
