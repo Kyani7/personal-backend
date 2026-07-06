@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Head = () => {
   return (
     <>
-    <section className="h-125 bg-cover bg-center bg-no-repeat relative" 
+    <section className="h-125 bg-cover bg-center bg-no-repeat relative mb-10" 
         style={{backgroundImage:"url('https://himaaus.com/images/WEBSITE-2.png')"}}>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-40">
@@ -15,11 +13,7 @@ const Head = () => {
           multiple countries and achieve top scores in international examinations.
         </p>
       </div>
-
       </section>
-
-
-      
     </>
   )
 }

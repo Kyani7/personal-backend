@@ -1,8 +1,11 @@
-import React from 'react'
-
-const MiniPannel = ({head, subHead, body}) => {
+type MiniPanleprops={
+  head:string;
+  subHead:string;
+  body:string;
+}
+const MiniPannel = ({head, subHead, body}:MiniPanleprops) => {
   return (
-    <section className="bg-white pt-20">
+    <section className="bg-white">
       <div className="container mx-auto px-6 lg:px-12">
           <div
           >

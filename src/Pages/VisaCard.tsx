@@ -1,7 +1,12 @@
-import React from "react";
 import { LuCircleCheckBig } from "react-icons/lu";
 
-const MiniVisaCard = ({ number, title, description, features,}) => {
+type MiniVisaCardProps = {
+  number : string;
+  title : string;
+  description : string;
+  features : string;
+}
+const MiniVisaCard = ({ number, title, description, features,} : MiniVisaCardProps) => {
   return (
     <div className="border border-gray-200 shadow-md rounded-2xl p-5 mt-5">
       {/* Header */}

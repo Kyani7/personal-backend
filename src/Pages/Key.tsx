@@ -1,11 +1,16 @@
-import React from "react";
+type KeyProps = {
 
-const Key = ({ topic, heading, title }) => {
+  heading : string;
+  title : string;
+
+}
+
+const Key = ({ heading, title }:KeyProps) => {
   return (
     <section className="flex gap-5 pb-2">
       {/* Circle */}
       <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center">
-        {topic}
+        <div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>
       </div>
 
       {/* Content */}

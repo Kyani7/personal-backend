@@ -70,7 +70,7 @@ const Germany= () => {
       <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35 mb-30">
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
@@ -112,19 +112,16 @@ const Germany= () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="Affordable / Free Tuition"
           title="Public universities mostly free (admin fees only)"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="High-Quality Education"
       title="Research-focused, globally ranked"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Career Opportunities"
       title="Strong economy, 18-month job search visa"
       />

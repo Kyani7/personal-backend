@@ -70,7 +70,7 @@ const Japan= () => {
       <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
 
         {/* Right */}
-        <div className="sticky top-8">
+        <div className="sticky top-70">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl"
             style={{
@@ -112,19 +112,16 @@ const Japan= () => {
           </h1>
 
       <Key
-          topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
           heading="Technology-Focused Education"
           title="Strong in IT, Robotics, AI, Engineering"
         />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Safe Environment"
       title="One of the world's safest countries"
       />
 
       <Key
-      topic={<div className="w-2 h-2 rounded-full bg-[#0078BD]"></div>}
       heading="Work Opportunities"
       title="Part-time up to 28 hours/week"
       />
