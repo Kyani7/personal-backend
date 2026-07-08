@@ -1,19 +1,63 @@
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import {aboutLinks} from "./Components/DropdownData/dropDownData"
 import {ServicesDropDown } from "./Components/ServicesDropDown/ServicesDropDown"
-// const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-//   ` ${isActive ? "text-secondary" : "text-white"}`;
 
-const Header = () => {
+const MainHeader = () => {
+  const [hideNav, setHideNav] = useState(false);
+const timeoutRef = useRef<number | null>(null);
+
+useEffect(() => {
+  let lastScrollY = window.scrollY;
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // Hide navbar while scrolling down
+    if (currentScrollY > lastScrollY) {
+      setHideNav(true);
+    }
+
+    lastScrollY = currentScrollY;
+
+    // Show navbar when scrolling stops
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      setHideNav(false);
+    }, 300);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+}, []);
   return (
     
     <div>
-      <nav className="fixed top-6 left-1/2 z-[101] h-13 w-[min(94%,900px)] translate-x-[-50%] rounded-full border border-white bg-black/23 backdrop-blur-lg shadow-lg">
+      <nav className={`fixed top-6 left-1/2 z-[101] h-13 w-[min(94%,900px)]
+          -translate-x-1/2 rounded-full border border-white
+           bg-black/23 backdrop-blur-lg shadow-lg
+           transition-transform duration-1000 ease-in-out
+        ${hideNav ? "-translate-y-[150%]" : "translate-y-0"}`}
+    >
         <ul className="hidden lg:flex h-full items-center justify-between px-6 text-white">
           <li>
             <NavLink
-              className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
+              className={({ isActive }) =>
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
               to=""
               end
             >
@@ -44,7 +88,11 @@ const Header = () => {
                     <NavLink
                       to={item.href}
                       end
-                      className="block text-sm text-white/90 hover:text-secondary transition pb-1 border-b border-white/20"
+                      className={({ isActive }) =>
+                        `block text-sm hover:text-secondary transition pb-1 border-b border-white/20 ${
+                          isActive ? "text-primary" : "text-white/90"
+                        }`
+                      }
                     >
                       {item.label}
                     </NavLink>
@@ -78,8 +126,12 @@ const Header = () => {
 
           <li>
             <NavLink
-              className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to=""
+              className={({ isActive }) =>
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/gallery"
               end
             >
               Gallery
@@ -88,7 +140,7 @@ const Header = () => {
           <li>
             <NavLink
               className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to="#"
+              to="/BlogandNews"
               end
             >
               Blog and News
@@ -96,8 +148,12 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to=""
+              className={({ isActive }) =>
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/find-us"
               end
             >
               Find Us
@@ -105,8 +161,12 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to=""
+              className={({ isActive }) =>
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/contactUs"
               end
             >
               Contact Us
@@ -117,4 +177,4 @@ const Header = () => {
     </div>
   );
 };
- export default Header;
+ export default MainHeader;

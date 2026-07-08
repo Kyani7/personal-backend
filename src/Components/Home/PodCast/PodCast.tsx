@@ -31,7 +31,7 @@ const PodCast = () => {
     <div className='pt-16 pb-10'>
     <SectionButton
     ButtonContent='Explore All Podcast'
-    to='/podcasts'
+    to='all-podcast'
     />
     </div>
     </section>

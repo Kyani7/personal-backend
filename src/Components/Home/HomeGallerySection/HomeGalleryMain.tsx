@@ -10,11 +10,9 @@ const HomeGalleryMain = () => {
     title="Moments from the Hima Aus journey"
     briefDesc="Click into any collection to open its story page and see full photo essays, itineraries and student tips."
     />
-    <div className=" flex flex-row gap-3 h-100 max-w-full mt-3">
+    <div className=" h-125 mt-5 mb-5 bg-secondary p-100">
       <p> reusable components/shared components will be here of Home Gallery .</p>
-        <div className=" flex-1 bg-secondary"></div>
-        <div className="flex-1 bg-black"></div>
-        <div className="flex-1 bg-red-500"></div>
+        
     </div>
     </div>
     <SectionButton

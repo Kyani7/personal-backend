@@ -9,7 +9,7 @@ import PodCast from "../Components/Home/PodCast/PodCast.tsx";
 import EventMain from "../Components/Home/EventSection/EventMain.tsx";
 import ConsultationForm from "../Components/Home/Form/Consultation.tsx";
 import FAQSection from "../Components/Home/faqsSection/faqsSection.tsx";
-
+import AllpodCast from "../Components/Home/PodCast/AllPodCast.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,31 +32,38 @@ const router = createBrowserRouter([
         ),
       },
       {
+    path: "all-podcast",
+    element: <AllpodCast />,
+      },
+      {
         path: "about",
-        element: <div className="pt-24 px-6 text-white">About us page</div>,
+        element: "",
       },
       {
         path: "services",
-        element: <div className="pt-24 px-6 text-white">Our services page</div>,
+        element: "",
       },
       {
         path: "gallery",
-        element: <HomeGalleryMain />,
+        element: "",
       },
       {
         path: "blog",
-        element: <HomeBlogs />,
+        element: "",
       },
       {
         path: "find-us",
-        element: <div className="pt-24 px-6 text-white">Find us page</div>,
+        element: "",
       },
       {
         path: "contact-us",
-        element: <div className="pt-24 px-6 text-white">Contact us page</div>,
+        element: "",
       },
     ],
   },
+  {
+    path:"/"
+  }
 ]);
 
 export default router;

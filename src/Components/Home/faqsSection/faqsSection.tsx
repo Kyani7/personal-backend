@@ -132,8 +132,8 @@ export default function FAQSection() {
                   <ChevronDown
                     className={
                       isOpen
-                        ? "w-4 h-4 text-blue-600 shrink-0 rotate-180 transition-transform"
-                        : "w-4 h-4 text-blue-600 shrink-0 transition-transform"
+                        ? "w-4 h-4 text-[#248bc7] shrink-0 rotate-180 transition-transform"
+                        : "w-4 h-4 text-[#248bc7] shrink-0 transition-transform"
                     }
                   />
                 </button>

@@ -74,6 +74,7 @@ function OfficeBlock({ office }: { office: OfficeInfo }) {
 export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-sky-600 to-blue-800 overflow-hidden">
+      <div className="absolute inset-0 bg-[#0768a8] pointer-events-none"></div>
       <img
         src={FooterBg}
         alt="bgImage"

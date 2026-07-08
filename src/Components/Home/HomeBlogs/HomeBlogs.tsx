@@ -11,8 +11,8 @@ export const HomeBlogs = () => {
     title="Expert Blogs for Your Study Abroad Journey"
     briefDesc="Stay updated with expert blogs on education, visas, and global opportunities."
     />
-    <div className="h-125 mt-5 mb-5">
-      <p> reusable components/shared components will be here of blog page </p>
+    <div className="h-125 mt-5 mb-5 bg-secondary p-100">
+      <p className=""> reusable components/shared components will be here of blog page </p>
     </div>
     <SectionButton
     ButtonContent="Read More Blog"
