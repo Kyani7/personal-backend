@@ -147,7 +147,7 @@ const Australia = () => {
           >
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/20"></div>
-
+a
             {/* Bottom Card */}
             <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
               <h2 className="text-l font-bold text-gray-900">

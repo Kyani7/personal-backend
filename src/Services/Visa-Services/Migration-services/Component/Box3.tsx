@@ -1,4 +1,3 @@
-import React from 'react'
 import MiniVisaCard from '../../../../Pages/VisaCard'
 import { TbCircleNumber3Filled } from 'react-icons/tb'
 
@@ -24,4 +23,4 @@ const Box3 = () => {
   )
 }
 
-export default Box3
+export default Box3;

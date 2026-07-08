@@ -1,6 +1,3 @@
-import React from 'react'
-import { FiLayers } from 'react-icons/fi'
-import { LuCircleCheckBig } from 'react-icons/lu'
 import { TbCircleNumber1Filled, TbCircleNumber2Filled, TbCircleNumber3Filled, TbCircleNumber4Filled, TbCircleNumber5Filled, TbCircleNumber6Filled, TbCircleNumber7Filled, TbCircleNumber8Filled} from 'react-icons/tb'
 import MiniVisaCard from '../../../../Pages/VisaCard'
 
@@ -115,4 +112,4 @@ const Box2 = () => {
   )
 }
 
-export default Box2
+export default Box2;
