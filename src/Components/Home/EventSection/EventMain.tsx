@@ -35,7 +35,7 @@ const EventMain = () => {
           </div>
         </div>
       </section>
-      <SectionButton ButtonContent="Explore More Event" to="#" />
+      <SectionButton ButtonContent="Explore More Event" to="./explore-event" />
     </>
   );
 };

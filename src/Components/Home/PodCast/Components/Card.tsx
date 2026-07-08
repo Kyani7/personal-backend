@@ -8,18 +8,6 @@ type cardProps={
 }
 const Card = ({src,title,videoId}:cardProps) => {
   const [isOpen,isSetOpen]=useState(false)
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
- 
-  //   // Cleanup: always restore scroll if this component unmounts while modal is open
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [isOpen]);
   return (
   <>
     <div className="relative flex-1 rounded-2xl overflow-hidden
