@@ -1,1 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
+@theme {
+  --color-primary: white;
+  --color-secondary: #fbbf24;
+  --color-background: #0f172a;
+  --color-foreground: #ffffff;
+  --font-p: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/*Customize color for the Section Heading*/
+.section-heading-override h1 {
+  color: #f59e0b ;
+}
+
+.section-heading-override h3 {
+  color: #0078bd ;
+}
+
+.section-heading-override p {
+  color: #45556b;
+}
+
+
+.section-heading-oz p{
+  color: white;
+}
