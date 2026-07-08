@@ -1,4 +1,3 @@
-import React from 'react'
 import { FiLayers } from 'react-icons/fi'
 import { HiOutlineQuestionMarkCircle } from 'react-icons/hi2'
 
@@ -32,4 +31,4 @@ const About = () => {
   )
 }
 
-export default About
+export default About;

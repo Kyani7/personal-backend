@@ -1,32 +1,24 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import FindUsPage from "./pages/find-us";
-
-export default function App() {
-  return <FindUsPage />;
-}
-=======
-import OurService from "./components/OurService";
-import Student from "./components/Student";
-import Visitor from "./components/Visitor";
-
-
-=======
-import OurService from "./Services/OurService";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Main as VisaMain} from "./Services/Visa-Services/Migration-services/Main";
 import Main from "./Services/Destination-Country/Main";
 import Student from "./Services/Visa-Services/Student-services/Student";
 import Visitor from "./Services/Visa-Services/Visitor-services/Visitor";
->>>>>>> 215c367 (New)
+import {Main as MainPage} from "./Services/Main";
+import FindUsPage from "./Pages/find-us";
 
 function App() {
   return (
-    <>
-     <Main/>
-    </>
-
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/find-us" element={<FindUsPage />} />
+        <Route path="/migration" element={<VisaMain />} />
+        <Route path="/destination" element={<Main />} />
+        <Route path="/student" element={<Student />} />
+        <Route path="/visitor" element={<Visitor />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
->>>>>>> d9b4c14 (OurService)

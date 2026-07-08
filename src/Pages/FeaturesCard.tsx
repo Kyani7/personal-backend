@@ -24,4 +24,4 @@ const FeaturesCard = ({icon, title, description} : FeaturesCardProps) => {
   )
 }
 
-export default FeaturesCard
+export default FeaturesCard;

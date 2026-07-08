@@ -1,5 +1,3 @@
-import React from 'react'
-import { LuCircleCheckBig } from 'react-icons/lu'
 import { TbCircleNumber1Filled } from 'react-icons/tb'
 import MiniVisaCard from '../../../../Pages/VisaCard'
 
@@ -22,4 +20,4 @@ const Box1 = () => {
   )
 }
 
-export default Box1
+export default Box1;

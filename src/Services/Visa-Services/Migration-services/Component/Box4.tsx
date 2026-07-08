@@ -19,4 +19,4 @@ const Box4 = () => {
   )
 }
 
-export default Box4
+export default Box4;
