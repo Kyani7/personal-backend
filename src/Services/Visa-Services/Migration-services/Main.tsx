@@ -1,4 +1,3 @@
-import React from 'react'
 import { Head } from './Component/Head'
 import Last from './Component/Last'
 import About from './Component/About'
@@ -27,4 +26,4 @@ const Main = () => {
   )
 }
 
-export {Main}
+export {Main};

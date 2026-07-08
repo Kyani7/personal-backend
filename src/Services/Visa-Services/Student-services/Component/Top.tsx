@@ -1,10 +1,9 @@
-import React from 'react'
 import MiniPannel from '../../../../Pages/MiniPannel'
 
 const Top = () => {
   return (
     <>
-    <section className="h-125 bg-cover bg-center bg-no-repeat relative mt-10" 
+    <section className="h-95 bg-cover bg-center bg-no-repeat relative mb-10" 
         style={{backgroundImage:"url('https://himaaus.com/images/WEBSITE-2.png')"}}>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-40">
@@ -29,4 +28,4 @@ const Top = () => {
   )
 }
 
-export default Top
+export default Top;
