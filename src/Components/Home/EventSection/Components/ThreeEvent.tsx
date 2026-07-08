@@ -61,17 +61,6 @@ interface PrevNextNavProps {
   next?: NavigationLink | null;
 }
 
-interface RelatedEventCardProps {
-  image: string;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  tags?: string[];
-  href?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-}
-
 interface EventDetailData {
   banner: {
     image: string;
@@ -91,20 +80,10 @@ interface EventDetailPageProps {
   backHref?: string;
   onBack?: () => void;
   event: EventDetailData;
-  upcomingEvents?: UpcomingEventItem[];
-  relatedEvents?: RelatedEventCardProps[];
   previous?: NavigationLink | null;
   next?: NavigationLink | null;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Small reusable pieces                                              */
-/* ------------------------------------------------------------------ */
-
-/**
- * BackLink — "back to X" link at the top-left of a detail page.
- * Props: label (string), href (string), onClick (optional, e.g. to navigate via state)
- */
 export function BackLink({ label = "Back to Events", href = "#", onClick }: BackLinkProps) {
   return (
     <a
@@ -120,7 +99,6 @@ export function BackLink({ label = "Back to Events", href = "#", onClick }: Back
 
 /**
  * EventBanner — full-width image banner.
- * Props: image (string), alt (string)
  */
 export function EventBanner({ image, alt = "" }: EventBannerProps) {
   return (
@@ -132,7 +110,6 @@ export function EventBanner({ image, alt = "" }: EventBannerProps) {
 
 /**
  * EventMeta — date / time / location row with icons.
- * Props: date (string), time (string), location (string)
  */
 export function EventMeta({ date, time, location }: EventMetaProps) {
   return (
@@ -155,7 +132,6 @@ export function EventMeta({ date, time, location }: EventMetaProps) {
 
 /**
  * ShareBar — "Share:" row with social icon links.
- * Props: links = { facebook, twitter, linkedin }
  */
 export function ShareBar({ links = {} }: ShareBarProps) {
   const icons = [
@@ -184,7 +160,6 @@ export function ShareBar({ links = {} }: ShareBarProps) {
 
 /**
  * HighlightsBox — light-gray content panel for the intro paragraph + bullet list.
- * Props: intro (string), highlights (string[])
  */
 export function HighlightsBox({ intro, highlights = [] }: HighlightsBoxProps) {
   return (
@@ -203,7 +178,6 @@ export function HighlightsBox({ intro, highlights = [] }: HighlightsBoxProps) {
 
 /**
  * UpcomingEventsSidebar — sidebar card, optionally listing links.
- * Props: title (string), items = { title, href }[]
  */
 export function UpcomingEventsSidebar({
   title = "Upcoming Events",
@@ -229,12 +203,6 @@ export function UpcomingEventsSidebar({
 
 /**
  * PrevNextNav — previous / next navigation row.
- * Pass `null` for previous/next to render a disabled, grayed-out label
- * ("No previous event" / "No next event") instead of a clickable button.
- *
- * Props:
- *  - previous: { label: string, onClick: () => void } | null
- *  - next: { label: string, onClick: () => void } | null
  */
 export function PrevNextNav({ previous, next }: PrevNextNavProps) {
   return (
@@ -272,37 +240,15 @@ export function PrevNextNav({ previous, next }: PrevNextNavProps) {
   );
 }
 
-
-/* ------------------------------------------------------------------ */
-/*  Main template — everything above, assembled into one page          */
-/* ------------------------------------------------------------------ */
-
 /**
  * EventDetailPage
  * The one reusable page template. Every page file (RioCarnivalPage,
- * GrandUsAdmissionDayPage, MarketingEventPage) just calls this with its
- * own data passed in manually as props — no shared data file involved.
- *
- * Props:
- *  - backHref: string
- *  - onBack: (e) => void   optional; if provided, called on click (e.preventDefault() handled internally)
- *  - event: {
- *      banner: { image, alt },
- *      date, time, location,
- *      title, description,
- *      highlightsIntro, highlights,
- *      shareLinks
- *    }
- *  - upcomingEvents: { title, href }[]
- *  - relatedEvents: RelatedEventCard props[]
- *  - previous: { label, onClick } | null   (null shows "No previous event")
- *  - next: { label, onClick } | null       (null shows "No next event")
+ * GrandUsAdmissionDayPage, MarketingEventPage)
  */
 export function EventDetailPage({
   backHref = "#",
   onBack,
   event,
-  upcomingEvents = [],
   previous,
   next,
 }: EventDetailPageProps) {
@@ -338,12 +284,23 @@ export function EventDetailPage({
 
         <ShareBar links={event.shareLinks} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
-          <HighlightsBox intro={event.highlightsIntro} highlights={event.highlights} />
-          <UpcomingEventsSidebar items={upcomingEvents} />
-        </div>
+        
 
         <PrevNextNav previous={previous} next={next} />
+      </div>
+    </div>
+  );
+}
+
+interface RelatedEventProps {
+  text: string;
+}
+
+export function RelatedEvent({ text }: RelatedEventProps) {
+  return (
+    <div className="mx-auto max-w-5xl px-6 pb-10">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-slate-700">
+        <p className="text-sm leading-6">{text}</p>
       </div>
     </div>
   );

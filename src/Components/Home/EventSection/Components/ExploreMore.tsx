@@ -5,16 +5,6 @@ import EventUsAdmissionCrop from "../../../../assets/EventUsAdmissionCrop.png"
 import  BookerClub from "../../../../assets/BookerClub.png"
 import  ToranlhaRunningCupCrop from "../../../../assets/ToranlhaRunningCupCrop.png"
 
-/**
- * EventsHero
- * Reusable full-width banner header with a back button, title, and subtitle.
- *
- * Props:
- *  - backgroundImage: string   banner image url
- *  - title: string             main heading
- *  - subtitle: string          supporting text
- *  - onBack: () => void        handler for the back button
- *  */
 interface EventsHeroProps {
   backgroundImage: string;
   title: string;
@@ -47,11 +37,6 @@ export function EventsHero({ backgroundImage, title, subtitle, onBack }: EventsH
 /**
  * FilterTab
  * Reusable pill-style toggle button used for category filters.
- *
- * Props:
- *  - label: string       text shown on the button
- *  - active: boolean     whether this tab is currently selected
- *  - onClick: () => void handler fired on click
  */
 interface FilterTabProps {
   label: string;
@@ -77,11 +62,6 @@ export function FilterTab({ label, active, onClick }: FilterTabProps) {
 /**
  * TimeFilterSelect
  * Reusable dropdown for filtering by time period (Upcoming / Past / All).
- *
- * Props:
- *  - value: string             currently selected option
- *  - onChange: (val) => void   handler fired with the new value
- *  - options: string[]         list of selectable options
  */
 interface TimeFilterSelectProps {
   value: string;
@@ -110,17 +90,7 @@ export function TimeFilterSelect({ value, onChange, options }: TimeFilterSelectP
 
 /**
  * EventCard
- * Reusable event card. Pass in whatever data you have — layout,
- * truncation, and tag styling are all handled here.
- *
- * Props:
- *  - image: string (banner image url)
- *  - title: string
- *  - description: string
- *  - date: string   e.g. "Fri, Dec 19, 2025"
- *  - time: string   e.g. "3:45 PM"
- *  - tags: string[] e.g. ["General"]
- *  - href: string (optional link target)
+ * Reusable event card. Pass in whatever data you have 
  */
 interface EventCardProps {
   image: string;
@@ -189,9 +159,6 @@ export function EventCard({
 /**
  * EmptyState
  * Reusable placeholder shown when a list has no items to display.
- *
- * Props:
- *  - message: string   text shown below the icon
  */
 export function EmptyState({ message = "No events at this time." }) {
   return (
@@ -205,7 +172,7 @@ export function EmptyState({ message = "No events at this time." }) {
 }
 
 /**
- * Sample data — swap this out for a real API call.
+ * Sample data swap .
  * Kept here just so EventsPage.jsx has something to render out of the box.
  */
 export const SAMPLE_EVENTS = [
