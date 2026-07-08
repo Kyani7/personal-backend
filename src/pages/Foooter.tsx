@@ -1,4 +1,5 @@
-import { Home, Phone, Mail, MapPin, ArrowUp, MessageCircle } from "lucide-react";
+import { Home, Phone, Mail, MapPin, ArrowUp, MessageCircle, X, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import  FooterBg from "../assets/Footer/FooterBg.png";
 
 type OfficeInfo = {
@@ -72,6 +73,27 @@ function OfficeBlock({ office }: { office: OfficeInfo }) {
 }
 
 export default function Footer() {
+  const [chatOpen, setChatOpen] = useState(false);
+
+  const openChat = () => setChatOpen(true);
+  const closeChat = () => setChatOpen(false);
+
+  const [showTop, setShowTop] = useState(false);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowTop(window.pageYOffset > 100);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <footer className="relative bg-gradient-to-br from-sky-600 to-blue-800 overflow-hidden">
       <div className="absolute inset-0 bg-[#0768a8] pointer-events-none"></div>
@@ -118,19 +140,66 @@ export default function Footer() {
       {/* Chat Box */}
       <button
         aria-label="Back to top"
-        className="fixed bottom-24 right-6 
-        w-11 h-20 rounded-full bg-blue-950 
-        text-white flex items-center justify-center shadow-lg
-        border white"
+        onClick={handleScrollToTop}
+        className={`fixed bottom-24 right-8 w-11 h-17 rounded-2xl bg-black/23 backdrop-blur-lg text-white flex items-center justify-center shadow-lg border white transition-opacity duration-300 ${showTop ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
-      <ArrowUp className="w-5 h-5" />
+        <ArrowUp className="w-5 h-5" />
       </button>
       <button
         aria-label="Chat with us"
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-lg hover:bg-sky-400 transition-colors"
+        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-[#0768a8] text-white flex items-center justify-center shadow-lg hover:bg-sky-400 transition-colors"
+        onClick={openChat}
       >
         <MessageCircle className="w-6 h-6" />
       </button>
+
+      {/* Chat Popup - opens when MessageCircle clicked; closes only via the colored X button */}
+      {chatOpen && (
+        <div className="fixed bottom-28 right-6 z-50">
+          <div className="w-70 bg-white rounded-2xl shadow-lg p-4 relative">
+            <div className="flex items-start justify-between mb-4">
+              <h4 className="text-slate-900 text-lg font-semibold">How can we help?</h4>
+              <button
+                aria-label="Close chat"
+                onClick={closeChat}
+                className="w-6 h-6 text-slate-900 hover:text-slate-800 flex items-center justify-center"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <a
+                href="https://web.whatsapp.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp (opens in new tab)"
+                className="w-full inline-flex bg-[#26d466] text-white rounded-lg py-3 items-center justify-between px-4"
+              >
+                <span>Chat on WhatsApp</span>
+                <ChevronRight className="w-4 h-4 opacity-70" />
+              </a>
+
+              <a
+                href="tel:+61700000000"
+                className="w-full inline-flex bg-[#3b82f5] text-white rounded-lg py-3 items-center justify-between px-4"
+              >
+                <span>Call Us Directly</span>
+                <ChevronRight className="w-4 h-4 opacity-70" />
+              </a>
+
+              <a
+                href="https://hamroyouthit.com/consult"
+                target="_blank"
+                className="w-full inline-flex bg-[#8b5cf6] text-white rounded-lg py-3 items-center justify-between px-4"
+              >
+                <span>Get Consult Now</span>
+                <ChevronRight className="w-4 h-4 opacity-70" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
