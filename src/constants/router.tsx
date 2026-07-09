@@ -9,13 +9,15 @@ import PodCast from "../Components/Home/PodCast/PodCast.tsx";
 import EventMain from "../Components/Home/EventSection/EventMain.tsx";
 import ConsultationForm from "../Components/Home/Form/Consultation.tsx";
 import FAQSection from "../Components/Home/faqsSection/faqsSection.tsx";
-import AllpodCast from "../Components/Home/PodCast/AllPodCast.tsx";
+import AllpodCast from "../Components/Home/PodCast/AllpodCast.tsx";
 
 import EventsPage from "../Components/Home/EventSection/ExploreMoreMain.tsx";
 import GrandUsAdmissionDayPage from "../Components/Home/EventSection/Grandusadmissiondaypage.tsx";
 import MarketingEventPage from "../Components/Home/EventSection/Marketingeventpage.tsx";
 import RioCarnivalPage from "../Components/Home/EventSection/Riocarnivalpage .tsx";
 
+
+import { Main } from "../Services/ServceMainPage.tsx"
 function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
   const navigate = useNavigate();
 
@@ -94,7 +96,7 @@ const router = createBrowserRouter([
       },
       {
         path: "services",
-        element: "",
+        element: <Main/>
       },
       {
         path: "gallery",

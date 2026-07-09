@@ -1,12 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import HeroCard from "./HeroCard";
 import { useHeroCarousel } from "../Components/Hooks/useHeroCarousel";
 
+
+
 const Hero = () => {
   const { activeCountry, visibleCountries, next, prev, goTo } = useHeroCarousel();
+  const navigate = useNavigate();
 
   // Use the short label (e.g. "UK") in the big heading when one is set,
   // otherwise fall back to the full title (e.g. "Germany").
   const headingTitle = activeCountry.shortTitle ?? activeCountry.title;
+
+  const handleSeeMore = () => {
+    navigate("/services");
+  };
 
   return (
     <section
@@ -32,7 +40,10 @@ const Hero = () => {
           </p>
 
           <div className="mt-10 flex gap-4">
-            <button className="rounded-lg bg-white px-8 py-4 font-semibold">
+            <button
+              onClick={handleSeeMore}
+              className="rounded-lg bg-white px-8 py-4 font-semibold"
+            >
               SEE MORE
             </button>
             <button className="rounded-lg border border-white px-8 py-4 text-white">

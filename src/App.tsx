@@ -3,6 +3,7 @@ import   Header from "./pages/Header"
 
 import { Outlet } from "react-router-dom";
 
+
 function App() {
   return (
     <>
@@ -10,8 +11,10 @@ function App() {
     <Header/>
     <Outlet/>
     <Footer/>
+
     </>
-  )
+
+  );
 }
 
-export default App
+export default App;
