@@ -1,4 +1,3 @@
-import React from "react";
 import { FaMedal, FaUsers, FaRegClock, FaCheckCircle } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import PageHeader from "./PageHeader";

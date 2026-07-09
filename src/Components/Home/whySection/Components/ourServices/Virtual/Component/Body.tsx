@@ -1,7 +1,6 @@
-import React from "react";
-import { FaMedal, FaUsers, FaRegClock, FaCheckCircle } from "react-icons/fa";
 import type { IconType } from "react-icons";
-import PageHeader from "./PageHeader";
+import { LuCircleCheckBig, LuClock10, LuGlobe } from "react-icons/lu";
+import { FiUsers } from "react-icons/fi";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -17,17 +16,6 @@ interface FeatureCardProps {
   description: string;
 }
 
-interface StatRowProps {
-  label: string;
-  value: string;
-}
-
-interface OfferCardProps {
-  title: string;
-  badge: string;
-  description: string;
-}
-
 interface ScholarshipOffersProps {
   heading?: string;
   description?: string;
@@ -37,8 +25,16 @@ interface ScholarshipOffersProps {
   features?: FeatureCardProps[];
   successTitle?: string;
   stats?: StatRowProps[];
-  offersTitle?: string;
-  offers?: OfferCardProps[];
+}
+
+interface StatRowProps {
+  label: string;
+  value: string;
+}
+
+interface RankingProps {
+  benefitsTitle: string;
+  benefits: string[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -48,8 +44,8 @@ interface ScholarshipOffersProps {
 function ProcessStep({ text }: ProcessStepProps) {
   return (
     <li className="flex items-start gap-3">
-      <FaCheckCircle className="mt-1 h-4 w-4 flex-shrink-0 text-amber-500" />
-      <span className="text-sm leading-relaxed text-slate-700">{text}</span>
+      <LuCircleCheckBig className="mt-1 h-4 w-4 flex-shrink-0 text-amber-500" />
+      <span className="leading-relaxed text-slate-700">{text}</span>
     </li>
   );
 }
@@ -59,8 +55,8 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
     <div className="flex gap-3">
       <Icon className="mt-1 h-5 w-5 flex-shrink-0 text-[#0078BD]" />
       <div>
-        <h4 className="text-sm font-semibold text-slate-900">{title}</h4>
-        <p className="mt-1 text-sm leading-relaxed text-slate-500">
+        <h4 className="text-l font-bold text-slate-900">{title}</h4>
+        <p className="mt-1  leading-relaxed text-slate-500">
           {description}
         </p>
       </div>
@@ -71,23 +67,19 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
 function StatRow({ label, value }: StatRowProps) {
   return (
     <div className="flex items-center justify-between border-b border-slate-100 py-3 last:border-b-0">
-      <span className="text-sm text-slate-600">{label}</span>
-      <span className="text-sm font-bold text-[#0078BD]">{value}</span>
+      <span className=" text-slate-600">{label}</span>
+      <span className=" font-bold text-[#0078BD]">{value}</span>
     </div>
   );
 }
 
-function OfferCard({ title, badge, description }: OfferCardProps) {
+
+function BenefitItem({ text }:  RankingProps) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
-      <div className="mb-2 flex items-start justify-between gap-2">
-        <h4 className="text-base font-bold text-blue-700">{title}</h4>
-        <span className="whitespace-nowrap rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-white">
-          {badge}
-        </span>
-      </div>
-      <p className="text-sm leading-relaxed text-slate-500">{description}</p>
-    </div>
+    <li className="flex items-start gap-3">
+      <LuCircleCheckBig className="mt-1 h-4 w-4 flex-shrink-0 text-amber-500" />
+      <span className=" leading-relaxed text-slate-700">{text}</span>
+    </li>
   );
 }
 
@@ -96,46 +88,56 @@ function OfferCard({ title, badge, description }: OfferCardProps) {
 /* ------------------------------------------------------------------ */
 
 export default function Body({
-  heading = "About Best Education Institutions",
-  description = `Hima Aus, trusted since 2008 with 14 branches worldwide, connects students to premier institutions in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany—delivering transformative education to over 10,000 graduates through rigorous quality and innovation standards. Our selection process prioritizes QS 2026-ranked universities excelling in employability, sustainability, and international outlook, ensuring your degree opens doors globally. We provide insider access to admissions trends, program comparisons, and virtual tours to help you visualize your future on these campuses.`,
+  heading = "About Virtual Counselling",
+  description = `Through secure platforms, Hima Aus delivers virtual counselling to students globally since 2008—covering applications, visas, and strategies for Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany with the same personalized touch that has served 10,000+ clients. Sessions are recorded for review, and we provide follow-up summaries with action items. Our tech-enabled approach includes interactive dashboards for tracking progress and accessing resources anytime.`,
   processTitle = "Our Process",
   process = [
-    "Detailed profile and aspiration analysis with psychometric assessments",
-    "Ranking-based matching with global institutions using QS 2026 data",
-    "Customized application and portfolio development with AI tools",
-    "Admissions collaboration and advocacy through partner channels",
-    "Visa integration and pre-arrival preparation with checklists",
-    "ustained academic and professional mentoring post-enrollment",
+    "Easy online appointment scheduling via app or website",
+    "Secure video platform connection with end-to-end encryption",
+    "Interactive profile review and Q&A with real-time polls",
+    "Real-time document collaboration using shared whiteboards",
+    "Actionable strategy and resource sharing with downloadable kits",
+    "Follow-up sessions and progress checks at no extra cost",
   ],
   featuresTitle = "Service Features",
   features = [
     {
-      icon: FaMedal,
-      title: "World-Ranked Institutions",
+      icon: LuGlobe,
+      title: "Worldwide Access",
       description:
-        "Partnerships with QS and THE top universities across 8 countries, updated for 2026 rankings.",
+        "Expert advice from anywhere for multi-country options, using secure Zoom integrations.",
     },
     {
-      icon: FaUsers,
-      title: "Diverse Destinations",
+      icon: LuClock10,
+      title: "Flexible Booking",
       description:
-        "Tailored options in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany with cultural insights.",
+        "24/7 availability across time zones for busy schedules, with instant confirmations.",
     },
     {
-      icon: FaRegClock,
-      title: "Proven Excellence",
+      icon: FiUsers,
+      title: "Premium Quality",
       description:
-        "High employability and research-focused institutions for career advancement, with 95% placement rates.",
+        "Same in-depth service as face-to-face consultations, with screen-sharing capabilities.",
     },
   ],
   successTitle = "Our Success",
   stats = [
-    { label: "Institutions Partnered", value: "120+" },
-    { label: "Placement Success", value: "95%" },
-    { label: "Rankings Span", value: "Top 300 Globally" },
-    { label: "Students Served", value: "10,000+" },
-    { label: "Employability Rate", value: "93%" },
-    { label: "Diversity Index", value: "85 Countries" },
+    { label: "Satisfaction Score", value: "97%" },
+    { label: "Global Reach", value: "50+ countries" },
+    { label: "Availability", value: "24/7 booking" },
+    { label: "Sessions Delivered", value: "20,000+" },
+    { label: "Follow-up Engagement", value: "88%" },
+    { label: "Conversion to Enrollments", value: "75%" },
+  ],
+  benefitsTitle = "Key Benefits",
+  benefits = [
+    "Borderless access to 14-branch expertise without travel",
+    "Time-zone friendly scheduling with AI matching",
+    "Privacy-focused secure sessions compliant with GDPR",
+    "Interactive tools for engagement like polls and quizzes",
+    "Digital materials and recordings for self-paced review",
+    "Cost-effective alternative to travel with group options",
+    "Integration with our client portal for seamless updates",
   ],
 }: ScholarshipOffersProps) {
   return (
@@ -147,7 +149,7 @@ export default function Body({
           <h2 className="text-2xl font-bold text-[#0078BD] sm:text-3xl">
             {heading}
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+          <p className="mt-4 leading-relaxed text-slate-600 sm:text-base">
             {description}
           </p>
 
@@ -161,13 +163,21 @@ export default function Body({
               ))}
             </ul>
           </div>
-
+          
+          <h2 className="mt-12 text-2xl font-bold text-[#0078BD] sm:text-3xl">
+          {benefitsTitle}
+        </h2>
+        <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+          {benefits.map((b, i) => (
+            <BenefitItem key={i} text={b} />
+          ))}
+        </ul>
         </div>
 
         {/* Right / sidebar column */}
         <div className="space-y-6">
           <div className="rounded-xl border border-slate-200 p-6">
-            <h3 className="text-base font-bold text-[#0078BD]">
+            <h3 className="text-xl font-bold text-[#0078BD]">
               {featuresTitle}
             </h3>
             <div className="mt-4 space-y-5">
@@ -176,7 +186,6 @@ export default function Body({
               ))}
             </div>
           </div>
-
           <div className="rounded-xl border border-slate-200 p-6">
             <h3 className="text-base font-bold text-[#0078BD]">
               {successTitle}

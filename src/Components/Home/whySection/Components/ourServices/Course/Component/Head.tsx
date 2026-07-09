@@ -1,4 +1,3 @@
-import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
 /* ------------------------------------------------------------------ */
@@ -17,11 +16,11 @@ export interface PageHeaderProps {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function PageHeader({
+export default function Head({
   backLabel = "Back To Services",
   backHref = "#",
-  title = "Best Education Institutions",
-  description = "Curated access to globally ranked universities in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany for exceptional academic journeys.",
+  title = "Courses on Demand",
+  description = "Personalized course matching for your field and goals in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany.",
   backgroundImage = "https://himaaus.com/images/WEBSITE-6.png",
 }: PageHeaderProps) {
   return (

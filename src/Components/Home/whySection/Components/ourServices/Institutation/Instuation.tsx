@@ -3,7 +3,7 @@ import Last from './Component/Last'
 import PageHeader from './Component/PageHeader'
 import Ranking from './Component/Ranking'
 
-export const Instuation = () => {
+const Instuation = () => {
   return (
     <>
     <PageHeader/>
@@ -13,3 +13,4 @@ export const Instuation = () => {
     </>
   )
 }
+export default Instuation;

@@ -1,4 +1,3 @@
-import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaCalendarCheck } from "react-icons/fa";
 
 /* ------------------------------------------------------------------ */
@@ -22,7 +21,7 @@ export interface CtaSectionProps {
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function Last({
+export default function Foot({
   heading = "Ready to Get Started?",
   description = "Contact us today for a free consultation and take the first step towards your educational goals.",
   primaryPhone = "+977 980-5027022",
@@ -36,17 +35,17 @@ export default function Last({
 }: CtaSectionProps) {
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white px-4 py-16 text-center sm:px-8">
-      <h2 className="text-2xl font-bold text-blue-700 sm:text-3xl">
+      <h2 className="text-2xl font-bold text-[#0078BD] sm:text-3xl">
         {heading}
       </h2>
-      <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-blue-900/70 sm:text-base">
+      <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#0078BD] sm:text-base">
         {description}
       </p>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a
           href={primaryPhoneHref ?? `tel:${primaryPhone.replace(/\s/g, "")}`}
-          className="inline-flex items-center gap-2 rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-green-600"
+          className="inline-flex items-center gap-2 rounded-full bg-[#00C951] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-green-600"
         >
           <FaPhoneAlt className="h-3.5 w-3.5" />
           Call Now: {primaryPhone}
@@ -54,7 +53,7 @@ export default function Last({
 
         <a
           href={secondaryPhoneHref ?? `tel:${secondaryPhone.replace(/\s/g, "")}`}
-          className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-amber-500"
+          className="inline-flex items-center gap-2 rounded-full bg-[#FFBA1B] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-amber-500"
         >
           <FaPhoneAlt className="h-3.5 w-3.5" />
           Call Now: {secondaryPhone}
@@ -62,7 +61,7 @@ export default function Last({
 
         <a
           href={emailHref ?? `mailto:${email}`}
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-sm transition-colors hover:bg-slate-50"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-[#0078BD] shadow-sm transition-colors hover:bg-slate-50"
         >
           <FaEnvelope className="h-3.5 w-3.5" />
           Email Us: {email}
@@ -71,7 +70,7 @@ export default function Last({
         <button
           type="button"
           onClick={onBookClick}
-          className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0078BD]"
+          className="inline-flex items-center gap-2 rounded-full bg-[#0078BD] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0078BD]"
         >
           <FaCalendarCheck className="h-3.5 w-3.5" />
           {bookLabel}

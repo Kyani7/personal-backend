@@ -23,6 +23,18 @@ import MigrationMain from "../Services/Visa-Services/Migration-services/Migratio
 import Student from "../Services/Visa-Services/Student-services/Student.tsx";
 import Visitor from "../Services/Visa-Services/Visitor-services/Visitor.tsx";
 
+import Airport from "../Components/Home/whySection/Components/ourServices/Airpot/Airpot.tsx";
+import Counselling from "../Components/Home/whySection/Components/ourServices/Counselling/Counselling.tsx";
+import Course from "../Components/Home/whySection/Components/ourServices/Course/Course.tsx";
+import Departure from "../Components/Home/whySection/Components/ourServices/Departure/Departure.tsx";
+import Instuation from "../Components/Home/whySection/Components/ourServices/Institutation/Instuation.tsx";
+import Scholarship from "../Components/Home/whySection/Components/ourServices/Scholarship/Scholarship";
+import Virtual from "../Components/Home/whySection/Components/ourServices/Virtual/Virtual";
+import VisaApplication from "../Components/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
+
+
+
+
 function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
   const navigate = useNavigate();
 
@@ -95,6 +107,48 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+  path: "services",
+  element: <Main />,
+  children: [
+    {
+      path: "scholarship",
+      element: <Scholarship />,
+    },
+    {
+      path: "counselling",
+      element: <Counselling />,
+    },
+    {
+      path: "course",
+      element: <Course />,
+    },
+    {
+      path: "institution",
+      element: <Instuation />,
+    },
+    {
+      path: "virtual",
+      element: <Virtual />,
+    },
+    {
+      path: "visa-application",
+      element: <VisaApplication />,
+    },
+    {
+      path: "departure",
+      element: <Departure />,
+    },
+    {
+      path: "airport",
+      element: <Airport />,
+    },
+    {
+      path: "test-preparation",
+      element: "<TestPreparation />",
+    },
+  ],
+},
       {
         path: "about",
         element: "",

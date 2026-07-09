@@ -19,15 +19,15 @@ type Service = {
 };
 
 const services: Service[] = [
-  { icon: Award, label: "Scholarship Offers",href:"services/scholarship-offer" },
-  { icon: Users, label: "Genuine Counselling",href:"" },
-  { icon: BookOpen, label: "Test Preparation",href:"" },
-  { icon: GraduationCap, label: "Best Education Institutions",href:"" },
-  { icon: Target, label: "Courses on Demand",href:"" },
-  { icon: Video, label: "Virtual Counselling",href:"" },
-  { icon: FileText, label: "Visa Application",href:"" },
-  { icon: Plane, label: "Pre-Departure",href:"" },
-  { icon: MapPin, label: "Airport Pickup",href:"" },
+  { icon: Award, label: "Scholarship Offers", href: "/services/scholarship" },
+  { icon: Users, label: "Genuine Counselling", href: "/services/counselling" },
+  { icon: BookOpen, label: "Test Preparation", href: "/services/test-preparation" },
+  { icon: GraduationCap, label: "Best Education Institutions", href: "/services/institution" },
+  { icon: Target, label: "Courses on Demand", href: "/services/course" },
+  { icon: Video, label: "Virtual Counselling", href: "/services/virtual" },
+  { icon: FileText, label: "Visa Application", href: "/services/visa-application" },
+  { icon: Plane, label: "Pre-Departure", href: "/services/departure" },
+  { icon: MapPin, label: "Airport Pickup", href: "/services/airport" },
 ];
 
 export default function WhyChooseUs() {
