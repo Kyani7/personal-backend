@@ -20,7 +20,7 @@ const EventMain = () => {
 
             {/**button  */}
             <div className="w-full  px-7">
-            <Link to="" className=" inline-flex justify-centerbg-primary text-[#0072BC] font-semibold gap-2" >View All Events
+            <Link to="/explore-event" className=" inline-flex justify-centerbg-primary text-[#0072BC] font-semibold gap-2" >View All Events
             <ArrowRight className="w-4 h-4 my-1"/>
             </Link>
             </div>

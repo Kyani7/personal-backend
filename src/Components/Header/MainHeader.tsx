@@ -9,23 +9,16 @@ const MainHeader = () => {
 const timeoutRef = useRef<number | null>(null);
 
 useEffect(() => {
-  let lastScrollY = window.scrollY;
-
   const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+    // Hide navbar whenever scrolling starts
+    setHideNav(true);
 
-    // Hide navbar while scrolling down
-    if (currentScrollY > lastScrollY) {
-      setHideNav(true);
-    }
-
-    lastScrollY = currentScrollY;
-
-    // Show navbar when scrolling stops
+    // Reset timer
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
+    // Show navbar after scrolling stops
     timeoutRef.current = window.setTimeout(() => {
       setHideNav(false);
     }, 300);
@@ -166,7 +159,7 @@ useEffect(() => {
                   isActive ? "text-secondary" : "text-white"
                 }`
               }
-              to="/contactUs"
+              to="/contact-us"
               end
             >
               Contact Us

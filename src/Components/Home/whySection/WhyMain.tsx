@@ -19,7 +19,7 @@ type Service = {
 };
 
 const services: Service[] = [
-  { icon: Award, label: "Scholarship Offers", href: "/services/scholarship" },
+  { icon: Award, label: "Scholarship Offers", href: "/scholarship" },
   { icon: Users, label: "Genuine Counselling", href: "/services/counselling" },
   { icon: BookOpen, label: "Test Preparation", href: "/services/test-preparation" },
   { icon: GraduationCap, label: "Best Education Institutions", href: "/services/institution" },

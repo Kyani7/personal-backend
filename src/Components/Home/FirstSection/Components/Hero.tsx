@@ -15,6 +15,9 @@ const Hero = () => {
   const handleSeeMore = () => {
     navigate("/services");
   };
+  const handleContactUs =()=>{
+    navigate("contact-us");
+  }
 
   return (
     <section
@@ -46,7 +49,9 @@ const Hero = () => {
             >
               SEE MORE
             </button>
-            <button className="rounded-lg border border-white px-8 py-4 text-white">
+            <button 
+            onClick={handleContactUs}
+            className="rounded-lg border border-white px-8 py-4 text-white">
               Contact Us
             </button>
           </div>

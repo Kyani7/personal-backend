@@ -1,7 +1,7 @@
 import Description from "../../../pages/Description";
 import Key from "../../../pages/Key";
 import Table, { type KeyInfoArray } from "../../../pages/Table";
-import NewZerlandImg from "../../../assets/ NewZealand.png";
+import NewZerlandImg from "../../../assets/NewZealand.png";
 
 const NewZealand = () => {
   const keyInfos: KeyInfoArray = [

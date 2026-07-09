@@ -16,7 +16,7 @@ const HomeGalleryMain = () => {
     </div>
     </div>
     <SectionButton
-    to="#"
+    to="/gallery"
     ButtonContent="View More Story"
     />
     </>

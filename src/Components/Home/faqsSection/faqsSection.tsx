@@ -146,11 +146,6 @@ export default function FAQSection() {
           })}
         </div>
       </div>
-
-      {/* Footer */}
-      <p className="text-center text-slate-500 mt-10">
-        Still stuck? <a href="#" className="text-[#248bc7] font-semibold underline">Contact Us</a>.
-      </p>
     </section>
   );
 }

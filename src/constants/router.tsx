@@ -8,7 +8,6 @@ import { HomeBlogs } from "../Components/Home/HomeBlogs/HomeBlogs.tsx";
 import PodCast from "../Components/Home/PodCast/PodCast.tsx";
 import EventMain from "../Components/Home/EventSection/EventMain.tsx";
 import ConsultationForm from "../Components/Home/Form/Consultation.tsx";
-import FAQSection from "../Components/Home/faqsSection/faqsSection.tsx";
 import AllpodCast from "../Components/Home/PodCast/AllpodCast.tsx";
 
 import EventsPage from "../Components/Home/EventSection/ExploreMoreMain.tsx";
@@ -34,6 +33,9 @@ import VisaApplication from "../Components/Home/whySection/Components/ourService
 
 
 
+import ContactMain from "../Components/Contact/Contact.tsx";
+import FaqsMain from "../Components/Home/faqsSection/faqsMain.tsx";
+import Gallery from "../Components/Gallery/Gallery.tsx";
 
 function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
   const navigate = useNavigate();
@@ -78,7 +80,7 @@ const router = createBrowserRouter([
             <PodCast/>
             <EventMain/>
             <ConsultationForm/>
-            <FAQSection/>
+            <FaqsMain/>
           </>
         ),
       },
@@ -177,7 +179,7 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery",
-        element: "",
+        element: <Gallery/>,
       },
       {
         path: "blog",
@@ -189,13 +191,11 @@ const router = createBrowserRouter([
       },
       {
         path: "contact-us",
-        element: "",
+        element: <ContactMain/>,
       },
     ],
   },
-  {
-    path: "/",
-  },
+  
 ]);
 
 export default router;

@@ -1,3 +1,4 @@
+
 import Footer from "./pages/Foooter";
 import   Header from "./pages/Header"
 
@@ -13,8 +14,7 @@ function App() {
     <Footer/>
 
     </>
-
-  );
+  )
 }
 
 export default App;
