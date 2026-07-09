@@ -3,6 +3,7 @@
  * that was previously open, and clicking an open section again collapses it.
  */
 import { FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { services} from "../DropdownData/dropDownData"; 
 import { useState } from 'react';
   
@@ -43,7 +44,7 @@ export function ServicesDropDown() {
                 {service.items.map((item) => (
                   <li key={item.label} className="flex items-center gap-2 text-sm text-white/80 hover:text-secondary transition">
                     <span className="h-1 w-1 rounded-full bg-white/70 shrink-0" />
-                    <a href={item.href}>{item.label}</a>
+                    <Link to={item.href} className="hover:text-secondary">{item.label}</Link>
                   </li>
                 ))}
               </ul>

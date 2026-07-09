@@ -16,8 +16,13 @@ import GrandUsAdmissionDayPage from "../Components/Home/EventSection/Grandusadmi
 import MarketingEventPage from "../Components/Home/EventSection/Marketingeventpage.tsx";
 import RioCarnivalPage from "../Components/Home/EventSection/Riocarnivalpage .tsx";
 
+import { Main } from "../Services/ServceMainPage.tsx";
+import DestinationMain from "../Services/Destination-Country/DestinationPages.tsx";
 
-import { Main } from "../Services/ServceMainPage.tsx"
+import MigrationMain from "../Services/Visa-Services/Migration-services/MigrationMain.tsx";
+import Student from "../Services/Visa-Services/Student-services/Student.tsx";
+import Visitor from "../Services/Visa-Services/Visitor-services/Visitor.tsx";
+
 function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
   const navigate = useNavigate();
 
@@ -66,8 +71,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-    path: "all-podcast",
-    element: <AllpodCast />,
+        path: "all-podcast",
+        element: <AllpodCast />,
       },
       {
         path: "explore-event",
@@ -96,7 +101,25 @@ const router = createBrowserRouter([
       },
       {
         path: "services",
-        element: <Main/>
+        element: <Main/>,
+        children: [
+          {
+            path: "destination-country/:country?",
+            element: <DestinationMain />,
+          },
+          {
+            path: "visa-service/migration-visa",
+            element: <MigrationMain />,
+          },
+          {
+            path: "visa-service/student-visa",
+            element: <Student />,
+          },
+          {
+            path: "visa-service/visitor-visa",
+            element: <Visitor />,
+          },
+        ],
       },
       {
         path: "gallery",
@@ -117,8 +140,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"/"
-  }
+    path: "/",
+  },
 ]);
 
 export default router;

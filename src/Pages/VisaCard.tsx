@@ -4,7 +4,7 @@ type MiniVisaCardProps = {
   number : string;
   title : string;
   description : string;
-  features : string;
+  features : string[];
 }
 const MiniVisaCard = ({ number, title, description, features,} : MiniVisaCardProps) => {
   return (

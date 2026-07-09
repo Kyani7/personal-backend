@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Head from './Component/Head'
 import Feature from './Component/Feature'
 import Overview from './Component/Overview'

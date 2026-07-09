@@ -7,7 +7,7 @@ import Box2 from './Component/Box2'
 import Box3 from './Component/Box3'
 import Box4 from './Component/Box4'
 
-const Main = () => {
+const MigrationMain = () => {
   return (
     <>
     <Head />
@@ -26,4 +26,4 @@ const Main = () => {
   )
 }
 
-export {Main};
+export default MigrationMain;
