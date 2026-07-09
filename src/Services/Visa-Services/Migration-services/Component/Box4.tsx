@@ -1,6 +1,6 @@
-import React from 'react'
+
 import { TbCircleNumber4Filled } from 'react-icons/tb'
-import MiniVisaCard from '../../../../Pages/VisaCard'
+import MiniVisaCard from '../../../../pages/VisaCard'
 
 const Box4 = () => {
   return (

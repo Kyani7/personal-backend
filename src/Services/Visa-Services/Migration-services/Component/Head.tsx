@@ -1,5 +1,5 @@
-import React from 'react'
-import MiniPannel from '../../../../Pages/MiniPannel'
+
+import MiniPannel from '../../../../pages/MiniPannel'
 
 export const Head = () => {
   return (

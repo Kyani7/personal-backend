@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { CiClock2 } from 'react-icons/ci'
 import { GiGraduateCap } from 'react-icons/gi'
 import { MdLocalPostOffice, MdOutlineDomainVerification } from 'react-icons/md'

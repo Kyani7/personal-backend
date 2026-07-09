@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Top from './Component/Top'
 import Box from './Component/Box'
 import SubBody from './Component/SubBody'
