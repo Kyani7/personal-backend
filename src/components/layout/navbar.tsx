@@ -1,2 +1,2 @@
-import Header from "../../pages/Header";
+import Header from "../../Pages/Header";
 export default Header;

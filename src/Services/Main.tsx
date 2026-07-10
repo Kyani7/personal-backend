@@ -17,4 +17,3 @@ const Main = () => {
 }
 
 export {Main};
-export {Main};

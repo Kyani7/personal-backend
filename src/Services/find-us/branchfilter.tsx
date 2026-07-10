@@ -31,11 +31,10 @@ export function BranchFilters({
             key={filter}
             type="button"
             onClick={() => onChangeFilter(filter)}
-            className={`rounded-full px-5 py-2 text-base font-semibold transition-colors md:px-6 md:py-2.5 md:text-lg ${
-              isActive
-                ? "bg-secondary text-secondary-foreground shadow-sm"
-                : "text-foreground hover:bg-background"
-            }`}
+            className={`rounded-full px-5 py-2 text-base font-semibold transition-colors md:px-6 md:py-2.5 md:text-lg ${isActive
+              ? "bg-secondary text-secondary-foreground shadow-sm"
+              : "text-foreground hover:bg-background"
+              }`}
           >
             {filterLabels[filter]}
           </button>

@@ -1,6 +1,5 @@
 type FeaturesCardProps = {
     icon : React.ReactNode;
-    icon : string;
     title : string;
     description : string;
 }

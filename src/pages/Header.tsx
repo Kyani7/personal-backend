@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import MainHeader from "../Components/Header/MainHeader"
+import MainHeader from "../components/Header/MainHeader"
 const Header = () => {
   return (
     <>
