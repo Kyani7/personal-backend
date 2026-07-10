@@ -1,11 +1,11 @@
 interface aboutLinks {
- label:String;
- href?:String;
+ label:string;
+ href?:string;
 }
 
 interface services{
-    labe:String;
-    href?:String;
+    label:string;
+    href?:string;
 }
 
 export const aboutLinks = [
