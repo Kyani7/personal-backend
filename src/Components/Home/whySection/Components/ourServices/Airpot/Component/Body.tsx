@@ -3,9 +3,6 @@ import { LuCircleCheckBig, LuUsers} from "react-icons/lu";
 import { FiShield} from "react-icons/fi";
 import { BsFillHouseDoorFill } from "react-icons/bs";
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
 
 interface ProcessStepProps {
   text: string;
@@ -26,6 +23,9 @@ interface ScholarshipOffersProps {
   features?: FeatureCardProps[];
   successTitle?: string;
   stats?: StatRowProps[];
+  benefitsTitle:any;
+  benefits:any;
+  BenefitItem:any;
 }
 
 interface StatRowProps {
@@ -36,11 +36,9 @@ interface StatRowProps {
 interface RankingProps {
   benefitsTitle: string;
   benefits: string[];
+  text:any;
+  BenefitItem:any;
 }
-
-/* ------------------------------------------------------------------ */
-/*  Sub-components (all driven by typed props)                        */
-/* ------------------------------------------------------------------ */
 
 function ProcessStep({ text }: ProcessStepProps) {
   return (
@@ -84,9 +82,6 @@ function BenefitItem({ text }:  RankingProps) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Main component                                                    */
-/* ------------------------------------------------------------------ */
 
 export default function Body({
   heading = "About Airport Pickup",

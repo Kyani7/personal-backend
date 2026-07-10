@@ -3,65 +3,22 @@
 @import "tailwindcss";
 
 @theme {
-  --font-p: 'Poppins', sans-serif;
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
   --color-primary: white;
-  --color-primary-foreground: hsl(0 0% 100%);
-  --color-primary-dark: hsl(214 68% 33%);
-
-  --color-secondary: #fbbf24;
-  --color-secondary-foreground: hsl(0 0% 0%);
-
-  --color-background: #0f172a;
-  --color-foreground: #ffffff;
-
-  --color-muted: hsl(0 0% 97%);
-  --color-muted-foreground: hsl(0 0% 45%);
-
-  --color-border: hsl(0 0% 92%);
-  --color-card: hsl(0 0% 100%);
-
-  --radius-lg: 0.5rem;
+  --color-secondary: #FBBF24;
+  --color-background: #0F172A;
+  --color-foreground: #FFFFFF;
 }
 
-:root {
-  --primary: 202 100% 37%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 42 100% 55%;
-  --secondary-foreground: 0 0% 0%;
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
-  --muted: 0 0% 97%;
-  --muted-foreground: 0 0% 45%;
-  --border: 0 0% 92%;
-  --radius: 0.5rem;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  border-color: hsl(var(--border));
-}
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 ::selection {
-  color: hsl(var(primary-foreground)) !important;
-  background: hsl(var(secondary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  background: hsl(var(--secondary)) !important;
 }
 
 /* Customize color for the Section Heading */

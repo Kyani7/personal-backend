@@ -11,10 +11,15 @@ const HeroCard = ({ item, active, onClick }: HeroCardProps) => {
 
   return (
     <div
-      onClick={onClick}
-      className={`relative cursor-pointer transition-transform duration-300 rounded-3xl overflow-hidden w-30 h-50 opacity-80 hover:opacity-100 hover:scale-105 ${
-        active ? "ring-4 ring-[#248bc7]/20" : ""
-      }`}
+    onClick={onClick}
+    className={`
+    relative cursor-pointer
+    transition-transform duration-300
+    rounded-3xl overflow-hidden
+    w-24 h-36 xl:w-30 xl:h-50
+    opacity-80 hover:opacity-100 hover:scale-105
+    ${active ? "ring-4 ring-[#248bc7]/20" : ""}
+    `}
     >
       <img src={item.image} className="w-full h-full object-cover" alt={item.title} />
 

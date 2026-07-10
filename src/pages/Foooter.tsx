@@ -189,8 +189,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://hamroyouthit.com/consult"
-                target="_blank"
+                href="contact-us"
                 className="w-full inline-flex bg-[#8b5cf6] text-white rounded-lg py-3 items-center justify-between px-4"
               >
                 <span>Get Consult Now</span>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { MdLocalPostOffice } from 'react-icons/md'
-import BulletPoint from '../../../../Pages/BulletPoint'
+import BulletPoint from '../../../../pages/BulletPoint'
 
 const Visa = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { FaGlobe } from 'react-icons/fa'
 import { HiOutlineClipboardDocumentList } from 'react-icons/hi2'
 import { PiNotepadDuotone } from 'react-icons/pi'
-import Features from '../../../../Pages/Features'
+import Features from '../../../../pages/Features'
 
 const Overview = () => {
   return (

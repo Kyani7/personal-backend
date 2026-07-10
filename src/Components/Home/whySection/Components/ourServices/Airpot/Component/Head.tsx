@@ -1,8 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
 
 export interface PageHeaderProps {
   backLabel?: string;
@@ -11,10 +8,6 @@ export interface PageHeaderProps {
   description?: string;
   backgroundImage?: string;
 }
-
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
 
 export default function Head({
   backLabel = "Back To Services",

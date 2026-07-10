@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SectionHeading from "../Components/SectionHeadingProps";
 
-/**IMporting all the image  */
+/** Importing all the images */
 import aapoly from "../../../assets/Homee/BannerImage/AAPOLY.webp";
 import acbi from "../../../assets/Homee/BannerImage/ACBI.webp";
 import aih from "../../../assets/Homee/BannerImage/AIH.webp";
@@ -75,15 +75,17 @@ export const BannerMain = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Freeze row 1 at its current visual position
       if (row1Ref.current) {
-        const computedTransform = window.getComputedStyle(row1Ref.current).transform;
+        const computedTransform = window.getComputedStyle(
+          row1Ref.current
+        ).transform;
         row1Ref.current.style.transform = computedTransform;
       }
 
-      // Freeze row 2 at its current visual position
       if (row2Ref.current) {
-        const computedTransform = window.getComputedStyle(row2Ref.current).transform;
+        const computedTransform = window.getComputedStyle(
+          row2Ref.current
+        ).transform;
         row2Ref.current.style.transform = computedTransform;
       }
 
@@ -96,7 +98,7 @@ export const BannerMain = () => {
   return (
     <section className="w-full section-heading-oz">
       {/* HEAD */}
-      <div className="bg-[#0078bd] py-12">
+      <div className="bg-[#0078bd] py-8 sm:py-10 lg:py-12">
         <SectionHeading
           headingOne="Our Global Partners"
           title="Trusted by Leading Universities and Colleges Worldwide"
@@ -104,52 +106,84 @@ export const BannerMain = () => {
         />
       </div>
 
-      {/* MIDDLE - grows with content */}
-      <div className="bg-white py-10">
+      {/* MIDDLE */}
+      <div className="bg-white py-6 sm:py-8 lg:py-10">
         {partners.length === 0 ? (
           <div className="flex items-center justify-center py-16 text-gray-500">
             No partners available at the moment
           </div>
         ) : (
           <>
-            {/* Row 1 - scrolls left */}
+            {/* Row 1 */}
             <div className="row-1-wrapper overflow-hidden">
               <ul
                 ref={row1Ref}
-                className={`flex w-max gap-10 marquee-row ${isRunning ? "animate-scroll-left" : ""}`}
+                className={`flex w-max gap-4 sm:gap-6 lg:gap-10 marquee-row ${
+                  isRunning ? "animate-scroll-left" : ""
+                }`}
               >
                 {[...partners, ...partners].map((partner, index) => (
                   <li
                     key={`row1-${index}`}
-                    className="flex h-30 w-45 flex-shrink-0 items-center justify-center"
+                    className="
+                      flex
+                      h-20 w-32
+                      sm:h-24 sm:w-40
+                      lg:h-30 lg:w-45
+                      flex-shrink-0
+                      items-center
+                      justify-center
+                    "
                   >
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-h-20 max-w-full object-contain"
+                      className="
+                        max-h-12
+                        sm:max-h-16
+                        lg:max-h-20
+                        max-w-full
+                        object-contain
+                      "
                     />
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="border-t border-gray-100 my-6" />
+            <div className="border-t border-gray-100 my-4 sm:my-6" />
 
-            {/* Row 2 - scrolls right */}
+            {/* Row 2 */}
             <div className="row-2-wrapper overflow-hidden">
               <ul
                 ref={row2Ref}
-                className={`flex w-max gap-8 marquee-row ${isRunning ? "animate-scroll-right" : ""}`}
+                className={`flex w-max gap-4 sm:gap-6 lg:gap-8 marquee-row ${
+                  isRunning ? "animate-scroll-right" : ""
+                }`}
               >
                 {[...partners, ...partners].map((partner, index) => (
                   <li
                     key={`row2-${index}`}
-                    className="flex h-30 w-45 flex-shrink-0 items-center justify-center"
+                    className="
+                      flex
+                      h-20 w-32
+                      sm:h-24 sm:w-40
+                      lg:h-30 lg:w-45
+                      flex-shrink-0
+                      items-center
+                      justify-center
+                    "
                   >
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-h-20  max-w-full object-contain"
+                      className="
+                        max-h-12
+                        sm:max-h-16
+                        lg:max-h-20
+                        max-w-full
+                        object-contain
+                      "
                     />
                   </li>
                 ))}
@@ -160,29 +194,40 @@ export const BannerMain = () => {
       </div>
 
       {/* FOOT */}
-      <div className="bg-[#0078bd] h-20" />
+      <div className="bg-[#0078bd] h-12 sm:h-16 lg:h-20" />
 
       <style>{`
         @keyframes scroll-left {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
         }
+
         @keyframes scroll-right {
-         from { transform: translateX(-50%); }
-        to { transform: translateX(0); }
+          from {
+            transform: translateX(-50%);
+          }
+          to {
+            transform: translateX(0);
+          }
         }
+
         .animate-scroll-left {
-        animation: scroll-left 60s linear infinite;
+          animation: scroll-left 60s linear infinite;
         }
+
         .animate-scroll-right {
-         animation: scroll-right 60s linear infinite;
+          animation: scroll-right 60s linear infinite;
         }
 
         .row-1-wrapper:hover .marquee-row,
         .row-2-wrapper:hover .marquee-row {
-        animation-play-state: paused !important;
-  }
-`}</style>
+          animation-play-state: paused !important;
+        }
+      `}</style>
     </section>
   );
 };

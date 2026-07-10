@@ -1,8 +1,5 @@
 import { FaPhoneAlt, FaEnvelope, FaCalendarCheck } from "react-icons/fa";
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
 
 export interface CtaSectionProps {
   heading?: string;
@@ -17,9 +14,6 @@ export interface CtaSectionProps {
   emailHref?: string;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
 
 export default function Last({
   heading = "Ready to Get Started?",

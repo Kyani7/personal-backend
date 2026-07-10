@@ -168,13 +168,16 @@ export default function ConsultationForm() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto flex flex-col p-10 md:flex-row gap-6 md:gap-8 lg:gap-30 items-stretch">
-        <div className="w-full md:w-2/5 relative rounded-2xl overflow-hidden min-h-[320px] md:min-h-[420px] transition-transform duration-300 hover:scale-105">
+      <div className="max-w-7xl mx-auto flex flex-col p-10 md:flex-row gap-6 md:gap-8 lg:gap-25 items-stretch">
+        
+        <div className="w-full md:w-2/5 relative rounded-2xl overflow-hidden min-h-[320px] md:min-h-[420px] w-full group ">
+  
           <img
-            src={LadyPicture}
-            alt="Consultant"
-            className="absolute inset-0 w-full h-full object-cover"
+           src={LadyPicture}
+           alt="Consultant"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
+
 
           <div className="absolute inset-0 bg-" />
 
@@ -287,10 +290,15 @@ export default function ConsultationForm() {
               as="select"
               placeholder="Select desired destination"
               options={[
-                "USA",
-                "UK",
+                "United Sate",
+                "United Kingdom",
                 "Australia",
                 "Canada",
+                "Japan",
+                "New zealand",
+                "Germany",
+                "Sweden"
+
               ]}
               className="md:w-[calc(50%-0.625rem)]"
               onChange={(x) => update("destination", x)}

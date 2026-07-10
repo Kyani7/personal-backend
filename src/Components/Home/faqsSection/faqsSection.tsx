@@ -99,7 +99,7 @@ export default function FAQSection() {
         </button>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-6 items-start">
         {/* Category buttons on the left */}
         <div className="w-full md:w-56 bg-slate-50 rounded-xl p-2 flex md:flex-col gap-1 shrink-0">
           {categories.map((category) => (
