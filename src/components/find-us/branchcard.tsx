@@ -1,26 +1,98 @@
-export type BranchType = "national" | "international";
-
-export type Branch = {
-  id: string;
-  name: string;
-  country: string;
-  type: BranchType;
-  address: string;
-};
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import type { Branch } from "../../data/branches";
 
 type BranchCardProps = {
   branch: Branch;
 };
 
+const FALLBACK_GRADIENTS: Record<string, string> = {
+  national: "linear-gradient(135deg, #1565c0 0%, #0d47a1 100%)",
+  international: "linear-gradient(135deg, #0077bd 0%, #005a8e 100%)",
+};
+
 export default function BranchCard({ branch }: BranchCardProps) {
   return (
-    <article className="rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md md:p-6">
-      <h3 className="text-lg font-bold text-foreground md:text-xl">{branch.name}</h3>
-      <p className="mt-1 text-base font-medium text-primary md:text-lg">{branch.country}</p>
-      <p className="mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">{branch.address}</p>
-      <span className="mt-5 inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-foreground">
-        {branch.type}
-      </span>
+    <article className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+      {/* Image */}
+      <div className="relative h-48 w-full overflow-hidden bg-muted md:h-52">
+        {branch.image ? (
+          <img
+            src={branch.image}
+            alt={branch.name}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            onError={(e) => {
+              const target = e.currentTarget;
+              target.style.display = "none";
+              const parent = target.parentElement;
+              if (parent) {
+                parent.style.background = FALLBACK_GRADIENTS[branch.type];
+              }
+            }}
+          />
+        ) : (
+          <div
+            className="h-full w-full"
+            style={{ background: FALLBACK_GRADIENTS[branch.type] }}
+          />
+        )}
+        {/* Type badge */}
+        <span
+          className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest text-white shadow ${
+            branch.type === "national"
+              ? "bg-secondary text-secondary-foreground"
+              : "bg-primary"
+          }`}
+        >
+          {branch.type}
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="p-5 md:p-6">
+        {/* City / Country */}
+        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
+          {branch.city}, {branch.country}
+        </p>
+
+        {/* Branch name */}
+        <h3 className="text-lg font-bold leading-snug text-foreground md:text-xl">
+          {branch.name}
+        </h3>
+
+        {/* Details */}
+        <ul className="mt-4 space-y-2.5">
+          <li className="flex items-start gap-2.5 text-sm text-muted-foreground md:text-base">
+            <MapPin
+              size={16}
+              className="mt-0.5 shrink-0 text-primary"
+            />
+            <span className="leading-relaxed">{branch.address}</span>
+          </li>
+          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
+            <Phone size={16} className="shrink-0 text-primary" />
+            <a
+              href={`tel:${branch.phone}`}
+              className="transition-colors hover:text-primary"
+            >
+              {branch.phone}
+            </a>
+          </li>
+          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
+            <Mail size={16} className="shrink-0 text-primary" />
+            <a
+              href={`mailto:${branch.email}`}
+              className="transition-colors hover:text-primary"
+            >
+              {branch.email}
+            </a>
+          </li>
+          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
+            <Clock size={16} className="shrink-0 text-primary" />
+            <span>{branch.hours}</span>
+          </li>
+        </ul>
+      </div>
     </article>
   );
 }

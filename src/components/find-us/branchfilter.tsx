@@ -1,4 +1,5 @@
-import BranchCard, { type Branch, type BranchType } from "./branchcard";
+import type { Branch, BranchType } from "../../data/branches";
+import BranchCard from "./branchcard";
 
 export type BranchFilter = "all" | BranchType;
 
