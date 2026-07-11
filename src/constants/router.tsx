@@ -1,4 +1,6 @@
 import { createBrowserRouter, useNavigate } from "react-router-dom";
+
+
 import Hero from "../Components/Home/FirstSection/Components/Hero.tsx";
 import WhyMain from "../Components/Home/whySection/WhyMain.tsx";
 import App from "../App";
@@ -37,9 +39,9 @@ import ContactMain from "../Components/Contact/Contact.tsx";
 import FaqsMain from "../Components/Home/faqsSection/faqsMain.tsx";
 import Gallery from "../Components/Gallery/Gallery.tsx";
 
+
 function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
   const navigate = useNavigate();
-
   const handleNavigate = (pageName: string) => {
     switch (pageName) {
       case "events-list":
@@ -62,6 +64,8 @@ function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: Rea
 
   return <PageComponent onNavigate={handleNavigate} />;
 }
+
+
 
 const router = createBrowserRouter([
   {

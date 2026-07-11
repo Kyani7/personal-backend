@@ -11,6 +11,7 @@ import {
   MapPin,
   ArrowRight,
 } from "lucide-react";
+import SectionButton from "../Components/SectionButtonProps";
 
 type Service = {
   icon: React.ElementType;
@@ -55,7 +56,7 @@ export default function WhyChooseUs() {
     >
       {/* Video */}
       <div className="w-full lg:w-[42%] shrink-0">
-        <div className="relative aspect-video lg:aspect-[9/16] overflow-hidden rounded-3xl shadow-lg">
+        <div className="relative aspect-video lg:aspect-[12/16] overflow-hidden rounded-3xl shadow-lg">
           <iframe
             className="absolute inset-0 h-full w-full"
             src="https://www.youtube.com/embed/zZAtX5YohWg?autoplay=1&mute=1"
@@ -86,68 +87,53 @@ export default function WhyChooseUs() {
 
         {/* Service Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 mb-10">
-          {services.map(({ icon: Icon, label, href }) => (
-            <Link
-              key={label}
-              to={href}
-              className="
-                flex flex-col justify-center
-                gap-4 max-[425px]:gap-2
-                min-h-[150px]
-                max-[425px]:min-h-[120px]
-                rounded-3xl
-                border border-slate-200
-                bg-white
-                p-6 max-[425px]:p-4
-                shadow-sm
-                hover:shadow-md
-                hover:border-blue-200
-                transition-all duration-300
-              "
-            >
-              <Icon
-                className="
-                  h-7 w-7 text-[#0078bd]
-                  max-[425px]:h-5
-                  max-[425px]:w-5
-                "
-                strokeWidth={1.75}
-              />
+  {services.map(({ icon: Icon, label, href }) => (
+    <Link
+      key={label}
+      to={href}
+      className="
+        flex flex-col justify-center
+        gap-4 max-[425px]:gap-2
+        h-auto
+        rounded-3xl
+        border border-slate-200
+        bg-white
+        p-6 max-[425px]:p-4
+        shadow-sm
+        hover:-translate-y-1 hover:scale-100 hover:shadow-2xl 
+        transition-all duration-300
+      "
+    >
+      <Icon
+        className="
+          h-7 w-7 text-[#0078bd]
+          max-[425px]:h-5
+          max-[425px]:w-5
+        "
+        strokeWidth={1.75}
+      />
 
-              <span
-                className="
-                  text-slate-800
-                  font-semibold
-                  text-base
-                  leading-7
-                  max-[425px]:text-sm
-                  max-[425px]:leading-5
-                  max-[425px]:font-medium
-                "
-              >
-                {label}
-              </span>
-            </Link>
-          ))}
-        </div>
+      <span
+        className="
+          text-slate-800
+          font-normal
+          text-base
+          leading-7
+          max-[425px]:text-sm
+          max-[425px]:leading-5
+        "
+      >
+        {label}
+      </span>
+    </Link>
+  ))}
+</div>
 
         <div className="flex justify-center">
-          <button
-            className="
-              inline-flex items-center gap-2
-              rounded-2xl
-              bg-[#0078bd]
-              px-7 py-4
-              text-white
-              font-semibold
-              transition-all
-              hover:bg-secondary
-              hover:scale-[1.02]
-            "
-          >
-            Explore Why Choose Us
-            <ArrowRight className="h-4 w-4" />
-          </button>
+          <SectionButton
+          to=""
+          ButtonContent="Explorw Why Choose Us"
+          />
         </div>
       </div>
     </section>
