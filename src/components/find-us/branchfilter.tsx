@@ -7,7 +7,6 @@ type BranchFilterProps = {
   branches: Branch[];
   activeFilter: BranchFilter;
   onChangeFilter: (filter: BranchFilter) => void;
-  showFiltersOnly?: boolean;
 };
 
 const filterLabels: Record<BranchFilter, string> = {
@@ -23,7 +22,7 @@ export function BranchFilters({
   const filters: BranchFilter[] = ["all", "national", "international"];
 
   return (
-    <div className="flex flex-wrap items-center gap-2 rounded-full bg-muted p-1.5">
+    <div className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#f0f0f0] p-1">
       {filters.map((filter) => {
         const isActive = filter === activeFilter;
 
@@ -32,10 +31,10 @@ export function BranchFilters({
             key={filter}
             type="button"
             onClick={() => onChangeFilter(filter)}
-            className={`rounded-full px-5 py-2 text-base font-semibold transition-colors md:px-6 md:py-2.5 md:text-lg ${
+            className={`rounded-full px-5 py-2 text-sm font-semibold transition-all md:px-6 md:py-2.5 md:text-base ${
               isActive
                 ? "bg-secondary text-secondary-foreground shadow-sm"
-                : "text-foreground hover:bg-background"
+                : "text-[#555] hover:bg-white/80"
             }`}
           >
             {filterLabels[filter]}
@@ -46,33 +45,28 @@ export function BranchFilters({
   );
 }
 
-export default function BranchFilterSection({
-  branches,
-  activeFilter,
-  onChangeFilter,
-  showFiltersOnly = false,
-}: BranchFilterProps) {
+export default function BranchFilterSection({ branches, activeFilter }: BranchFilterProps) {
   const visibleBranches =
-    activeFilter === "all" ? branches : branches.filter((branch) => branch.type === activeFilter);
-
-  if (showFiltersOnly) {
-    return <BranchFilters activeFilter={activeFilter} onChangeFilter={onChangeFilter} />;
-  }
+    activeFilter === "all" ? [] : branches.filter((branch) => branch.type === activeFilter);
 
   return (
-    <section>
-      <div className="mt-8 md:mt-10">
-        <h3 className="mb-5 text-xl font-bold text-primary-dark md:text-2xl">Available Branch Locations</h3>
-
+    <section className="mt-8 md:mt-10">
+      {/* Bordered content panel — matches live site */}
+      <div className="min-h-[200px] rounded-xl border border-[#e5e5e5] bg-white md:min-h-[240px]">
         {visibleBranches.length === 0 ? (
-          <div className="rounded-2xl border border-border px-6 py-14 text-center text-base text-muted-foreground md:py-20 md:text-lg">
-            No branch offices available in this category at the moment.
+          <div className="flex min-h-[200px] items-center justify-center px-6 py-16 md:min-h-[240px] md:py-20">
+            <p className="text-center text-base text-[#888] md:text-lg">
+              No branch offices available in this category at the moment.
+            </p>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {visibleBranches.map((branch) => (
-              <BranchCard key={branch.id} branch={branch} />
-            ))}
+          <div className="p-5 md:p-6">
+            <h3 className="mb-5 text-lg font-bold text-primary md:text-xl">Available Branch Locations</h3>
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {visibleBranches.map((branch) => (
+                <BranchCard key={branch.id} branch={branch} />
+              ))}
+            </div>
           </div>
         )}
       </div>

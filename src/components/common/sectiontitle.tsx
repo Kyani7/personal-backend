@@ -8,15 +8,15 @@ type SectionTitleProps = {
 export default function SectionTitle({ label, title, description, className = "" }: SectionTitleProps) {
   return (
     <div className={className}>
-      <div className="mb-3 flex items-center gap-3">
-        <span className="h-px w-8 bg-primary" aria-hidden="true" />
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-secondary md:text-base">{label}</p>
+      <div className="mb-2 flex items-center gap-2">
+        <span className="h-[2px] w-6 bg-primary" aria-hidden="true" />
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary md:text-sm">{label}</p>
       </div>
-      <h2 className="text-2xl font-bold leading-tight text-primary-dark sm:text-3xl md:text-4xl lg:text-[2.5rem]">
+      <h2 className="text-2xl font-bold leading-snug text-primary sm:text-3xl md:text-[2rem] lg:text-[2.25rem]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 max-w-3xl text-base text-muted-foreground md:text-lg">{description}</p>
+        <p className="mt-2 max-w-2xl text-sm text-[#666] md:text-base">{description}</p>
       ) : null}
     </div>
   );

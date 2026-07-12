@@ -1,230 +1,127 @@
-import { useEffect, useMemo, useState } from "react";
-import { geoInterpolate, geoMercator, geoPath } from "d3-geo";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import { Home, Minus, Plus } from "lucide-react";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import type { GeometryCollection, Topology } from "topojson-specification";
-import { COUNTRY_COLORS, AVAILABLE_COUNTRY_NAMES, HIGHLIGHTED_COUNTRIES, MAP_ORIGIN } from "../../data/mapLocations";
+import { COUNTRY_COLORS, HIGHLIGHTED_COUNTRIES, MAP_ORIGIN } from "../../data/mapLocations";
 import Loader from "../common/loader";
 
 const GEO_URL = "/data/countries-50m.json";
-const DEFAULT_FILL = "#ececec";
-const WIDTH = 960;
-const HEIGHT = 500;
-const MIN_ZOOM = 0.85;
-const MAX_ZOOM = 2.4;
-const ZOOM_STEP = 0.2;
-const ARC_SEGMENTS = 96;
+const WIDTH = 1120;
+const HEIGHT = 700;
+const DEFAULT_FILL = "#eeeeee";
+const HOVER_FILL = "#cbd5e1";
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 2.25;
+const ZOOM_STEP = 0.25;
 
 type CountryFeature = Feature<Geometry, { name?: string }>;
+type Tooltip = { name: string; x: number; y: number } | null;
 
-function createGreatCirclePath(
+function createConnectionPath(
   projection: ReturnType<typeof geoMercator>,
   from: [number, number],
   to: [number, number],
-): string {
-  const interpolate = geoInterpolate(from, to);
-  const points: string[] = [];
+) {
+  const start = projection(from);
+  const end = projection(to);
+  if (!start || !end) return "";
 
-  for (let step = 0; step <= ARC_SEGMENTS; step += 1) {
-    const coordinate = interpolate(step / ARC_SEGMENTS);
-    const projected = projection(coordinate);
-    if (!projected) continue;
+  const [x1, y1] = start;
+  const [x2, y2] = end;
+  const midpointX = (x1 + x2) / 2;
+  const midpointY = (y1 + y2) / 2;
+  const distance = Math.hypot(x2 - x1, y2 - y1) || 1;
+  const curve = Math.min(distance * 0.22, 105);
 
-    const command = step === 0 ? "M" : "L";
-    points.push(`${command}${projected[0].toFixed(2)},${projected[1].toFixed(2)}`);
-  }
-
-  return points.join(" ");
+  return `M ${x1},${y1} Q ${midpointX},${midpointY - curve} ${x2},${y2}`;
 }
 
 export default function FindUsWorldMap() {
   const [countries, setCountries] = useState<CountryFeature[]>([]);
   const [loading, setLoading] = useState(true);
   const [zoom, setZoom] = useState(1);
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+  const [tooltip, setTooltip] = useState<Tooltip>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let active = true;
-
+    let mounted = true;
     fetch(GEO_URL)
       .then((response) => response.json())
       .then((topology: Topology<{ countries: GeometryCollection }>) => {
-        if (!active) return;
-
-        const geo = feature(topology, topology.objects.countries) as FeatureCollection;
-        setCountries(geo.features as CountryFeature[]);
-        setLoading(false);
+        if (!mounted) return;
+        const collection = feature(topology, topology.objects.countries) as FeatureCollection;
+        setCountries(collection.features as CountryFeature[]);
       })
-      .catch(() => {
-        if (active) setLoading(false);
+      .finally(() => {
+        if (mounted) setLoading(false);
       });
 
-    return () => {
-      active = false;
-    };
+    return () => { mounted = false; };
   }, []);
 
   const projection = useMemo(
-    () => geoMercator().scale(158).center([12, 18]).translate([WIDTH / 2, HEIGHT / 2]),
+    () => geoMercator().scale(178).center([18, 20]).translate([WIDTH / 2, HEIGHT / 2]),
     [],
   );
-
-  const pathGenerator = useMemo(
-    () => geoPath(projection).pointRadius(0.5),
-    [projection],
-  );
+  const path = useMemo(() => geoPath(projection), [projection]);
 
   const countryPaths = useMemo(
-    () =>
-      countries.map((country) => {
-        const countryId = String(country.id ?? "");
-        return {
-          id: countryId,
-          d: pathGenerator(country) ?? "",
-          fill: COUNTRY_COLORS[countryId] ?? DEFAULT_FILL,
-        };
-      }),
-    [countries, pathGenerator],
+    () => countries.map((country, index) => {
+      const id = String(country.id ?? "");
+      return { id, key: `${id || "country"}-${index}`, name: country.properties?.name ?? "Unknown country", d: path(country) ?? "", fill: COUNTRY_COLORS[id] ?? DEFAULT_FILL };
+    }),
+    [countries, path],
   );
 
-  const connectionPaths = useMemo(
-    () =>
-      HIGHLIGHTED_COUNTRIES.map((country) => ({
-        id: country.id,
-        d: createGreatCirclePath(projection, MAP_ORIGIN.coordinates, country.coordinates),
-      })),
+  const connections = useMemo(
+    () => HIGHLIGHTED_COUNTRIES.map((country) => ({ id: country.id, d: createConnectionPath(projection, MAP_ORIGIN.coordinates, country.coordinates) })),
     [projection],
   );
-
   const markers = useMemo(
-    () =>
-      [MAP_ORIGIN, ...HIGHLIGHTED_COUNTRIES].map((point) => ({
-        id: point.id,
-        coordinates: projection(point.coordinates),
-      })),
+    () => [MAP_ORIGIN, ...HIGHLIGHTED_COUNTRIES].map((location) => ({ ...location, position: projection(location.coordinates) })),
     [projection],
   );
 
-  const handleZoomIn = () => setZoom((value) => Math.min(Number((value + ZOOM_STEP).toFixed(2)), MAX_ZOOM));
-  const handleZoomOut = () => setZoom((value) => Math.max(Number((value - ZOOM_STEP).toFixed(2)), MIN_ZOOM));
-  const handleReset = () => setZoom(1);
+  const showTooltip = (name: string, event: React.MouseEvent<SVGPathElement>) => {
+    const bounds = mapRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    setHoveredCountry(name);
+    setTooltip({ name, x: event.clientX - bounds.left + 14, y: event.clientY - bounds.top - 38 });
+  };
 
   return (
-    <section className="mt-14 md:mt-20">
-      <h3 className="text-2xl font-bold text-primary-dark md:text-3xl lg:text-4xl">We are Available in</h3>
+    <section className="mt-16 md:mt-20">
+      <p className="text-lg font-medium text-[#151515] md:text-xl">We are Available in</p>
 
-      <div className="mt-4 flex flex-wrap gap-2 md:mt-5 md:gap-3">
-        {AVAILABLE_COUNTRY_NAMES.map((country) => (
-          <span
-            key={country}
-            className="rounded-full border border-border bg-muted px-4 py-1.5 text-sm font-semibold text-foreground md:px-5 md:py-2 md:text-base"
-          >
-            {country}
-          </span>
-        ))}
-      </div>
-
-      <div className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-background shadow-sm md:mt-8">
-        <div className="absolute right-3 top-3 z-10 flex flex-col overflow-hidden rounded-md border border-border bg-background shadow-sm">
-          <button
-            type="button"
-            aria-label="Reset map view"
-            onClick={handleReset}
-            className="border-b border-border p-2 text-muted-foreground transition-colors hover:bg-muted"
-          >
-            <Home size={14} />
-          </button>
-          <button
-            type="button"
-            aria-label="Zoom in"
-            onClick={handleZoomIn}
-            className="border-b border-border p-2 text-muted-foreground transition-colors hover:bg-muted"
-          >
-            <Plus size={14} />
-          </button>
-          <button
-            type="button"
-            aria-label="Zoom out"
-            onClick={handleZoomOut}
-            className="p-2 text-muted-foreground transition-colors hover:bg-muted"
-          >
-            <Minus size={14} />
-          </button>
+      <div ref={mapRef} className="relative mt-5 overflow-hidden rounded-xl bg-[#f7f7f7] md:mt-7">
+        <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded border border-[#d7d7d7] bg-white shadow-sm">
+          <button type="button" aria-label="Reset view" disabled={zoom === 1} onClick={() => setZoom(1)} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Home size={15} /></button>
+          <button type="button" aria-label="Zoom in" disabled={zoom === MAX_ZOOM} onClick={() => setZoom((value) => Math.min(value + ZOOM_STEP, MAX_ZOOM))} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Plus size={16} /></button>
+          <button type="button" aria-label="Zoom out" disabled={zoom === MIN_ZOOM} onClick={() => setZoom((value) => Math.max(value - ZOOM_STEP, MIN_ZOOM))} className="flex h-9 w-9 items-center justify-center text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Minus size={16} /></button>
         </div>
 
-        <div className="min-h-[320px] md:min-h-[420px]">
-          {loading ? (
-            <Loader />
-          ) : (
-            <div
-              className="origin-center transition-transform duration-500 ease-out will-change-transform"
-              style={{ transform: `scale(${zoom})` }}
-            >
-              <svg
-                viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-                className="h-auto w-full"
-                role="img"
-                aria-label="World map"
-                shapeRendering="geometricPrecision"
-              >
-                <rect width={WIDTH} height={HEIGHT} fill="#ffffff" />
+        <div className="min-h-[320px] sm:min-h-[440px] lg:min-h-[620px]">
+          {loading ? <Loader /> : (
+            <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="block h-auto w-full" role="img" aria-label="Interactive world map showing Hima Aus office locations" preserveAspectRatio="xMidYMid meet">
+              <rect width={WIDTH} height={HEIGHT} fill="#f7f7f7" />
+              <g transform={`translate(${WIDTH / 2} ${HEIGHT / 2}) scale(${zoom}) translate(${-WIDTH / 2} ${-HEIGHT / 2})`}>
+                {countryPaths.map((country) => {
+                  const selected = COUNTRY_COLORS[country.id] !== undefined;
+                  const hovered = hoveredCountry === country.name;
+                  return <path key={country.key} d={country.d} fill={hovered ? HOVER_FILL : country.fill} stroke="#ffffff" strokeWidth={hovered || selected ? 1.05 : 0.65} strokeLinejoin="round" vectorEffect="non-scaling-stroke" className="cursor-pointer transition-[fill] duration-150" onMouseMove={(event) => showTooltip(country.name, event)} onMouseLeave={() => { setHoveredCountry(null); setTooltip(null); }} />;
+                })}
 
-                <g>
-                  {countryPaths.map((country) => (
-                    <path
-                      key={country.id}
-                      d={country.d}
-                      fill={country.fill}
-                      stroke="#ffffff"
-                      strokeWidth={0.4}
-                      strokeLinejoin="round"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  ))}
-                </g>
-
-                <g>
-                  {connectionPaths.map((path) => (
-                    <path
-                      key={path.id}
-                      d={path.d}
-                      fill="none"
-                      stroke="#0077bd"
-                      strokeWidth={1.4}
-                      strokeDasharray="3 6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  ))}
-                </g>
-
-                <g>
-                  {markers.map((marker) => {
-                    if (!marker.coordinates) return null;
-
-                    const [x, y] = marker.coordinates;
-
-                    return (
-                      <g key={marker.id}>
-                        <circle cx={x} cy={y} r={8} fill="#0077bd" opacity={0.18} />
-                        <circle
-                          cx={x}
-                          cy={y}
-                          r={4.5}
-                          fill="#0077bd"
-                          stroke="#ffffff"
-                          strokeWidth={1.5}
-                          vectorEffect="non-scaling-stroke"
-                        />
-                      </g>
-                    );
-                  })}
-                </g>
-              </svg>
-            </div>
+                {connections.map((connection) => <path key={connection.id} d={connection.d} fill="none" stroke="#087bc1" strokeWidth={1.35} strokeDasharray="5 5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />)}
+                {markers.map((marker) => marker.position && <g key={marker.id}><circle cx={marker.position[0]} cy={marker.position[1]} r={6.5} fill="#087bc1" opacity={0.18} /><circle cx={marker.position[0]} cy={marker.position[1]} r={3.5} fill="#087bc1" stroke="#ffffff" strokeWidth={1.2} vectorEffect="non-scaling-stroke" /></g>)}
+              </g>
+            </svg>
           )}
         </div>
+
+        {tooltip && <div className="pointer-events-none absolute z-20 rounded bg-[#087bc1] px-3 py-1.5 text-sm font-medium text-white shadow-md" style={{ left: tooltip.x, top: tooltip.y }}>{tooltip.name}</div>}
       </div>
     </section>
   );
