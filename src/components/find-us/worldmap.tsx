@@ -18,6 +18,7 @@ const ZOOM_STEP = 0.25;
 
 type CountryFeature = Feature<Geometry, { name?: string }>;
 type Tooltip = { name: string; x: number; y: number } | null;
+type Pan = { x: number; y: number };
 
 function createConnectionPath(
   projection: ReturnType<typeof geoMercator>,
@@ -38,13 +39,31 @@ function createConnectionPath(
   return `M ${x1},${y1} Q ${midpointX},${midpointY - curve} ${x2},${y2}`;
 }
 
+// Clamp panning so you can't drag the map past its own edges.
+function clampPan(pan: Pan, zoom: number): Pan {
+  if (zoom <= 1) return { x: 0, y: 0 };
+  const maxX = (WIDTH * (zoom - 1)) / 2;
+  const maxY = (HEIGHT * (zoom - 1)) / 2;
+  return {
+    x: Math.min(maxX, Math.max(-maxX, pan.x)),
+    y: Math.min(maxY, Math.max(-maxY, pan.y)),
+  };
+}
+
 export default function FindUsWorldMap() {
   const [countries, setCountries] = useState<CountryFeature[]>([]);
   const [loading, setLoading] = useState(true);
   const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState<Pan>({ x: 0, y: 0 });
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip>(null);
   const mapRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef<{ startX: number; startY: number; panStart: Pan; dragging: boolean }>({
+    startX: 0,
+    startY: 0,
+    panStart: { x: 0, y: 0 },
+    dragging: false,
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -85,11 +104,50 @@ export default function FindUsWorldMap() {
     [projection],
   );
 
+  const applyZoom = (nextZoom: number) => {
+    const clamped = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, nextZoom));
+    setZoom(clamped);
+    setPan((prev) => clampPan(prev, clamped));
+  };
+
+  const resetView = () => {
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  };
+
   const showTooltip = (name: string, event: React.MouseEvent<SVGPathElement>) => {
     const bounds = mapRef.current?.getBoundingClientRect();
     if (!bounds) return;
     setHoveredCountry(name);
     setTooltip({ name, x: event.clientX - bounds.left + 14, y: event.clientY - bounds.top - 38 });
+  };
+
+  // --- Drag to pan (mouse) ---
+  const onPointerDown = (event: React.PointerEvent<SVGSVGElement>) => {
+    if (zoom <= 1) return;
+    (event.target as Element).setPointerCapture(event.pointerId);
+    dragState.current = { startX: event.clientX, startY: event.clientY, panStart: pan, dragging: true };
+  };
+
+  const onPointerMove = (event: React.PointerEvent<SVGSVGElement>) => {
+    if (!dragState.current.dragging) return;
+    const bounds = mapRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    // Convert screen-pixel drag delta into viewBox units.
+    const scaleFactor = WIDTH / bounds.width;
+    const dx = (event.clientX - dragState.current.startX) * scaleFactor;
+    const dy = (event.clientY - dragState.current.startY) * scaleFactor;
+    setPan(clampPan({ x: dragState.current.panStart.x + dx, y: dragState.current.panStart.y + dy }, zoom));
+    setTooltip(null);
+  };
+
+  const endDrag = () => { dragState.current.dragging = false; };
+
+  // --- Scroll wheel to zoom ---
+  const onWheel = (event: React.WheelEvent<SVGSVGElement>) => {
+    event.preventDefault();
+    const direction = event.deltaY > 0 ? -1 : 1;
+    applyZoom(zoom + direction * ZOOM_STEP);
   };
 
   return (
@@ -98,16 +156,27 @@ export default function FindUsWorldMap() {
 
       <div ref={mapRef} className="relative mt-5 overflow-hidden rounded-xl bg-[#f7f7f7] md:mt-7">
         <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded border border-[#d7d7d7] bg-white shadow-sm">
-          <button type="button" aria-label="Reset view" disabled={zoom === 1} onClick={() => setZoom(1)} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Home size={15} /></button>
-          <button type="button" aria-label="Zoom in" disabled={zoom === MAX_ZOOM} onClick={() => setZoom((value) => Math.min(value + ZOOM_STEP, MAX_ZOOM))} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Plus size={16} /></button>
-          <button type="button" aria-label="Zoom out" disabled={zoom === MIN_ZOOM} onClick={() => setZoom((value) => Math.max(value - ZOOM_STEP, MIN_ZOOM))} className="flex h-9 w-9 items-center justify-center text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Minus size={16} /></button>
+          <button type="button" aria-label="Reset view" disabled={zoom === MIN_ZOOM} onClick={resetView} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Home size={15} /></button>
+          <button type="button" aria-label="Zoom in" disabled={zoom >= MAX_ZOOM} onClick={() => applyZoom(zoom + ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center border-b border-[#dedede] text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Plus size={16} /></button>
+          <button type="button" aria-label="Zoom out" disabled={zoom <= MIN_ZOOM} onClick={() => applyZoom(zoom - ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center text-[#707070] hover:bg-[#f5f5f5] disabled:text-[#c7c7c7]"><Minus size={16} /></button>
         </div>
 
         <div className="min-h-[320px] sm:min-h-[440px] lg:min-h-[620px]">
           {loading ? <Loader /> : (
-            <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="block h-auto w-full" role="img" aria-label="Interactive world map showing Hima Aus office locations" preserveAspectRatio="xMidYMid meet">
+            <svg
+              viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+              className={`block h-auto w-full ${zoom > 1 ? "cursor-grab active:cursor-grabbing" : ""}`}
+              role="img"
+              aria-label="Interactive world map showing Hima Aus office locations"
+              preserveAspectRatio="xMidYMid meet"
+              onWheel={onWheel}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={endDrag}
+              onPointerLeave={endDrag}
+            >
               <rect width={WIDTH} height={HEIGHT} fill="#f7f7f7" />
-              <g transform={`translate(${WIDTH / 2} ${HEIGHT / 2}) scale(${zoom}) translate(${-WIDTH / 2} ${-HEIGHT / 2})`}>
+              <g transform={`translate(${WIDTH / 2 + pan.x} ${HEIGHT / 2 + pan.y}) scale(${zoom}) translate(${-WIDTH / 2} ${-HEIGHT / 2})`}>
                 {countryPaths.map((country) => {
                   const selected = COUNTRY_COLORS[country.id] !== undefined;
                   const hovered = hoveredCountry === country.name;
