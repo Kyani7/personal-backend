@@ -58,7 +58,7 @@ useEffect(() => {
                   isActive ? "text-secondary" : "text-white"
                 }`
               }
-              to=""
+              to="/"
               end
             >
              Home
@@ -68,8 +68,12 @@ useEffect(() => {
           {/* About Us — hover dropdown, no click state needed */}
           <li className="group relative">
             <NavLink
-              className="flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to="#"
+              className={({ isActive }) =>
+                `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/company-profile"
               end
             >
               About us
@@ -131,7 +135,7 @@ useEffect(() => {
                   isActive ? "text-secondary" : "text-white"
                 }`
               }
-              to="/gallery"
+              to="/stories"
               end
             >
               Gallery

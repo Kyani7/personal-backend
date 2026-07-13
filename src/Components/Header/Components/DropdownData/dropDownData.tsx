@@ -9,10 +9,10 @@ interface services{
 }
 
 export const aboutLinks = [
-  { label: "Company Profile", href: "" },
-  { label: "Message from Director", href: "" },
-  { label: "Our Partner", href: "" },
-  { label: "Events", href: "" },
+  { label: "Company Profile", href: "/company-profile" },
+  { label: "Message from Director", href: "/director-message" },
+  { label: "Our Partner", href: "/partners" },
+  { label: "Events", href: "/events" },
 ];
 
 export const services = [
