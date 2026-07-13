@@ -1,4 +1,4 @@
-import { createBrowserRouter, useNavigate } from "react-router-dom";
+import { createBrowserRouter, useNavigate, useParams } from "react-router-dom";
 
 import App from "../App";
 
@@ -22,9 +22,11 @@ import Instuation from "../Components/Home/whySection/Components/ourServices/Ins
 import Scholarship from "../Components/Home/whySection/Components/ourServices/Scholarship/Scholarship";
 import Virtual from "../Components/Home/whySection/Components/ourServices/Virtual/Virtual";
 import VisaApplication from "../Components/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
-
+//main pages here import
 import ContactMain from "../Components/Contact/Contact.tsx";
-
+import BlogMain from "../Components/Blog/BlogMain.tsx"
+import Blog1 from "../Components/Blog/blog1.tsx";
+import Blog2 from "../Components/Blog/blog2.tsx";
 import Gallery from "../Components/Gallery/Gallery.tsx";
 import Main from "../Services/ServceMainPage.tsx";
 import HomeMain from "../Components/Home/HomeMain.tsx";
@@ -58,6 +60,26 @@ function EventDetailRoute({
   };
 
   return <PageComponent onNavigate={handleNavigate} />;
+}
+
+function BlogDetailWrapper() {
+  const { id } = useParams<{ id: string }>();
+  switch (id) {
+    case "1":
+      return <Blog1 />;
+    case "2":
+      return <Blog2 />;
+    default:
+      return (
+        <div className="max-w-6xl mx-auto px-6 py-20 text-center">
+          <h2 className="text-2xl font-bold text-red-600">Blog Post Not Found</h2>
+          <p className="text-gray-600 mt-2">The blog post you are looking for does not exist.</p>
+          <a href="/blog&news" className="text-blue-600 hover:underline mt-4 inline-block">
+            Back to Blogs
+          </a>
+        </div>
+      );
+  }
 }
 
 const router = createBrowserRouter([
@@ -176,12 +198,21 @@ const router = createBrowserRouter([
         element: <Gallery />,
       },
       {
-        path: "blog",
-        element: "",
+        path: "blog&news",
+        children: [
+          {
+            index: true,
+            element: <BlogMain />,
+          },
+          {
+            path: ":id",
+            element: <BlogDetailWrapper />,
+          },
+        ],
       },
       {
         path: "find-us",
-        element: "",
+        element: <div>Finsus</div>,
       },
       {
         path: "contact-us",

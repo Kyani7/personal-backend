@@ -69,7 +69,7 @@ const MainHeader = () => {
           </button>
         </div>
 
-        {/*  DESKTOP NAV (lg) — unchanged logic  */}
+        {/*  DESKTOP NAV (lg)  */}
         <ul className="hidden lg:flex h-full items-center justify-between px-6 text-white">
           <li>
             <NavLink
@@ -124,17 +124,17 @@ const MainHeader = () => {
 
           {/* Our Services — hover opens the panel, clicks inside drive the accordion */}
           <li className="group relative">
-           <NavLink
-           className={({ isActive }) =>
-          `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
-           isActive ? "text-secondary" : "text-white"
-          }`
-          }
-          to="/services"
-        >
-        Our Services
-    <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />
-    </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/services"
+            >
+              Our Services
+              <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />
+            </NavLink>
 
             <div
               className="absolute left-1/2 top-full -translate-x-1/2 pt-4 w-72
@@ -161,15 +161,21 @@ const MainHeader = () => {
               Gallery
             </NavLink>
           </li>
+
           <li>
             <NavLink
-              className="uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to="/BlogandNews"
-              end
+              className={({ isActive }) =>
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
+              to="/blog&news"
+              // no "end" — stays highlighted on /blog&news/:id detail pages too
             >
               Blog and News
             </NavLink>
           </li>
+
           <li>
             <NavLink
               className={({ isActive }) =>
@@ -304,15 +310,22 @@ const MainHeader = () => {
               Gallery
             </NavLink>
           </li>
+
           <li>
             <NavLink
-              to="/BlogandNews"
+              to="/blog&news"
+              // no "end" — stays highlighted on /blog&news/:id detail pages too
               onClick={closeMobileMenu}
-              className="block px-4 py-3 uppercase text-sm font-semibold text-white hover:text-secondary transition"
+              className={({ isActive }) =>
+                `block px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "text-secondary" : "text-white hover:text-secondary"
+                }`
+              }
             >
               Blogs
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/find-us"
