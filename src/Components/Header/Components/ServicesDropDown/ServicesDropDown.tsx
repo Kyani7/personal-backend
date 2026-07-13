@@ -19,17 +19,26 @@ export function ServicesDropDown({ onItemClick }: { onItemClick?: () => void }) 
             key={service.key}
             className={idx !== services.length - 1 ? "border-b border-white/20 pb-3" : ""}
           >
-            <button
-              type="button"
-              onClick={() => toggle(service.key)}
-              className={`flex w-full items-center justify-between text-sm transition ${isOpen ? "text-secondary" : "text-white/90 hover:text-secondary"
-                }`}
-            >
-              {service.label}
-              <FaChevronDown
-                className={`text-xs transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-              />
-            </button>
+            {/* Parent row: Link navigates, chevron button toggles sub-items */}
+            <div className="flex w-full items-center justify-between">
+              <Link
+                to={service.href || "/"}
+                onClick={onItemClick}
+                className={`text-sm transition ${isOpen ? "text-secondary" : "text-white/90 hover:text-secondary"}`}
+              >
+                {service.label}
+              </Link>
+              <button
+                type="button"
+                onClick={() => toggle(service.key)}
+                aria-label={`Toggle ${service.label} submenu`}
+                className={`p-1 text-xs transition ${isOpen ? "text-secondary" : "text-white/70 hover:text-secondary"}`}
+              >
+                <FaChevronDown
+                  className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+            </div>
 
             <div
               className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"

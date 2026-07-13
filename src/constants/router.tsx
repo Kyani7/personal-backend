@@ -1,19 +1,19 @@
-import { createBrowserRouter, useNavigate, useParams } from "react-router-dom";
+import { createBrowserRouter, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import App from "../App";
 
 import AllpodCast from "../Components/Home/PodCast/AllpodCast.tsx";
-
+//home event all
 import EventsPage from "../Components/Home/EventSection/ExploreMoreMain.tsx";
 import GrandUsAdmissionDayPage from "../Components/Home/EventSection/Grandusadmissiondaypage.tsx";
 import MarketingEventPage from "../Components/Home/EventSection/Marketingeventpage.tsx";
 import RioCarnivalPage from "../Components/Home/EventSection/Riocarnivalpage .tsx";
-
+//our service 
 import DestinationMain from "../Services/Destination-Country/DestinationPages.tsx";
 import MigrationMain from "../Services/Visa-Services/Migration-services/MigrationMain.tsx";
 import Student from "../Services/Visa-Services/Student-services/Student.tsx";
 import Visitor from "../Services/Visa-Services/Visitor-services/Visitor.tsx";
-
+//Home Our services hubpages
 import Airport from "../Components/Home/whySection/Components/ourServices/Airpot/Airpot.tsx";
 import Counselling from "../Components/Home/whySection/Components/ourServices/Counselling/Counselling.tsx";
 import Course from "../Components/Home/whySection/Components/ourServices/Course/Course.tsx";
@@ -23,12 +23,19 @@ import Scholarship from "../Components/Home/whySection/Components/ourServices/Sc
 import Virtual from "../Components/Home/whySection/Components/ourServices/Virtual/Virtual";
 import VisaApplication from "../Components/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
 //main pages here import
-import ContactMain from "../Components/Contact/Contact.tsx";
+//blog
 import BlogMain from "../Components/Blog/BlogMain.tsx"
 import Blog1 from "../Components/Blog/blog1.tsx";
 import Blog2 from "../Components/Blog/blog2.tsx";
+//gallery
 import Gallery from "../Components/Gallery/Gallery.tsx";
-import Main from "../Services/ServceMainPage.tsx";
+//our services
+import ServiceMain from "../Services/ServceMainPage.tsx";
+import Courses from "../pages/EnglishTestMain.tsx";
+
+//contactus
+import ContactMain from "../Components/Contact/Contact.tsx";
+//home
 import HomeMain from "../Components/Home/HomeMain.tsx";
 
 function EventDetailRoute({
@@ -89,7 +96,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomeMain/>,
+        element: <HomeMain />,
       },
       //home our services
       {
@@ -169,11 +176,33 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Main />,
+            element: <ServiceMain />,
           },
+          // English test preparation — matches navbar hrefs
           {
-            path:"english-testing-preparation",
-            element:"",
+            path: "english-test",
+            children: [
+              {
+                index: true,
+                element: <Courses />,
+              },
+              {
+                path: "ielts",
+                element: <Navigate to="/services/english-test#ielts" replace />,
+              },
+              {
+                path: "pte",
+                element: <Navigate to="/services/english-test#pte" replace />,
+              },
+              {
+                path: "toefl",
+                element: <Navigate to="/services/english-test#toefl" replace />,
+              },
+              {
+                path: "gre",
+                element: <Navigate to="/services/english-test#gre" replace />,
+              },
+            ],
           },
           {
             path: "destination-country",

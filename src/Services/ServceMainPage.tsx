@@ -7,7 +7,7 @@ import Package from "./Component/Package";
 import ServicesCard from "./Component/ServicesCard";
 
 
-const Main = () => {
+const ServiceMain=() =>{
   usePageTitle("Our Service | Study Abroad Services");
   return (
     <>
@@ -20,4 +20,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default ServiceMain;
