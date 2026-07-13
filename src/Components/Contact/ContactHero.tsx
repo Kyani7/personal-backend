@@ -18,6 +18,10 @@ const ContactHero = () => {
       <div className="relative z-10 mx-auto flex min-h-[600px] max-w-7xl items-center px-6 py-24">
         <div className="max-w-3xl">
 
+          {/* Breadcrumb */}
+          <p className="text-sm font-medium tracking-[0.2em] text-brand-100 uppercase">
+            Home / Contact Us
+          </p>
 
           {/* Step-path signature: reflects "With You Every Step" */}
           <div className="mt-5 flex items-center gap-2" aria-hidden="true">

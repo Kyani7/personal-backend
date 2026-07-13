@@ -15,7 +15,7 @@ const GalleryCard = ({ image, title }: Props) => {
       </div>
 
       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/85 via-ink/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100">
-        <span className="py-12 flex items-center gap-2 font-medium text-accent-100">
+        <span className="m-6 flex items-center gap-2 font-medium text-accent-100">
           View Collection
           <span className="transition-transform duration-300 group-hover:translate-x-1">
             &rarr;

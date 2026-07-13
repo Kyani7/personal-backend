@@ -4,7 +4,7 @@ import usePageTitle from "../../Hook/titleTab";
 
 
 const Gallery = () => {
-  usePageTitle("Gallery");
+  usePageTitle("Stories & Gallery | Students Journey");
   return (
     <>
       <GalleryHero />

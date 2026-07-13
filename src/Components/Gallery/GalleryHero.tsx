@@ -6,9 +6,12 @@ const GalleryHero = () => {
       className="relative flex h-[460px] items-center bg-cover bg-center"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
-      <div className=" mt-50 absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/50"></div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <p className="text-sm font-medium tracking-[0.2em] text-brand-100 uppercase">
+          Home / Gallery
+        </p>
 
         <div className="mt-5 flex items-center gap-2" aria-hidden="true">
           <span className="h-2 w-2 rounded-full bg-accent-400"></span>
