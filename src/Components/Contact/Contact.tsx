@@ -4,7 +4,7 @@ import usePageTitle from "../../Hook/titleTab";
 import FaqsMain from "../Home/faqsSection/faqsMain";
 
 const ContactMain = () => {
-  usePageTitle("Our Service | Study Abroad Services");
+  usePageTitle("Contact Us");
   return (
     <>
       <ContactHero />

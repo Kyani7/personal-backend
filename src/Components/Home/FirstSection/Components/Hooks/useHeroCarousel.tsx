@@ -3,6 +3,7 @@ import { countries } from "../Data/Countries";
 import type { Country } from "../Data/Countries";
 
 type UseHeroCarousel = {
+  activeIndex: number;
   activeCountry: Country;
   visibleCountries: Country[];
   next: () => void;
@@ -38,6 +39,7 @@ export function useHeroCarousel(): UseHeroCarousel {
   };
 
   return {
+    activeIndex,
     activeCountry: countries[activeIndex],
     visibleCountries,
     next,

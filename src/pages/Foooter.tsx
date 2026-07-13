@@ -1,6 +1,6 @@
 import { Home, Phone, Mail, MapPin, ArrowUp, MessageCircle, X, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import  FooterBg from "../assets/Footer/FooterBg.png";
+import FooterBg from "../assets/Footer/FooterBg.png";
 
 type OfficeInfo = {
   city: string;
@@ -141,13 +141,13 @@ export default function Footer() {
       <button
         aria-label="Back to top"
         onClick={handleScrollToTop}
-        className={`fixed bottom-24 right-8 w-11 h-17 rounded-2xl bg-black/23 backdrop-blur-lg text-white flex items-center justify-center shadow-lg border white transition-opacity duration-300 ${showTop ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed bottom-24 right-8 w-11 h-17 z-[999] rounded-2xl bg-black/23 backdrop-blur-lg text-white flex items-center justify-center shadow-lg border white transition-opacity duration-300 ${showTop ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <ArrowUp className="w-5 h-5" />
       </button>
       <button
         aria-label="Chat with us"
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-[#0768a8] text-white flex items-center justify-center shadow-lg hover:bg-sky-400 transition-colors"
+        className="fixed bottom-6 right-6 z-[999] w-16 h-16 rounded-full bg-[#0768a8] text-white flex items-center justify-center shadow-lg hover:bg-sky-400 transition-colors"
         onClick={openChat}
       >
         <MessageCircle className="w-6 h-6" />
@@ -155,7 +155,7 @@ export default function Footer() {
 
       {/* Chat Popup - opens when MessageCircle clicked; closes only via the colored X button */}
       {chatOpen && (
-        <div className="fixed bottom-28 right-6 z-50">
+        <div className="fixed bottom-28 right-6 z-[999]">
           <div className="w-70 bg-white rounded-2xl shadow-lg p-4 relative">
             <div className="flex items-start justify-between mb-4">
               <h4 className="text-slate-900 text-lg font-semibold">How can we help?</h4>

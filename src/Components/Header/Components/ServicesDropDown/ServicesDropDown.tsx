@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { services } from "../DropdownData/dropDownData";
 import { useState } from "react";
 
-export function ServicesDropDown() {
+export function ServicesDropDown({ onItemClick }: { onItemClick?: () => void }) {
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   const toggle = (key: string) => {
@@ -22,9 +22,8 @@ export function ServicesDropDown() {
             <button
               type="button"
               onClick={() => toggle(service.key)}
-              className={`flex w-full items-center justify-between text-sm transition ${
-                isOpen ? "text-secondary" : "text-white/90 hover:text-secondary"
-              }`}
+              className={`flex w-full items-center justify-between text-sm transition ${isOpen ? "text-secondary" : "text-white/90 hover:text-secondary"
+                }`}
             >
               {service.label}
               <FaChevronDown
@@ -33,9 +32,8 @@ export function ServicesDropDown() {
             </button>
 
             <div
-              className={`grid transition-all duration-300 ease-in-out ${
-                isOpen ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"
-              }`}
+              className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"
+                }`}
             >
               <ul className="overflow-hidden space-y-2 pl-2">
                 {service.items.map((item) => (
@@ -44,7 +42,7 @@ export function ServicesDropDown() {
                     className="flex items-center gap-2 text-sm text-white/80 hover:text-secondary transition"
                   >
                     <span className="h-1 w-1 rounded-full bg-white/70 shrink-0" />
-                    <Link to={item.href} className="hover:text-secondary">
+                    <Link to={item.href} className="hover:text-secondary" onClick={onItemClick}>
                       {item.label}
                     </Link>
                   </li>
