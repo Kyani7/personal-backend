@@ -9,7 +9,6 @@ import {
   FileText,
   Plane,
   MapPin,
-  ArrowRight,
 } from "lucide-react";
 import SectionButton from "../Components/SectionButtonProps";
 
@@ -20,27 +19,27 @@ type Service = {
 };
 
 const services: Service[] = [
-  { icon: Award, label: "Scholarship Offers", href: "/scholarship" },
-  { icon: Users, label: "Genuine Counselling", href: "/services/counselling" },
+  { icon: Award, label: "Scholarship Offers", href: "why-choose/scholarship" },
+  { icon: Users, label: "Genuine Counselling", href: "why-choose/counselling" },
   {
     icon: BookOpen,
     label: "Test Preparation",
-    href: "/services/test-preparation",
+    href: "why-choose/test-preparation",
   },
   {
     icon: GraduationCap,
     label: "Best Education Institutions",
-    href: "/services/institution",
+    href: "why-choose/institution",
   },
-  { icon: Target, label: "Courses on Demand", href: "/services/course" },
-  { icon: Video, label: "Virtual Counselling", href: "/services/virtual" },
+  { icon: Target, label: "Courses on Demand", href: "why-choose/course" },
+  { icon: Video, label: "Virtual Counselling", href: "why-choose/virtual" },
   {
     icon: FileText,
     label: "Visa Application",
-    href: "/services/visa-application",
+    href: "why-choose/visa-application",
   },
-  { icon: Plane, label: "Pre-Departure", href: "/services/departure" },
-  { icon: MapPin, label: "Airport Pickup", href: "/services/airport" },
+  { icon: Plane, label: "Pre-Departure", href: "why-choose/departure" },
+  { icon: MapPin, label: "Airport Pickup", href: "why-choose/airport" },
 ];
 
 export default function WhyChooseUs() {

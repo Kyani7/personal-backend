@@ -67,7 +67,7 @@ const USA = () => {
     <>
 
       {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
+      <section id="usa" className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
 
         {/* Right */}
         <div className="sticky top-70">

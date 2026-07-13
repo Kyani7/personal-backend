@@ -8,7 +8,7 @@ const MainHeader = () => {
   const [hideNav, setHideNav] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
-  // ---- Mobile / tablet (sm, md) menu state ----
+  //  Mobile / tablet (sm, md) menu state 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -50,7 +50,7 @@ const MainHeader = () => {
            transition-transform duration-1000 ease-in-out
         ${hideNav ? "-translate-y-[150%]" : "translate-y-0"}`}
       >
-        {/* ================= MOBILE / TABLET TOP BAR (sm, md) ================= */}
+        {/*  MOBILE / TABLET TOP BAR (sm, md)  */}
         <div className="flex lg:hidden h-full items-center justify-between px-6 text-white">
           <NavLink to="" end className="flex items-center gap-2" onClick={closeMobileMenu}>
             {/* Replace with your actual logo image if you have one */}
@@ -69,7 +69,7 @@ const MainHeader = () => {
           </button>
         </div>
 
-        {/* ================= DESKTOP NAV (lg) — unchanged logic ================= */}
+        {/*  DESKTOP NAV (lg) — unchanged logic  */}
         <ul className="hidden lg:flex h-full items-center justify-between px-6 text-white">
           <li>
             <NavLink
@@ -124,14 +124,17 @@ const MainHeader = () => {
 
           {/* Our Services — hover opens the panel, clicks inside drive the accordion */}
           <li className="group relative">
-            <NavLink
-              className="flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to="/services"
-              end
-            >
-              Our Services
-              <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />
-            </NavLink>
+           <NavLink
+           className={({ isActive }) =>
+          `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+           isActive ? "text-secondary" : "text-white"
+          }`
+          }
+          to="/services"
+        >
+        Our Services
+    <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />
+    </NavLink>
 
             <div
               className="absolute left-1/2 top-full -translate-x-1/2 pt-4 w-72

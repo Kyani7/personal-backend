@@ -13,10 +13,10 @@ const Last = () => {
             </div>
 
             <div className='flex justify-center gap-5'>
-                <button className='p-10 bg-[#396cb8] text-white py-4 rounded-3xl shadow-2xl text-sm hover:border border-blue-500 transition'>
+                <button className='p-10 bg-[#396cb8] text-white py-4 rounded-3xl shadow-2xl text-sm hover:outline  outline-blue-500 transition'>
                     Book Appointment Now
                 </button>
-                <button className='p-15 bg-[#FFBA1B] text-white py-4 rounded-3xl shadow-2xl hover:border border-blue-500 transition'>
+                <button className='p-15 bg-[#FFBA1B] text-white py-4 rounded-3xl shadow-2xl hover:outline  outline-blue-500 transition'>
                     Explore Destination Country
                 </button>
             </div>

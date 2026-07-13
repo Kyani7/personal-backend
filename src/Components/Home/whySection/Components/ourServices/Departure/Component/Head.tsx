@@ -1,8 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
 
 export interface PageHeaderProps {
   backLabel?: string;
@@ -12,13 +9,11 @@ export interface PageHeaderProps {
   backgroundImage?: string;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
+
 
 export default function Head({
   backLabel = "Back To Services",
-  backHref = "#",
+  backHref = "/",
   title = "Pre-Departure",
   description = "Holistic preparation for smooth transitions to studies in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany.",
   backgroundImage = "https://himaaus.com/images/WEBSITE-6.png",

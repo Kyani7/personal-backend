@@ -1,15 +1,7 @@
 import { createBrowserRouter, useNavigate } from "react-router-dom";
 
-
-import Hero from "../Components/Home/FirstSection/Components/Hero.tsx";
-import WhyMain from "../Components/Home/whySection/WhyMain.tsx";
 import App from "../App";
-import HomeGalleryMain from "../Components/Home/HomeGallerySection/HomeGalleryMain";
-import { BannerMain } from "../Components/Home/BannerSection/BannerMain";
-import { HomeBlogs } from "../Components/Home/HomeBlogs/HomeBlogs.tsx";
-import PodCast from "../Components/Home/PodCast/PodCast.tsx";
-import EventMain from "../Components/Home/EventSection/EventMain.tsx";
-import ConsultationForm from "../Components/Home/Form/Consultation.tsx";
+
 import AllpodCast from "../Components/Home/PodCast/AllpodCast.tsx";
 
 import EventsPage from "../Components/Home/EventSection/ExploreMoreMain.tsx";
@@ -17,9 +9,7 @@ import GrandUsAdmissionDayPage from "../Components/Home/EventSection/Grandusadmi
 import MarketingEventPage from "../Components/Home/EventSection/Marketingeventpage.tsx";
 import RioCarnivalPage from "../Components/Home/EventSection/Riocarnivalpage .tsx";
 
-import { Main } from "../Services/ServceMainPage.tsx";
 import DestinationMain from "../Services/Destination-Country/DestinationPages.tsx";
-
 import MigrationMain from "../Services/Visa-Services/Migration-services/MigrationMain.tsx";
 import Student from "../Services/Visa-Services/Student-services/Student.tsx";
 import Visitor from "../Services/Visa-Services/Visitor-services/Visitor.tsx";
@@ -33,14 +23,19 @@ import Scholarship from "../Components/Home/whySection/Components/ourServices/Sc
 import Virtual from "../Components/Home/whySection/Components/ourServices/Virtual/Virtual";
 import VisaApplication from "../Components/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
 
-
-
 import ContactMain from "../Components/Contact/Contact.tsx";
-import FaqsMain from "../Components/Home/faqsSection/faqsMain.tsx";
+
 import Gallery from "../Components/Gallery/Gallery.tsx";
+import Main from "../Services/ServceMainPage.tsx";
+import HomeMain from "../Components/Home/HomeMain.tsx";
 
-
-function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: React.ComponentType<{ onNavigate: (pageName: string) => void }> }) {
+function EventDetailRoute({
+  pageComponent: PageComponent,
+}: {
+  pageComponent: React.ComponentType<{
+    onNavigate: (pageName: string) => void;
+  }>;
+}) {
   const navigate = useNavigate();
   const handleNavigate = (pageName: string) => {
     switch (pageName) {
@@ -65,8 +60,6 @@ function EventDetailRoute({ pageComponent: PageComponent }: { pageComponent: Rea
   return <PageComponent onNavigate={handleNavigate} />;
 }
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,24 +67,52 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <>
-            <Hero />
-            <WhyMain />
-            <BannerMain/>
-            <HomeGalleryMain/>
-            <HomeBlogs/>
-            <PodCast/>
-            <EventMain/>
-            <ConsultationForm/>
-            <FaqsMain/>
-          </>
-        ),
+        element: <HomeMain/>,
       },
+      //home our services
+      {
+        path: "why-choose",
+        children: [
+          {
+            path: "scholarship",
+            element: <Scholarship />,
+          },
+          {
+            path: "counselling",
+            element: <Counselling />,
+          },
+          {
+            path: "course",
+            element: <Course />,
+          },
+          {
+            path: "institution",
+            element: <Instuation />,
+          },
+          {
+            path: "virtual",
+            element: <Virtual />,
+          },
+          {
+            path: "visa-application",
+            element: <VisaApplication />,
+          },
+          {
+            path: "departure",
+            element: <Departure />,
+          },
+          {
+            path: "airport",
+            element: <Airport />,
+          },
+        ],
+      },
+      // Allpodcast
       {
         path: "all-podcast",
         element: <AllpodCast />,
       },
+      // all event home
       {
         path: "explore-event",
         children: [
@@ -101,7 +122,9 @@ const router = createBrowserRouter([
           },
           {
             path: "grand-us-admission-day",
-            element: <EventDetailRoute pageComponent={GrandUsAdmissionDayPage} />,
+            element: (
+              <EventDetailRoute pageComponent={GrandUsAdmissionDayPage} />
+            ),
           },
           {
             path: "rio-carnival-2026",
@@ -113,58 +136,25 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-  path: "services",
-  element: <Main />,
-  children: [
-    {
-      path: "scholarship",
-      element: <Scholarship />,
-    },
-    {
-      path: "counselling",
-      element: <Counselling />,
-    },
-    {
-      path: "course",
-      element: <Course />,
-    },
-    {
-      path: "institution",
-      element: <Instuation />,
-    },
-    {
-      path: "virtual",
-      element: <Virtual />,
-    },
-    {
-      path: "visa-application",
-      element: <VisaApplication />,
-    },
-    {
-      path: "departure",
-      element: <Departure />,
-    },
-    {
-      path: "airport",
-      element: <Airport />,
-    },
-    {
-      path: "test-preparation",
-      element: "<TestPreparation />",
-    },
-  ],
-},
+      // about
       {
         path: "about",
         element: "",
       },
+      // service main page
       {
         path: "services",
-        element: <Main/>,
         children: [
           {
-            path: "destination-country/:country?",
+            index: true,
+            element: <Main />,
+          },
+          {
+            path:"english-testing-preparation",
+            element:"",
+          },
+          {
+            path: "destination-country",
             element: <DestinationMain />,
           },
           {
@@ -183,7 +173,7 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery",
-        element: <Gallery/>,
+        element: <Gallery />,
       },
       {
         path: "blog",
@@ -195,11 +185,10 @@ const router = createBrowserRouter([
       },
       {
         path: "contact-us",
-        element: <ContactMain/>,
+        element: <ContactMain />,
       },
     ],
   },
-  
 ]);
 
 export default router;

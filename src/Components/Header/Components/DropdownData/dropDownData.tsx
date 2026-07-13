@@ -19,7 +19,7 @@ export const services = [
   {
     key: "visa",
     label: "Visa Service",
-    href: "/services/visa-service",
+    href: "/services",
     items: [
       { label: "Student Visa", href: "/services/visa-service/student-visa" },
       { label: "Visitor/Tourist Visa", href: "/services/visa-service/visitor-visa" },
@@ -29,7 +29,7 @@ export const services = [
   {
     key: "english",
     label: "English Test Preparation",
-    href: "/services/english-test",
+    href: "services/english-test",
     items: [
       { label: "IELTS", href: "/services/english-test/ielts" },
       { label: "PTE", href: "/services/english-test/pte" },
@@ -40,16 +40,16 @@ export const services = [
   {
     key: "destination",
     label: "Destination Country",
-    href: "/destination-country",
+    href: "services/destination-country",
     items: [
-      { label: "Australia", href: "/services/destination-country/australia" },
-      { label: "USA", href: "/services/destination-country/usa" },
-      { label: "Canada", href: "/services/destination-country/canada" },
-      { label: "UK", href: "/services/destination-country/uk" },
-      { label: "New Zealand", href: "/services/destination-country/new-zealand" },
-      { label: "Japan", href: "/services/destination-country/japan" },
-      { label: "Sweden", href: "/services/destination-country/sweden" },
-      { label: "Germany", href: "/services/destination-country/germany" },
+      { label: "Australia", href: "/services/destination-country/#australia" },
+      { label: "USA", href: "/services/destination-country#usa" },
+      { label: "Canada", href: "/services/destination-country#canada" },
+      { label: "UK", href: "/services/destination-country#uk" },
+      { label: "New Zealand", href: "/services/destination-country#new-zealand" },
+      { label: "Japan", href: "/services/destination-country#japan" },
+      { label: "Sweden", href: "/services/destination-country#sweden" },
+      { label: "Germany", href: "services/destination-country#germany" },
     ],
   },
 ];

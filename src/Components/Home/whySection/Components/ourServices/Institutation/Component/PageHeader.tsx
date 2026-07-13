@@ -1,8 +1,6 @@
 import { FaArrowLeft } from "react-icons/fa";
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
+
 
 export interface PageHeaderProps {
   backLabel?: string;
@@ -12,13 +10,10 @@ export interface PageHeaderProps {
   backgroundImage?: string;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
 
 export default function PageHeader({
   backLabel = "Back To Services",
-  backHref = "#",
+  backHref = "/",
   title = "Best Education Institutions",
   description = "Curated access to globally ranked universities in Australia, UK, Canada, USA, New Zealand, Japan, Sweden, and Germany for exceptional academic journeys.",
   backgroundImage = "https://himaaus.com/images/WEBSITE-6.png",

@@ -67,7 +67,7 @@ const Australia = () => {
     <>
 
       {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
+      <section id="australia" className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
       <div>
         {/* Heading */}
       <Description
