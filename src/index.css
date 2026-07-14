@@ -8,6 +8,7 @@
   --color-secondary: #FBBF24;
   --color-background: #0F172A;
   --color-foreground: #FFFFFF;
+  /*Ebglsih testing*/
   --color-brand-blue: #0078bd;
   --color-brand-orange: #ffba1a;
   --color-brand-darkblue: #003d7a;
@@ -16,6 +17,24 @@
   --color-brand-text: #333333;
   --color-brand-heading: #111111;
 
+  /* About Us Theme colors to prevent collision */
+  --color-about-primary: hsl(202 100% 37%);
+  --color-about-primary-foreground: hsl(0 0% 100%);
+  --color-primary-dark: hsl(214 68% 33%);
+
+  --color-about-secondary: hsl(42 100% 55%);
+  --color-about-secondary-foreground: hsl(0 0% 0%);
+
+  --color-about-background: hsl(0 0% 100%);
+  --color-about-foreground: hsl(0 0% 0%);
+
+  --color-about-muted: hsl(0 0% 97%);
+  --color-about-muted-foreground: hsl(0 0% 45%);
+
+  --color-about-border: hsl(0 0% 92%);
+  --color-about-card: hsl(0 0% 100%);
+
+  --radius-about-lg: 0.5rem;
 }
 
 

@@ -88,8 +88,7 @@ const MainHeader = () => {
           <li className="group relative">
             <NavLink
               className="flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
-              to="#"
-              end
+              to="/about/company-profile"
             >
               About us
               <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />

@@ -1,9 +1,9 @@
 import type { CourseData } from "../utils/types";
 
-import ieltsImg from "../assets/image/IELTS.webp";
-import pteImg from "../assets/image/PTE.webp";
-import toeflImg from "../assets/image/TOEFL.webp";
-import greImg from "../assets/image/GRE.webp";
+import ieltsImg from "../../../assets/EnglishTesting/IELTS.webp";
+import pteImg from "../../../assets/EnglishTesting/PTE.webp";
+import toeflImg from "../../../assets/EnglishTesting/TOEFL.webp";
+import greImg from "../../../assets/EnglishTesting/GRE.webp";
 
 export const ieltsData: CourseData = {
   id: "ielts",

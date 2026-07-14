@@ -1,8 +1,8 @@
 export const aboutLinks = [
-  { label: "Company Profile", href: "" },
-  { label: "Message from Director", href: "" },
-  { label: "Our Partner", href: "" },
-  { label: "Events", href: "" },
+  { label: "Company Profile", href: "/about/company-profile" },
+  { label: "Message from Director", href: "/about/director-message" },
+  { label: "Our Partner", href: "/about/partners" },
+  { label: "Events", href: "/about/events" },
 ];
 
 export const services = [

@@ -40,6 +40,14 @@ import HomeMain from "../Components/Home/HomeMain.tsx";
 import WhyChooseUs from "../Components/Home/whySection/whyChooseExplore/pages/WhyChooseUs.tsx";
 import WhyLearnMore from "../Components/Home/whySection/whyChooseExplore/pages/whylearnMore.tsx";
 
+// About Us pages
+import CompanyProfilePage from "../pages/company-profile";
+import WhoAreWePage from "../pages/who-are-we";
+import DirectorMessagePage from "../pages/director-message";
+import PartnersPage from "../pages/partners";
+import AboutEventsPage from "../pages/events";
+import StoriesPage from "../pages/stories";
+
 function EventDetailRoute({
   pageComponent: PageComponent,
 }: {
@@ -178,7 +186,32 @@ const router = createBrowserRouter([
       // about
       {
         path: "about",
-        element: "",
+        children: [
+          {
+            path: "company-profile",
+            element: <CompanyProfilePage />,
+          },
+          {
+            path: "company-profile/who-are-we",
+            element: <WhoAreWePage />,
+          },
+          {
+            path: "director-message",
+            element: <DirectorMessagePage />,
+          },
+          {
+            path: "partners",
+            element: <PartnersPage />,
+          },
+          {
+            path: "events",
+            element: <AboutEventsPage />,
+          },
+          {
+            path: "stories",
+            element: <StoriesPage />,
+          },
+        ],
       },
       // service main page
       {
