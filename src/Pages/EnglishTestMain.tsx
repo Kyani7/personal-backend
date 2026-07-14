@@ -3,7 +3,7 @@ import HeroBanner from "../Services/EnglishTesting/HeroBanner";
 import CoursesIntro from "../Services/EnglishTesting/CoursesIntro";
 import CourseContent from "../Services/EnglishTesting/CourseContent";
 import CTASection from "../Services/EnglishTesting/CTASection";
-import { courses } from "../data/courses";
+import { courses } from "../Services/EnglishTesting/data/courses";
 import { useScrollToHash } from "../Hook/useScrollToHash";
 
 export default function Courses() {

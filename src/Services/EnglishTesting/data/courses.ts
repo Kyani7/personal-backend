@@ -1,4 +1,4 @@
-import type { CourseData } from "../Services/EnglishTesting/utils/types";
+import type { CourseData } from "../utils/types";
 
 import ieltsImg from "../assets/image/IELTS.webp";
 import pteImg from "../assets/image/PTE.webp";

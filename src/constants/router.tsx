@@ -168,12 +168,12 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path:"why-choose-us",
-        element:<WhyChooseUs/>,
+        path: "why-choose-us",
+        element: <WhyChooseUs />,
       },
       {
-        path:"why-choose-us-learn/:slug",
-        element:<WhyLearnMore/>,
+        path: "why-choose-us-learn/:slug",
+        element: <WhyLearnMore />,
       },
       // about
       {
@@ -251,7 +251,7 @@ const router = createBrowserRouter([
       },
       {
         path: "find-us",
-        element: <div>Finsus</div>,
+        element: "",
       },
       {
         path: "contact-us",
