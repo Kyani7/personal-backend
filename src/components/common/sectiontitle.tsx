@@ -16,7 +16,7 @@ export default function SectionTitle({ label, title, description, className = ""
         {title}
       </h2>
       {description ? (
-        <p className="mt-2 max-w-2xl text-sm text-[#666] md:text-base">{description}</p>
+        <p className="mt-2 max-w-2xl text-sm text-muted-foreground md:text-base">{description}</p>
       ) : null}
     </div>
   );
