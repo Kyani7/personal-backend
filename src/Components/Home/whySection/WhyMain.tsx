@@ -130,8 +130,8 @@ export default function WhyChooseUs() {
 
         <div className="flex justify-center">
           <SectionButton
-          to=""
-          ButtonContent="Explorw Why Choose Us"
+          to="why-choose-us"
+          ButtonContent="Explore Why Choose Us"
           />
         </div>
       </div>

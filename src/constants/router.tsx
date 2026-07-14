@@ -37,6 +37,8 @@ import Courses from "../pages/EnglishTestMain.tsx";
 import ContactMain from "../Components/Contact/Contact.tsx";
 //home
 import HomeMain from "../Components/Home/HomeMain.tsx";
+import WhyChooseUs from "../Components/Home/whySection/whyChooseExplore/pages/WhyChooseUs.tsx";
+import WhyLearnMore from "../Components/Home/whySection/whyChooseExplore/pages/whylearnMore.tsx";
 
 function EventDetailRoute({
   pageComponent: PageComponent,
@@ -164,6 +166,14 @@ const router = createBrowserRouter([
             element: <EventDetailRoute pageComponent={MarketingEventPage} />,
           },
         ],
+      },
+      {
+        path:"why-choose-us",
+        element:<WhyChooseUs/>,
+      },
+      {
+        path:"why-choose-us-learn/:slug",
+        element:<WhyLearnMore/>,
       },
       // about
       {
