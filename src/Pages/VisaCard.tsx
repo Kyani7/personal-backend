@@ -1,6 +1,6 @@
 import { LuCircleCheckBig } from "react-icons/lu";
 type MiniVisaCardProps = {
-  number : React.ReactNode;
+  number : any;
   title : string;
   description : string;
   features : string[];
@@ -28,7 +28,7 @@ const MiniVisaCard = ({ number, title, description, features,} : MiniVisaCardPro
       </h3>
 
       <div className="grid md:grid-cols-2 gap-5 bg-[#F1F5F8] border border-gray-200 rounded-2xl p-5">
-        {features.map((feature, index) => (
+        {features.map((feature:any, index:any) => (
           <div key={index} className="flex gap-3">
             <LuCircleCheckBig className="text-[#0078BD] text-xl mt-1 shrink-0" />
 

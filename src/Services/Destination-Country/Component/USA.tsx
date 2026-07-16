@@ -1,6 +1,6 @@
-import Description from "../../../Pages/Description";
-import Key from "../../../Pages/Key";
-import Table, { type KeyInfoArray } from "../../../Pages/Table";
+import Description from "../../../pages/Description";
+import Key from "../../../pages/Key";
+import Table, { type KeyInfoArray } from "../../../pages/Table";
 import USAImg from "../../../assets/USA.png";
 
 const USA = () => {
@@ -67,7 +67,7 @@ const USA = () => {
     <>
 
       {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
+      <section id="usa" className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
 
         {/* Right */}
         <div className="sticky top-70">

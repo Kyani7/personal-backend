@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { CiClock2 } from 'react-icons/ci'
 import { LuNotepadText } from 'react-icons/lu'
 import { MdLocalPostOffice, MdOutlinePhoneInTalk } from 'react-icons/md'

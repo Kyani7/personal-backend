@@ -1,55 +1,45 @@
-interface aboutLinks {
- label:string;
- href?:string;
-}
-
-interface services{
-    label:string;
-    href?:string;
-}
-
 export const aboutLinks = [
-  { label: "Company Profile", href: "" },
-  { label: "Message from Director", href: "" },
-  { label: "Our Partner", href: "" },
-  { label: "Events", href: "" },
+  { label: "Company Profile", href: "/about/company-profile" },
+  { label: "Message from Director", href: "/about/director-message" },
+  { label: "Our Partner", href: "/about/partners" },
+  { label: "Events", href: "/about/events" },
 ];
 
 export const services = [
   {
     key: "visa",
     label: "Visa Service",
-    href: "",
+    href: "/services",
     items: [
-      { label: "Student Visa", href: "" },
-      { label: "Visitor/Tourist Visa", href: "" },
-      { label: "Migration Visa", href: "" },
+      { label: "Student Visa", href: "/services/visa-service/student-visa" },
+      { label: "Visitor/Tourist Visa", href: "/services/visa-service/visitor-visa" },
+      { label: "Migration Visa", href: "/services/visa-service/migration-visa" },
     ],
   },
   {
     key: "english",
     label: "English Test Preparation",
-    href: "",
+    href: "/services/english-test",
     items: [
-      { label: "IELTS", href: "" },
-      { label: "PTE", href: "" },
-      { label: "TOFEL", href: "" },
-      { label: "GRE", href: "" },
+      { label: "IELTS", href: "/services/english-test/ielts" },
+      { label: "PTE", href: "/services/english-test/pte" },
+      { label: "TOEFL", href: "/services/english-test/toefl" },
+      { label: "GRE", href: "/services/english-test/gre" },
     ],
   },
   {
     key: "destination",
     label: "Destination Country",
-    href: "",
+    href: "/services/destination-country",
     items: [
-      { label: "Australia", href: "" },
-      { label: "USA", href: "" },
-      { label: "Canada", href: "" },
-      { label: "UK", href: "" },
-      { label: "New Zealand", href: "" },
-      { label: "Japan", href: "" },
-      { label: "Sweden", href: "" },
-      { label: "Germany", href: "" },
+      { label: "Australia", href: "/services/destination-country#australia" },
+      { label: "USA", href: "/services/destination-country#usa" },
+      { label: "Canada", href: "/services/destination-country#canada" },
+      { label: "UK", href: "/services/destination-country#uk" },
+      { label: "New Zealand", href: "/services/destination-country#new-zealand" },
+      { label: "Japan", href: "/services/destination-country#japan" },
+      { label: "Sweden", href: "/services/destination-country#sweden" },
+      { label: "Germany", href: "/services/destination-country#germany" },
     ],
   },
 ];

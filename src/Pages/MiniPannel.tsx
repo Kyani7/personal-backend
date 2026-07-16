@@ -32,4 +32,4 @@ const MiniPannel = ({head, subHead, body}:MiniPanleprops) => {
   )
 }
 
-export default MiniPannel
+export default MiniPannel;

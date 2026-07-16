@@ -28,7 +28,7 @@ const Card = ({
       <div className="p-8">
         {/* Title & Badge */}
         <div className="flex justify-between items-start">
-          <h2 className="font-bold text-[#396cb8] text-3xl leading-tight">
+          <h2 className="font-bold text-[#396cb8] text-2xl leading-tight">
             {title}
           </h2>
 
@@ -57,7 +57,7 @@ const Card = ({
 
         {/* Button */}
         <button className="w-full mt-8 bg-[#396cb8] text-white py-4 rounded-2xl text-xl font-medium hover:bg-[#2E5DAA] transition">
-          Learn More →
+          Learn More
         </button>
       </div>
     </section>

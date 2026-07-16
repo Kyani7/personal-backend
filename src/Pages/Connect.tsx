@@ -1,6 +1,6 @@
 const Connect = () => {
-  return (
-    <section className='pt-5 bg-[#F6FAFC] pb-30 mt-10'>
+    return (
+        <section className='pt-5 bg-[#F6FAFC] pb-30 mt-10'>
             <div>
                 <h1 className='text-4xl font-md flex justify-center text-[#396cb8] pt-10'>
                     Ready to Start Your Journey?
@@ -19,7 +19,7 @@ const Connect = () => {
                 </button>
             </div>
         </section>
-  )
+    )
 }
 
 export default Connect;

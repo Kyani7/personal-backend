@@ -1,62 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary: hsl(202 100% 37%);
-  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary: white;
+  --color-secondary: #FBBF24;
+  --color-background: #0F172A;
+  --color-foreground: #FFFFFF;
+  /*Ebglsih testing*/
+  --color-brand-blue: #0078bd;
+  --color-brand-orange: #ffba1a;
+  --color-brand-darkblue: #003d7a;
+  --color-brand-lightgray: #f5f5f5;
+  --color-brand-panel: #eef4fa;
+  --color-brand-text: #333333;
+  --color-brand-heading: #111111;
+
+  /* About Us Theme colors to prevent collision */
+  --color-about-primary: hsl(202 100% 37%);
+  --color-about-primary-foreground: hsl(0 0% 100%);
   --color-primary-dark: hsl(214 68% 33%);
 
-  --color-secondary: hsl(42 100% 55%);
-  --color-secondary-foreground: hsl(0 0% 0%);
+  --color-about-secondary: hsl(42 100% 55%);
+  --color-about-secondary-foreground: hsl(0 0% 0%);
 
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(0 0% 0%);
+  --color-about-background: hsl(0 0% 100%);
+  --color-about-foreground: hsl(0 0% 0%);
 
-  --color-muted: hsl(0 0% 97%);
-  --color-muted-foreground: hsl(0 0% 45%);
+  --color-about-muted: hsl(0 0% 97%);
+  --color-about-muted-foreground: hsl(0 0% 45%);
 
-  --color-border: hsl(0 0% 92%);
-  --color-card: hsl(0 0% 100%);
+  --color-about-border: hsl(0 0% 92%);
+  --color-about-card: hsl(0 0% 100%);
 
-  --radius-lg: 0.5rem;
+  --radius-about-lg: 0.5rem;
 }
 
-:root {
-  --primary: 202 100% 37%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 42 100% 55%;
-  --secondary-foreground: 0 0% 0%;
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
-  --muted: 0 0% 97%;
-  --muted-foreground: 0 0% 45%;
-  --border: 0 0% 92%;
-  --radius: 0.5rem;
+
+html {
+  scroll-behavior: smooth;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  border-color: hsl(var(--border));
+::selection {
+  color: hsl(var(--primary-foreground)) !important;
+  background: hsl(var(--secondary)) !important;
 }
+
+/* Customize color for the Section Heading */
+.section-heading-override h1 {
+  color: #f59e0b;
+}
+
+.section-heading-override h3 {
+  color: #0078bd;
+}
+
+.section-heading-override p {
+  color: #45556b;
+}
+
+.section-heading-oz p {
+  color: white;
+
+}
+
+/*Home Why choose us Explore*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
 }
 
-::selection {
-  color: hsl(var(--primary-foreground)) !important;
-  background: hsl(var(--secondary)) !important;
+/* Simple fade/slide-up reveal used across feature rows */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+/* Directional slide used by the testimonials carousel when paging
+   left/right through cards */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

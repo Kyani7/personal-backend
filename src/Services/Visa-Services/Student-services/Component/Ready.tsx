@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { CiClock2 } from 'react-icons/ci'
 import { MdLocalPostOffice, MdOutlinePhoneInTalk } from 'react-icons/md'
 import { PiGlobeSimpleBold } from 'react-icons/pi'

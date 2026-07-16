@@ -1,6 +1,6 @@
-import Description from "../../../Pages/Description";
-import Key from "../../../Pages/Key";
-import Table, { type KeyInfoArray } from "../../../Pages/Table";
+import Description from "../../../pages/Description";
+import Key from "../../../pages/Key";
+import Table, { type KeyInfoArray } from "../../../pages/Table";
 import australiaImg from "../../../assets/Australia.png";
 
 const Australia = () => {
@@ -67,7 +67,7 @@ const Australia = () => {
     <>
 
       {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
+      <section id="australia" className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
       <div>
         {/* Heading */}
       <Description
