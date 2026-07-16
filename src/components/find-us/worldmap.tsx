@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
-import { Home, Minus, Plus } from "lucide-react";
+import { Home, Minus, Plus, Loader2 } from "lucide-react";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import type { GeometryCollection, Topology } from "topojson-specification";
 import { COUNTRY_COLORS, HIGHLIGHTED_COUNTRIES, MAP_ORIGIN } from "../../data/mapLocations";
-import Loader from "../common/loader";
 
 const GEO_URL = "/data/countries-50m.json";
 const WIDTH = 1120;
@@ -225,17 +224,21 @@ export default function FindUsWorldMap() {
 
   return (
     <section className="mt-16 md:mt-20">
-      <p className="text-lg font-medium text-foreground md:text-xl">We are Available in</p>
+      <p className="text-lg font-medium text-gray-900 md:text-xl">We are Available in</p>
 
-      <div ref={mapRef} className="relative mt-5 overflow-hidden rounded-xl bg-muted md:mt-7">
-        <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded border border-border bg-card shadow-sm">
-          <button type="button" aria-label="Reset view" disabled={zoom === MIN_ZOOM} onClick={resetView} className="flex h-9 w-9 items-center justify-center border-b border-border text-muted-foreground hover:bg-muted disabled:text-border"><Home size={15} /></button>
-          <button type="button" aria-label="Zoom in" disabled={zoom >= MAX_ZOOM} onClick={() => applyZoom(zoomRef.current + ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center border-b border-border text-muted-foreground hover:bg-muted disabled:text-border"><Plus size={16} /></button>
-          <button type="button" aria-label="Zoom out" disabled={zoom <= MIN_ZOOM} onClick={() => applyZoom(zoomRef.current - ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center text-muted-foreground hover:bg-muted disabled:text-border"><Minus size={16} /></button>
+      <div ref={mapRef} className="relative mt-5 overflow-hidden rounded-xl bg-gray-100 md:mt-7">
+        <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded border border-gray-200 bg-white shadow-sm">
+          <button type="button" aria-label="Reset view" disabled={zoom === MIN_ZOOM} onClick={resetView} className="flex h-9 w-9 items-center justify-center border-b border-gray-200 text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Home size={15} /></button>
+          <button type="button" aria-label="Zoom in" disabled={zoom >= MAX_ZOOM} onClick={() => applyZoom(zoomRef.current + ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center border-b border-gray-200 text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Plus size={16} /></button>
+          <button type="button" aria-label="Zoom out" disabled={zoom <= MIN_ZOOM} onClick={() => applyZoom(zoomRef.current - ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Minus size={16} /></button>
         </div>
 
         <div className="min-h-[320px] sm:min-h-[440px] lg:min-h-[620px]">
-          {loading ? <Loader /> : (
+          {loading ? (
+            <div className="flex h-full min-h-[320px] w-full items-center justify-center">
+              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </div>
+          ) : (
             <svg
               ref={svgRef}
               viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
@@ -266,7 +269,7 @@ export default function FindUsWorldMap() {
           )}
         </div>
 
-        {tooltip && <div className="pointer-events-none absolute z-20 rounded bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground shadow-md" style={{ left: tooltip.x, top: tooltip.y }}>{tooltip.name}</div>}
+        {tooltip && <div className="pointer-events-none absolute z-20 rounded bg-[#0078bd] px-3 py-1.5 text-sm font-medium text-white shadow-md" style={{ left: tooltip.x, top: tooltip.y }}>{tooltip.name}</div>}
       </div>
     </section>
   );

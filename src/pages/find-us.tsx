@@ -6,8 +6,8 @@ import type { BranchType } from "../data/branches";
 import AboutCta from "../Components/about-us/aboutcta";
 import FindUsHero from "../Components/find-us/hero";
 import FindUsWorldMap from "../Components/find-us/worldmap";
-import Footer from "./Foooter";
 import { allBranches } from "../data/branches";
+import CTASection from "../Services/EnglishTesting/CTASection";
 
 type BranchFilter = "all" | BranchType;
 
@@ -15,7 +15,7 @@ export default function FindUsPage() {
   const [activeFilter, setActiveFilter] = useState<BranchFilter>("all");
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white">
       <FindUsHero />
 
       <section className="py-12 md:py-16 lg:py-20">
@@ -43,8 +43,7 @@ export default function FindUsPage() {
         </Container>
       </section>
 
-      <AboutCta />
-      <Footer />
+      <CTASection />
     </main>
   );
 }

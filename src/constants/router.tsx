@@ -35,6 +35,8 @@ import Courses from "../pages/EnglishTestMain.tsx";
 
 //contactus
 import ContactMain from "../Components/Contact/Contact.tsx";
+//find-us
+import FindUsPage from "../Pages/find-us.tsx";
 //home
 import HomeMain from "../Components/Home/HomeMain.tsx";
 import WhyChooseUs from "../Components/Home/whySection/whyChooseExplore/pages/WhyChooseUs.tsx";
@@ -284,7 +286,7 @@ const router = createBrowserRouter([
       },
       {
         path: "find-us",
-        element: "",
+        element: <FindUsPage />,
       },
       {
         path: "contact-us",

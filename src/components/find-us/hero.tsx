@@ -1,6 +1,6 @@
-import heroImage from "../../assest/images/backgroung img.jpeg";
-import Container from "../common/container";
-import Navbar from "../layout/navbar";
+import heroImage from "../../assets/images/contact-banner.jpg";
+import Container from "../about-us/aboutCommon/container";
+import Navbar from "../../Pages/Header";
 
 export default function FindUsHero() {
   return (

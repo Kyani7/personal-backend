@@ -12,9 +12,9 @@ const FALLBACK_GRADIENTS: Record<string, string> = {
 
 export default function BranchCard({ branch }: BranchCardProps) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-muted md:h-52">
+      <div className="relative h-48 w-full overflow-hidden bg-gray-100 md:h-52">
         {branch.image ? (
           <img
             src={branch.image}
@@ -40,8 +40,8 @@ export default function BranchCard({ branch }: BranchCardProps) {
         <span
           className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest text-white shadow ${
             branch.type === "national"
-              ? "bg-secondary text-secondary-foreground"
-              : "bg-primary"
+              ? "bg-[#ffba1a] text-gray-900"
+              : "bg-[#0078bd]"
           }`}
         >
           {branch.type}
@@ -51,44 +51,44 @@ export default function BranchCard({ branch }: BranchCardProps) {
       {/* Body */}
       <div className="p-5 md:p-6">
         {/* City / Country */}
-        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
+        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#0078bd]">
           {branch.city}, {branch.country}
         </p>
 
         {/* Branch name */}
-        <h3 className="text-lg font-bold leading-snug text-foreground md:text-xl">
+        <h3 className="text-lg font-bold leading-snug text-gray-900 md:text-xl">
           {branch.name}
         </h3>
 
         {/* Details */}
         <ul className="mt-4 space-y-2.5">
-          <li className="flex items-start gap-2.5 text-sm text-muted-foreground md:text-base">
+          <li className="flex items-start gap-2.5 text-sm text-gray-600 md:text-base">
             <MapPin
               size={16}
-              className="mt-0.5 shrink-0 text-primary"
+              className="mt-0.5 shrink-0 text-[#0078bd]"
             />
             <span className="leading-relaxed">{branch.address}</span>
           </li>
-          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
-            <Phone size={16} className="shrink-0 text-primary" />
+          <li className="flex items-center gap-2.5 text-sm text-gray-600 md:text-base">
+            <Phone size={16} className="shrink-0 text-[#0078bd]" />
             <a
               href={`tel:${branch.phone}`}
-              className="transition-colors hover:text-primary"
+              className="transition-colors hover:text-[#0078bd]"
             >
               {branch.phone}
             </a>
           </li>
-          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
-            <Mail size={16} className="shrink-0 text-primary" />
+          <li className="flex items-center gap-2.5 text-sm text-gray-600 md:text-base">
+            <Mail size={16} className="shrink-0 text-[#0078bd]" />
             <a
               href={`mailto:${branch.email}`}
-              className="transition-colors hover:text-primary"
+              className="transition-colors hover:text-[#0078bd]"
             >
               {branch.email}
             </a>
           </li>
-          <li className="flex items-center gap-2.5 text-sm text-muted-foreground md:text-base">
-            <Clock size={16} className="shrink-0 text-primary" />
+          <li className="flex items-center gap-2.5 text-sm text-gray-600 md:text-base">
+            <Clock size={16} className="shrink-0 text-[#0078bd]" />
             <span>{branch.hours}</span>
           </li>
         </ul>
