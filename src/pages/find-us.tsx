@@ -1,12 +1,12 @@
 import { useState } from "react";
-import SectionTitle from "../components/common/sectiontitle";
-import Container from "../components/common/container";
-import BranchFilterSection, { BranchFilters } from "../components/find-us/branchfilter";
+import SectionTitle from "../Components/about-us/aboutCommon/sectiontitle";
+import Container from "../Components/about-us/aboutCommon/container";
+import BranchFilterSection, { BranchFilters } from "../Components/find-us/branchfilter";
 import type { BranchType } from "../data/branches";
-import FindUsCta from "../components/find-us/cta";
-import FindUsHero from "../components/find-us/hero";
-import FindUsWorldMap from "../components/find-us/worldmap";
-import Footer from "../components/layout/footer";
+import AboutCta from "../Components/about-us/aboutcta";
+import FindUsHero from "../Components/find-us/hero";
+import FindUsWorldMap from "../Components/find-us/worldmap";
+import Footer from "./Foooter";
 import { allBranches } from "../data/branches";
 
 type BranchFilter = "all" | BranchType;
@@ -43,7 +43,7 @@ export default function FindUsPage() {
         </Container>
       </section>
 
-      <FindUsCta />
+      <AboutCta />
       <Footer />
     </main>
   );
