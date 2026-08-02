@@ -1,6 +1,6 @@
 
-import Footer from "./pages/Foooter";
-import   Header from "./pages/Header"
+import Footer from "./Pages/Foooter";
+import   Header from "./Pages/Header"
 
 import { Outlet } from "react-router-dom";
 

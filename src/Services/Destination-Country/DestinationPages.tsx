@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import MiniPannel from "../../pages/MiniPannel";
+import MiniPannel from "../../Pages/MiniPannel";
 import NewZealand from "./Component/NewZealand";
 import Australia from "./Component/Australia";
 import Canada from "./Component/Canada";
-import Connect from "../../pages/Connect";
+import Connect from "../../Pages/Connect";
 import Germany from "./Component/Germany";
 import Head from "./Component/Head";
 import Japan from "./Component/Japan";

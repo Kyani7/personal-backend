@@ -1,6 +1,6 @@
 import Australia from "../Component/Australia";
 import Head from "../Component/Head";
-import MiniPannel from "../../../pages/MiniPannel";
+import MiniPannel from "../../../Pages/MiniPannel";
 
 const AustraliaPage = () => {
   return (

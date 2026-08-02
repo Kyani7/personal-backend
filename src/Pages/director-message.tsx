@@ -1,6 +1,6 @@
-import AboutCta from "../components/about-us/aboutcta";
-import PageHero from "../components/about-us/pagehero";
-import StatsBar from "../components/about-us/statsbar";
+import AboutCta from "../Components/about-us/aboutcta";
+import PageHero from "../Components/about-us/pagehero";
+import StatsBar from "../Components/about-us/statsbar";
 import Container from "../Components/about-us/aboutCommon/container";
 import SectionTitle from "../Components/about-us/aboutCommon/sectiontitle";
 import { directorStats, directorValues } from "../Components/about-us/data/aboutContent";

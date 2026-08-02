@@ -1,6 +1,6 @@
 import UK from "../Component/UnitedKingdom";
 import Head from "../Component/Head";
-import MiniPannel from "../../../pages/MiniPannel";
+import MiniPannel from "../../../Pages/MiniPannel";
 
 const UKPage = () => {
   return (

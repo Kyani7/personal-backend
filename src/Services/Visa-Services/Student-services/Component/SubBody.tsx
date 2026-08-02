@@ -1,6 +1,6 @@
 
 import { PiMedalBold } from 'react-icons/pi'
-import BulletPoint from '../../../../pages/BulletPoint.tsx'
+import BulletPoint from '../../../../Pages/BulletPoint.tsx'
 
 const SubBody = () => {
   return (

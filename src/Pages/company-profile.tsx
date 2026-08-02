@@ -1,9 +1,9 @@
-import AlternatingSection from "../components/about-us/alternatingsection";
-import AboutCta from "../components/about-us/aboutcta";
-import GuidingPrinciples from "../components/about-us/guidingprinciples";
-import MilestoneTimeline from "../components/about-us/milestonetimeline";
-import PageHero from "../components/about-us/pagehero";
-import StatsBar from "../components/about-us/statsbar";
+import AlternatingSection from "../Components/about-us/alternatingsection";
+import AboutCta from "../Components/about-us/aboutcta";
+import GuidingPrinciples from "../Components/about-us/guidingprinciples";
+import MilestoneTimeline from "../Components/about-us/milestonetimeline";
+import PageHero from "../Components/about-us/pagehero";
+import StatsBar from "../Components/about-us/statsbar";
 import Container from "../Components/about-us/aboutCommon/container";
 import SectionTitle from "../Components/about-us/aboutCommon/sectiontitle";
 import { companyProfileSections, companyStats } from "../Components/about-us/data/aboutContent";

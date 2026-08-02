@@ -1,6 +1,6 @@
 import Germany from "../Component/Germany";
 import Head from "../Component/Head";
-import MiniPannel from "../../../pages/MiniPannel";
+import MiniPannel from "../../../Pages/MiniPannel";
 
 const GermanyPage = () => {
   return (

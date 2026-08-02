@@ -1,5 +1,5 @@
-import AboutCta from "../components/about-us/aboutcta";
-import PageHero from "../components/about-us/pagehero";
+import AboutCta from "../Components/about-us/aboutcta";
+import PageHero from "../Components/about-us/pagehero";
 import Container from "../Components/about-us/aboutCommon/container";
 import SectionTitle from "../Components/about-us/aboutCommon/sectiontitle";
 import { partnerLogos } from "../Components/about-us/data/aboutContent";

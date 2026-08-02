@@ -1,5 +1,5 @@
 
-import MiniPannel from '../../../../pages/MiniPannel'
+import MiniPannel from '../../../../Pages/MiniPannel'
 
 export const Head = () => {
   return (

@@ -31,7 +31,7 @@ import Blog2 from "../Components/Blog/blog2.tsx";
 import Gallery from "../Components/Gallery/Gallery.tsx";
 //our services
 import ServiceMain from "../Services/ServceMainPage.tsx";
-import Courses from "../pages/EnglishTestMain.tsx";
+import Courses from "../Pages/EnglishTestMain.tsx";
 
 //contactus
 import ContactMain from "../Components/Contact/Contact.tsx";
@@ -41,12 +41,12 @@ import WhyChooseUs from "../Components/Home/whySection/whyChooseExplore/pages/Wh
 import WhyLearnMore from "../Components/Home/whySection/whyChooseExplore/pages/whylearnMore.tsx";
 
 // About Us pages
-import CompanyProfilePage from "../pages/company-profile";
-import WhoAreWePage from "../pages/who-are-we";
-import DirectorMessagePage from "../pages/director-message";
-import PartnersPage from "../pages/partners";
-import AboutEventsPage from "../pages/events";
-import StoriesPage from "../pages/stories";
+import CompanyProfilePage from "../Pages/company-profile";
+import WhoAreWePage from "../Pages/who-are-we";
+import DirectorMessagePage from "../Pages/director-message";
+import PartnersPage from "../Pages/partners";
+import AboutEventsPage from "../Pages/events";
+import StoriesPage from "../Pages/stories";
 
 function EventDetailRoute({
   pageComponent: PageComponent,

@@ -4,7 +4,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { GoGlobe } from 'react-icons/go';
 import { RiBookLine } from 'react-icons/ri';
 import { FaNetworkWired } from 'react-icons/fa';
-import MiniPannel from '../../pages/MiniPannel';
+import MiniPannel from '../../Pages/MiniPannel';
 
 const Package = () => {
   return (

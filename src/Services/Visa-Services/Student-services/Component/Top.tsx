@@ -1,4 +1,4 @@
-import MiniPannel from '../../../../pages/MiniPannel'
+import MiniPannel from '../../../../Pages/MiniPannel'
 
 const Top = () => {
   return (

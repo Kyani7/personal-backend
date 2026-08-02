@@ -25,6 +25,8 @@ interface ScholarshipOffersProps {
   features?: FeatureCardProps[];
   successTitle?: string;
   stats?: StatRowProps[];
+  benefitsTitle?: string;
+  benefits?: string[];
 }
 
 interface StatRowProps {
@@ -32,9 +34,8 @@ interface StatRowProps {
   value: string;
 }
 
-interface RankingProps {
-  benefitsTitle: string;
-  benefits: string[];
+interface BenefitItemProps {
+  text: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -74,7 +75,7 @@ function StatRow({ label, value }: StatRowProps) {
 }
 
 
-function BenefitItem({ text }:  RankingProps) {
+function BenefitItem({ text }:  BenefitItemProps) {
   return (
     <li className="flex items-start gap-3">
       <LuCircleCheckBig className="mt-1 h-4 w-4 flex-shrink-0 text-amber-500" />

@@ -1,6 +1,6 @@
 import NewZealand from "../Component/NewZealand";
 import Head from "../Component/Head";
-import MiniPannel from "../../../pages/MiniPannel";
+import MiniPannel from "../../../Pages/MiniPannel";
 
 const NewZealandPage = () => {
   return (

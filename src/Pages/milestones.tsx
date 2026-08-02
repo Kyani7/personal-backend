@@ -1,6 +1,6 @@
-import AboutCta from "../components/about-us/aboutcta";
-import MilestoneTimeline from "../components/about-us/milestonetimeline";
-import PageHero from "../components/about-us/pagehero";
+import AboutCta from "../Components/about-us/aboutcta";
+import MilestoneTimeline from "../Components/about-us/milestonetimeline";
+import PageHero from "../Components/about-us/pagehero";
 
 
 export default function MilestonesPage() {

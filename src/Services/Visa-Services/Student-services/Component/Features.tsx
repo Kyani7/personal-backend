@@ -1,6 +1,6 @@
 
 import { VscExtensionsLarge } from 'react-icons/vsc'
-import BulletPoint from '../../../../pages/BulletPoint.tsx'
+import BulletPoint from '../../../../Pages/BulletPoint.tsx'
 import { PiSealDuotone } from 'react-icons/pi'
 import { LuPlane } from 'react-icons/lu'
 import { CiClock2 } from 'react-icons/ci'

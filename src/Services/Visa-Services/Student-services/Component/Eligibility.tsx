@@ -1,6 +1,6 @@
 
 import { BiSolidNotepad } from 'react-icons/bi'
-import BulletPoint from "../../../../pages/BulletPoint.tsx"
+import BulletPoint from "../../../../Pages/BulletPoint.tsx"
 
 const Eligibility = () => {
   return (

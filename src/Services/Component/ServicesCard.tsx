@@ -1,4 +1,4 @@
-import Card from "../../pages/Card";
+import Card from "../../Pages/Card";
 import div1 from "../../assets/div1.webp";
 import div2 from "../../assets/div2.webp";
 import div3 from "../../assets/div3.webp";
