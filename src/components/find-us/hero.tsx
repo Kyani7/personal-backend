@@ -1,16 +1,16 @@
-import heroImage from "../../assets/images/contact-banner.jpg";
+import heroImage from "../../assets/BookerClub.png";
 import Container from "../about-us/aboutCommon/container";
 import Navbar from "../../Pages/Header";
 
 export default function FindUsHero() {
   return (
     <section
-      className="relative min-h-[380px] w-full bg-cover bg-center sm:min-h-[420px] md:min-h-[480px] lg:min-h-[520px]"
+      className="relative min-h-[380px] w-full bg-cover bg-center bg-no-repeat sm:min-h-[420px] md:min-h-[480px] lg:min-h-[360px]"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-slate-950/55" />
       <Navbar />
-      <Container className="relative z-20 flex min-h-[380px] flex-col justify-end pb-12 pt-24 sm:min-h-[420px] md:min-h-[480px] md:pb-16 lg:min-h-[520px]">
+      <Container className="relative z-20 flex min-h-[380px] flex-col justify-end pb-12 pt-24 sm:min-h-[420px] md:min-h-[480px] md:pb-16 lg:min-h-[360px]">
         <button className="mb-4 w-fit text-base text-white/90 transition-colors hover:text-white md:text-lg">
           ← Back
         </button>
