@@ -2,51 +2,53 @@ import { createBrowserRouter, Navigate, useNavigate, useParams } from "react-rou
 
 import App from "../App";
 
-import AllpodCast from "../Components/Home/PodCast/AllpodCast.tsx";
+import AllpodCast from "../pages/Home/PodCast/AllpodCast.tsx";
 //home event all
-import EventsPage from "../Components/Home/EventSection/ExploreMoreMain.tsx";
-import GrandUsAdmissionDayPage from "../Components/Home/EventSection/Grandusadmissiondaypage.tsx";
-import MarketingEventPage from "../Components/Home/EventSection/Marketingeventpage.tsx";
-import RioCarnivalPage from "../Components/Home/EventSection/Riocarnivalpage .tsx";
+import EventsPage from "../pages/Home/EventSection/ExploreMoreMain.tsx";
+import GrandUsAdmissionDayPage from "../pages/Home/EventSection/Grandusadmissiondaypage.tsx";
+import MarketingEventPage from "../pages/Home/EventSection/Marketingeventpage.tsx";
+import RioCarnivalPage from "../pages/Home/EventSection/Riocarnivalpage .tsx";
 //our service 
-import DestinationMain from "../Services/Destination-Country/DestinationPages.tsx";
-import MigrationMain from "../Services/Visa-Services/Migration-services/MigrationMain.tsx";
-import Student from "../Services/Visa-Services/Student-services/Student.tsx";
-import Visitor from "../Services/Visa-Services/Visitor-services/Visitor.tsx";
+import DestinationMain from "../pages/Services/Destination-Country/DestinationPages.tsx";
+import MigrationMain from "../pages/Services/Visa-Services/Migration-services/MigrationMain.tsx";
+import Student from "../pages/Services/Visa-Services/Student-services/Student.tsx";
+import Visitor from "../pages/Services/Visa-Services/Visitor-services/Visitor.tsx";
 //Home Our services hubpages
-import Airport from "../Components/Home/whySection/Components/ourServices/Airpot/Airpot.tsx";
-import Counselling from "../Components/Home/whySection/Components/ourServices/Counselling/Counselling.tsx";
-import Course from "../Components/Home/whySection/Components/ourServices/Course/Course.tsx";
-import Departure from "../Components/Home/whySection/Components/ourServices/Departure/Departure.tsx";
-import Instuation from "../Components/Home/whySection/Components/ourServices/Institutation/Instuation.tsx";
-import Scholarship from "../Components/Home/whySection/Components/ourServices/Scholarship/Scholarship";
-import Virtual from "../Components/Home/whySection/Components/ourServices/Virtual/Virtual";
-import VisaApplication from "../Components/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
+import Airport from "../pages/Home/whySection/Components/ourServices/Airpot/Airpot.tsx";
+import Counselling from "../pages/Home/whySection/Components/ourServices/Counselling/Counselling.tsx";
+import Course from "../pages/Home/whySection/Components/ourServices/Course/Course.tsx";
+import Departure from "../pages/Home/whySection/Components/ourServices/Departure/Departure.tsx";
+import Instuation from "../pages/Home/whySection/Components/ourServices/Institutation/Instuation.tsx";
+import Scholarship from "../pages/Home/whySection/Components/ourServices/Scholarship/Scholarship";
+import Virtual from "../pages/Home/whySection/Components/ourServices/Virtual/Virtual";
+import VisaApplication from "../pages/Home/whySection/Components/ourServices/VisaApplication/Application.tsx";
 //main pages here import
 //blog
-import BlogMain from "../Components/Blog/BlogMain.tsx"
-import Blog1 from "../Components/Blog/blog1.tsx";
-import Blog2 from "../Components/Blog/blog2.tsx";
+import BlogMain from "../pages/Blog/BlogMain.tsx"
+import Blog1 from "../pages/Blog/blog1.tsx";
+import Blog2 from "../pages/Blog/blog2.tsx";
 //gallery
-import Gallery from "../Components/Gallery/Gallery.tsx";
+
 //our services
-import ServiceMain from "../Services/ServceMainPage.tsx";
-import Courses from "../Pages/EnglishTestMain.tsx";
+import ServiceMain from "../pages/Services/ServceMainPage.tsx";
+import Courses from "../pages/Services/EnglishTesting/EnglishTestMain.tsx";
 
 //contactus
-import ContactMain from "../Components/Contact/Contact.tsx";
+
+//find-us
+import FindUsPage from "../pages/find-us/find-us.tsx";
 //home
-import HomeMain from "../Components/Home/HomeMain.tsx";
-import WhyChooseUs from "../Components/Home/whySection/whyChooseExplore/pages/WhyChooseUs.tsx";
-import WhyLearnMore from "../Components/Home/whySection/whyChooseExplore/pages/whylearnMore.tsx";
+import HomeMain from "../pages/Home/HomeMain.tsx";
+import WhyChooseUs from "../pages/Home/whySection/whyChooseExplore/pages/WhyChooseUs.tsx";
+import WhyLearnMore from "../pages/Home/whySection/whyChooseExplore/pages/WhylearnMore.tsx";
 
 // About Us pages
-import CompanyProfilePage from "../Pages/company-profile";
-import WhoAreWePage from "../Pages/who-are-we";
-import DirectorMessagePage from "../Pages/director-message";
-import PartnersPage from "../Pages/partners";
-import AboutEventsPage from "../Pages/events";
-import StoriesPage from "../Pages/stories";
+// import CompanyProfilePage from "../VisaServices-DestinationCountry/company-profile.tsx";
+// import WhoAreWePage from "../Pages/who-are-we";
+// import DirectorMessagePage from "../Pages/director-message";
+// import PartnersPage from "../Pages/partners";
+// import AboutEventsPage from "../Pages/events";
+// import StoriesPage from "../Pages/stories";
 
 function EventDetailRoute({
   pageComponent: PageComponent,
@@ -189,27 +191,27 @@ const router = createBrowserRouter([
         children: [
           {
             path: "company-profile",
-            element: <CompanyProfilePage />,
+            element: "",
           },
           {
             path: "company-profile/who-are-we",
-            element: <WhoAreWePage />,
+            element: "",
           },
           {
             path: "director-message",
-            element: <DirectorMessagePage />,
+            element: "",
           },
           {
             path: "partners",
-            element: <PartnersPage />,
+            element: "",
           },
           {
             path: "events",
-            element: <AboutEventsPage />,
+            element: "",
           },
           {
             path: "stories",
-            element: <StoriesPage />,
+            element: "",
           },
         ],
       },
@@ -267,7 +269,7 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery",
-        element: <Gallery />,
+        element: "",
       },
       {
         path: "blog&news",
@@ -284,11 +286,11 @@ const router = createBrowserRouter([
       },
       {
         path: "find-us",
-        element: "",
+        element: <FindUsPage />,
       },
       {
         path: "contact-us",
-        element: <ContactMain />,
+        element: "",
       },
     ],
   },
