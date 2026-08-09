@@ -1,4 +1,4 @@
-import type { Feature } from "./utils/types";
+import type { Feature } from "../utils/types";
 
 interface FeatureListProps {
   features: Feature[];
