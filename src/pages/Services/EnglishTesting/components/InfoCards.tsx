@@ -1,4 +1,4 @@
-import type { InfoCard } from "./utils/types";
+import type { InfoCard } from "../utils/types";
 
 interface InfoCardsProps {
   title: string;
