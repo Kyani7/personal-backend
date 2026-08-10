@@ -1,31 +1,62 @@
-
-import Top from './Component/Top'
-import Box from './Component/Box'
-import SubBody from './Component/SubBody'
-import Visa from './Component/Visa'
-import Ready from './Component/Ready'
-import Bottom from './Component/Bottom'
-import Eligibility from './Component/Eligibility'
-import Features from './Component/Features'
-
+import Top from "./Component/Top";
+import Box from "./Component/Box";
+import SubBody from "./Component/SubBody";
+import Visa from "./Component/Visa";
+import Ready from "./Component/Ready";
+import Bottom from "./Component/Bottom";
+import Eligibility from "./Component/Eligibility";
+import Features from "./Component/Features";
 
 const Student = () => {
   return (
     <>
-    <Top />
-    <Box />
-    <SubBody/>
-    <section className='px-20 pt-10 flex justify-between gap-15 mb-4'>
-        <div>
+      <Top />
+
+      <Box />
+
+      <SubBody />
+
+      {/* Main Content */}
+      <section
+        className="
+          w-full
+          max-w-7xl
+          mx-auto
+          px-4
+          sm:px-6
+          lg:px-8
+          pt-8
+          sm:pt-10
+          lg:pt-14
+          mb-6
+        "
+      >
+        <div
+          className="
+            flex
+            flex-col
+            xl:flex-row
+            gap-8
+            xl:gap-12
+          "
+        >
+          {/* Left Content */}
+          <div className="w-full xl:flex-1 min-w-0">
             <Visa />
             <Eligibility />
             <Features />
-        </div>
-        <Ready />
-    </section>
-    <Bottom />
-    </>
-  )
-}
+          </div>
 
-export default Student
+          {/* Right Sidebar */}
+          <div className="w-full xl:w-[440px] shrink-0">
+            <Ready />
+          </div>
+        </div>
+      </section>
+
+      <Bottom />
+    </>
+  );
+};
+
+export default Student;
