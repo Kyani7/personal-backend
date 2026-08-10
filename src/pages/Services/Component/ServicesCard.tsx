@@ -8,8 +8,25 @@ import div6 from "../../../assets/div6.webp";
 
 const ServicesCard = () => {
   return (
-    <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 px-6">
-
+    <section
+      className="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-3
+        gap-5
+        sm:gap-6
+        lg:gap-8
+        max-w-6xl
+        mx-auto
+        my-10
+        sm:my-14
+        lg:my-20
+        px-4
+        sm:px-6
+        lg:px-8
+      "
+    >
       <Card
         image={div1}
         title="Genuine Counselling"
@@ -81,9 +98,8 @@ const ServicesCard = () => {
           "Local SIM & Banking",
         ]}
       />
-
     </section>
-  )
-}
+  );
+};
 
 export default ServicesCard;

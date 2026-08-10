@@ -29,4 +29,4 @@ const Visa = () => {
   )
 }
 
-export default Visa
+export default Visa;
