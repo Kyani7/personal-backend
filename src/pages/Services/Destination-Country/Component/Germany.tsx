@@ -1,9 +1,11 @@
 import Description from "../../VisaServices-DestinationCountry/Description";
 import Key from "../../VisaServices-DestinationCountry/Key";
-import Table, { type KeyInfoArray } from "../../VisaServices-DestinationCountry/Table";
+import Table, {
+  type KeyInfoArray,
+} from "../../VisaServices-DestinationCountry/Table";
 import GermanyImg from "../../../../assets/Germany.png";
 
-const Germany= () => {
+const Germany = () => {
   const keyInfos: KeyInfoArray = [
     {
       title: "Country",
@@ -39,7 +41,8 @@ const Germany= () => {
     },
     {
       title: "Average Tuition Fee",
-      value: "€0-500/semester admin (public); private €5,000-20,000/year",
+      value:
+        "€0-500/semester admin (public); private €5,000-20,000/year",
     },
     {
       title: "Scholarships",
@@ -64,108 +67,121 @@ const Germany= () => {
   ];
 
   return (
-    <>
+    <section className="mt-8 mb-20 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-35">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
 
-      {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35 mb-30">
-
-        {/* Right */}
-        <div className="sticky top-70">
+        {/* ================= IMAGE ================= */}
+        <div className="w-full lg:sticky lg:top-24">
           <div
-            className="relative overflow-hidden rounded-2xl shadow-xl"
+            className="relative overflow-hidden rounded-2xl shadow-xl h-[280px] sm:h-[350px] lg:h-[410px]"
             style={{
               backgroundImage: `url(${GermanyImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              height: "410px",
             }}
           >
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/20"></div>
 
             {/* Bottom Card */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
-              <h2 className="text-l font-bold text-gray-900">
+            <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto bg-white rounded-xl px-5 sm:px-6 py-4 shadow-lg">
+              <h2 className="text-lg font-bold text-gray-900">
                 20 hours
               </h2>
 
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 Work Per Week
               </p>
             </div>
           </div>
         </div>
 
-        <div>
-        {/* Heading */}
-      <Description
-        title="Study in Germany"
-        description="Germany provides tuition-free or low-cost public education, strong engineering/science programs, and an 18-month job seeker visa post-study."
-      />
-        {/* Left */}
-      <div>
-        <Table keyInfos={keyInfos} />
-        </div>
-        <div>
-          <h1 className="py-5 font-bold text-[#0078BD] text-4xl">
-            Key Advantages
-          </h1>
+        {/* ================= CONTENT ================= */}
+        <div className="min-w-0">
 
-      <Key
-          heading="Affordable / Free Tuition"
-          title="Public universities mostly free (admin fees only)"
-        />
+          {/* Description */}
+          <Description
+            title="Study in Germany"
+            description="Germany provides tuition-free or low-cost public education, strong engineering/science programs, and an 18-month job seeker visa post-study."
+          />
 
-      <Key
-      heading="High-Quality Education"
-      title="Research-focused, globally ranked"
-      />
-
-      <Key
-      heading="Career Opportunities"
-      title="Strong economy, 18-month job search visa"
-      />
-
-      <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
-          <h1 className="py-5 font-bold">
-            Additional Details
-          </h1>
-          <div className="grid grid-cols-2">
-            <div>
-              <h2 className="font-medium pb-2">
-                Intake
-              </h2>
-              <p className="text-[#1F2736]">
-                Winter (Oct), Summer (Apr)
-              </p>
-            </div>
-
-           <div>
-            <h2 className="font-medium pb-2">
-              Popular Field
-            </h2> 
-            <p className="text-[#1F2736]">
-              Engineering, Computer Science, Natural Sciences, Business
-            </p>
-           </div>
-
-           <div className="py-5">
-            <h2 className="font-medium pb-2">
-              Living Cost
-            </h2> 
-            <p className="text-[#1F2736]">
-              €10,000–14,400/year (€850–1,200/month; blocked account €11,904/year from 2025)
-            </p>
-           </div>
+          {/* Table */}
+          <div className="mt-6 overflow-x-auto">
+            <Table keyInfos={keyInfos} />
           </div>
-        </div>
 
+          {/* Key Advantages */}
+          <div className="mt-6">
+            <h1 className="py-5 font-bold text-[#0078BD] text-2xl sm:text-3xl lg:text-4xl">
+              Key Advantages
+            </h1>
+
+            <div className="space-y-4">
+              <Key
+                heading="Affordable / Free Tuition"
+                title="Public universities mostly free (admin fees only)"
+              />
+
+              <Key
+                heading="High-Quality Education"
+                title="Research-focused, globally ranked"
+              />
+
+              <Key
+                heading="Career Opportunities"
+                title="Strong economy, 18-month job search visa"
+              />
+            </div>
+          </div>
+
+          {/* Additional Details */}
+          <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] p-5 mt-6">
+            <h1 className="py-2 font-bold text-lg">
+              Additional Details
+            </h1>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+
+              {/* Intake */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Intake
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  Winter (Oct), Summer (Apr)
+                </p>
+              </div>
+
+              {/* Popular Field */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Popular Field
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  Engineering, Computer Science, Natural Sciences, Business
+                </p>
+              </div>
+
+              {/* Living Cost */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Living Cost
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  €10,000–14,400/year (€850–1,200/month; blocked account
+                  €11,904/year from 2025)
+                </p>
+              </div>
+
+            </div>
+          </div>
 
         </div>
       </div>
-
-      </section>
-    </>
+    </section>
   );
 };
 

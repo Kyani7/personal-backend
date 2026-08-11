@@ -1,6 +1,8 @@
 import Description from "../../VisaServices-DestinationCountry/Description";
 import Key from "../../VisaServices-DestinationCountry/Key";
-import Table, { type KeyInfoArray } from "../../VisaServices-DestinationCountry/Table";
+import Table, {
+  type KeyInfoArray,
+} from "../../VisaServices-DestinationCountry/Table";
 import USAImg from "../../../../assets/USA.png";
 
 const USA = () => {
@@ -39,7 +41,7 @@ const USA = () => {
     },
     {
       title: "Average Tuition Fee",
-      value: "USD 20,000-55,000/year (public lower, private higher))",
+      value: "USD 20,000-55,000/year (public lower, private higher)",
     },
     {
       title: "Scholarships",
@@ -65,104 +67,173 @@ const USA = () => {
 
   return (
     <>
-
-      {/* Table + Image */}
-      <section id="usa" className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
-
-        {/* Right */}
-        <div className="sticky top-70">
+      <section
+        id="usa"
+        className="
+          mt-8
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+          gap-8
+          lg:gap-10
+          items-start
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-20
+          xl:px-35
+        "
+      >
+        {/* IMAGE */}
+        <div className="lg:sticky lg:top-24 order-1 lg:order-1">
           <div
-            className="relative overflow-hidden rounded-2xl shadow-xl"
+            className="
+              relative
+              overflow-hidden
+              rounded-2xl
+              shadow-xl
+              h-64
+              sm:h-80
+              lg:h-[410px]
+            "
             style={{
               backgroundImage: `url(${USAImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              height: "410px",
             }}
           >
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/20"></div>
 
             {/* Bottom Card */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
-              <h2 className="text-l font-bold text-gray-900">
+            <div
+              className="
+                absolute
+                bottom-4
+                left-4
+                sm:bottom-6
+                sm:left-6
+                bg-white
+                rounded-xl
+                px-4
+                sm:px-6
+                py-3
+                sm:py-4
+                shadow-lg
+              "
+            >
+              <h2 className="text-base sm:text-lg font-bold text-gray-900">
                 1–3 Years
               </h2>
 
-              <p className="text-gray-600">
+              <p className="text-sm sm:text-base text-gray-600">
                 OPT (STEM extension)
               </p>
             </div>
           </div>
         </div>
 
-        <div>
-        {/* Heading */}
-      <Description
-        title="Study in USA"
-        description="The USA hosts the world's leading universities with innovative programs, research opportunities, and strong career networks, though costs are higher."
-      />
-        {/* Left */}
-      <div>
-        <Table keyInfos={keyInfos} />
-        </div>
-        <div>
-          <h1 className="py-5 font-bold text-[#0078BD] text-4xl">
-            Key Advantages
-          </h1>
+        {/* CONTENT */}
+        <div className="min-w-0 order-2 lg:order-2">
+          {/* Description */}
+          <Description
+            title="Study in USA"
+            description="The USA hosts the world's leading universities with innovative programs, research opportunities, and strong career networks, though costs are higher."
+          />
 
-      <Key
-          heading="Top-Ranked Universities"
-          title="Many Ivy League and global leaders"
-        />
+          {/* Table */}
+          <div className="w-full overflow-x-auto">
+            <Table keyInfos={keyInfos} />
+          </div>
 
-      <Key
-      heading="STEM OPT Extension"
-      title="Up to 3 years post-study work for STEM fields"
-      />
+          {/* Key Advantages */}
+          <div>
+            <h1
+              className="
+                py-5
+                font-bold
+                text-[#0078BD]
+                text-2xl
+                sm:text-3xl
+                lg:text-4xl
+              "
+            >
+              Key Advantages
+            </h1>
 
-      <Key
-      heading="Career Exposure"
-      title="Internships, CPT, on-campus jobs"
-      />
-      </div>
+            <Key
+              heading="Top-Ranked Universities"
+              title="Many Ivy League and global leaders"
+            />
 
-      <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
-          <h1 className="py-5 font-bold">
-            Additional Details
-          </h1>
-          <div className="grid grid-cols-2">
-            <div>
-              <h2 className="font-medium pb-2">
-                Intake
-              </h2>
-              <p className="text-[#1F2736]">
-                Fall (Aug/Sep), Spring (Jan), <br /> Summer (May)
-              </p>
+            <Key
+              heading="STEM OPT Extension"
+              title="Up to 3 years post-study work for STEM fields"
+            />
+
+            <Key
+              heading="Career Exposure"
+              title="Internships, CPT, on-campus jobs"
+            />
+          </div>
+
+          {/* Additional Details */}
+          <div
+            className="
+              border
+              border-gray-200
+              shadow-md
+              rounded-xl
+              bg-[#F9FAFB]
+              p-4
+              sm:p-5
+              mt-5
+            "
+          >
+            <h1 className="py-3 font-bold">
+              Additional Details
+            </h1>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Intake */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Intake
+                </h2>
+
+                <p className="text-[#1F2736]">
+                  Fall (Aug/Sep), Spring (Jan), Summer (May)
+                </p>
+              </div>
+
+              {/* Popular Field */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Popular Field
+                </h2>
+
+                <p className="text-[#1F2736]">
+                  Computer Science, Engineering, Business,
+                  Data Science, AI
+                </p>
+              </div>
+
+              {/* Living Cost */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Living Cost
+                </h2>
+
+                <p className="text-[#1F2736]">
+                  USD 12,000–25,000/year
+                  <span className="block">
+                    (varies by city/state)
+                  </span>
+                </p>
+              </div>
             </div>
-
-           <div>
-            <h2 className="font-medium pb-2">
-              Popular Field
-            </h2> 
-            <p className="text-[#1F2736]">
-              Computer Science, Engineering, Business, Data Science, AI
-            </p>
-           </div>
-
-           <div className="py-5">
-            <h2 className="font-medium pb-2">
-              Living Cost
-            </h2> 
-            <p className="text-[#1F2736]">
-              USD 12,000–25,000/year <br /> (varies by city/state)
-            </p>
-           </div>
           </div>
         </div>
-
-      </div>
-
       </section>
     </>
   );

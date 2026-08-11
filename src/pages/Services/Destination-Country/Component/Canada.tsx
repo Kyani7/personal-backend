@@ -1,6 +1,8 @@
 import Description from "../../VisaServices-DestinationCountry/Description";
 import Key from "../../VisaServices-DestinationCountry/Key";
-import Table, { type KeyInfoArray } from "../../VisaServices-DestinationCountry/Table";
+import Table, {
+  type KeyInfoArray,
+} from "../../VisaServices-DestinationCountry/Table";
 import canadaImg from "../../../../assets/Canada.png";
 
 const Canada = () => {
@@ -64,106 +66,119 @@ const Canada = () => {
   ];
 
   return (
-    <>
+    <section className="mt-8 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-35">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
 
-      {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
-      <div>
-        {/* Heading */}
-      <Description
-        title="Study in Canada"
-        description="Canada offers high-quality education, welcoming policies, affordable options compared to neighbors, and strong PR pathways via Express Entry."
-      />
-        {/* Left */}
-      <div>
-        <Table keyInfos={keyInfos} />
-        </div>
-        <div>
-          <h1 className="py-5 font-bold text-[#0078BD] text-4xl">
-            Key Advantages
-          </h1>
+        {/* ================= LEFT CONTENT ================= */}
+        <div className="min-w-0">
 
-      <Key
-          heading="Top Universities"
-          title="Multiple universities in global top 100 (QS 2025)"
-        />
+          <Description
+            title="Study in Canada"
+            description="Canada offers high-quality education, welcoming policies, affordable options compared to neighbors, and strong PR pathways via Express Entry."
+          />
 
-      <Key
-      heading="Popular Fields"
-      title="Business, IT, Engineering, Healthcare, Hospitality"
-      />
+          {/* Table */}
+          <div className="mt-6 overflow-x-auto">
+            <Table keyInfos={keyInfos} />
+          </div>
 
-      <Key
-      heading="Work Opportunities"
-      title="Unlimited part-time work (48 hours/fortnight from mid-2023 policy)"
-      />
-        </div>
+          {/* Key Advantages */}
+          <div className="mt-6">
+            <h1 className="py-5 font-bold text-[#0078BD] text-2xl sm:text-3xl lg:text-4xl">
+              Key Advantages
+            </h1>
 
-        <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
-          <h1 className="py-5 font-bold">
-            Additional Details
-          </h1>
-          <div className="grid grid-cols-2">
-            <div>
-              <h2 className="font-medium pb-2">
-                Intake
-              </h2>
-              <p className="text-[#1F2736]">
-                January, May, September
-              </p>
+            <div className="space-y-4">
+              <Key
+                heading="Top Universities"
+                title="Multiple universities in global top 100 (QS 2025)"
+              />
+
+              <Key
+                heading="Popular Fields"
+                title="Business, IT, Engineering, Healthcare, Hospitality"
+              />
+
+              <Key
+                heading="Work Opportunities"
+                title="Unlimited part-time work (48 hours/fortnight from mid-2023 policy)"
+              />
             </div>
+          </div>
 
-           <div>
-            <h2 className="font-medium pb-2">
-              Popular Field
-            </h2> 
-            <p className="text-[#1F2736]">
-              IT, Business, Healthcare, Engineering, Data & AI
-            </p>
-           </div>
+          {/* Additional Details */}
+          <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] p-5 mt-6">
+            <h1 className="py-2 font-bold text-lg">
+              Additional Details
+            </h1>
 
-           <div className="py-5">
-            <h2 className="font-medium pb-2">
-              Living Cost
-            </h2> 
-            <p className="text-[#1F2736]">
-              CAD 20,000–25,000/year (visa min. CAD 22,895 from Sep 2025)
-            </p>
-           </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+
+              {/* Intake */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Intake
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  January, May, September
+                </p>
+              </div>
+
+              {/* Popular Field */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Popular Field
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  IT, Business, Healthcare, Engineering, Data & AI
+                </p>
+              </div>
+
+              {/* Living Cost */}
+              <div>
+                <h2 className="font-medium pb-2">
+                  Living Cost
+                </h2>
+
+                <p className="text-[#1F2736] text-sm leading-6">
+                  CAD 20,000–25,000/year (visa min. CAD 22,895 from Sep 2025)
+                </p>
+              </div>
+
+            </div>
           </div>
         </div>
 
-      </div>
-
-        {/* Right */}
-        <div className="sticky top-70">
+        {/* ================= RIGHT IMAGE ================= */}
+        <div className="w-full lg:sticky lg:top-24">
           <div
-            className="relative overflow-hidden rounded-2xl shadow-xl"
+            className="relative overflow-hidden rounded-2xl shadow-xl h-[280px] sm:h-[350px] lg:h-[410px]"
             style={{
               backgroundImage: `url(${canadaImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              height: "410px",
             }}
           >
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/20"></div>
 
             {/* Bottom Card */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
-              <h2 className="text-l font-bold text-gray-900">
+            <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto bg-white rounded-xl px-5 sm:px-6 py-4 shadow-lg">
+              <h2 className="text-lg font-bold text-gray-900">
                 Up to 3 Years
               </h2>
 
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 Post-Study Work Visa
               </p>
             </div>
           </div>
         </div>
 
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

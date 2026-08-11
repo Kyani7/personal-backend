@@ -1,9 +1,11 @@
 import Description from "../../VisaServices-DestinationCountry/Description";
 import Key from "../../VisaServices-DestinationCountry/Key";
-import Table, { type KeyInfoArray } from "../../VisaServices-DestinationCountry/Table";
+import Table, {
+  type KeyInfoArray,
+} from "../../VisaServices-DestinationCountry/Table";
 import UKImg from "../../../../assets/UK.png";
 
-const UK= () => {
+const UK = () => {
   const keyInfos: KeyInfoArray = [
     {
       title: "Country",
@@ -64,107 +66,174 @@ const UK= () => {
   ];
 
   return (
-    <>
+    <section
+      className="
+        mt-8
+        grid
+        grid-cols-1
+        lg:grid-cols-2
+        gap-8
+        lg:gap-10
+        items-start
+        px-4
+        sm:px-6
+        md:px-10
+        lg:px-16
+        xl:px-35
+        mb-10
+        lg:mb-30
+      "
+    >
+      {/* IMAGE */}
+      <div className="order-1 lg:order-1 lg:sticky lg:top-24">
+        <div
+          className="
+            relative
+            overflow-hidden
+            rounded-2xl
+            shadow-xl
+            h-64
+            sm:h-80
+            lg:h-[410px]
+            w-full
+          "
+          style={{
+            backgroundImage: `url(${UKImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/20"></div>
 
-      {/* Table + Image */}
-      <section className="mt-8 grid grid-cols-2 gap-10 items-start px-35">
-
-        {/* Right */}
-        <div className="sticky top-70">
+          {/* Bottom Card */}
           <div
-            className="relative overflow-hidden rounded-2xl shadow-xl"
-            style={{
-              backgroundImage: `url(${UKImg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              height: "410px",
-            }}
+            className="
+              absolute
+              bottom-4
+              sm:bottom-6
+              left-4
+              sm:left-6
+              bg-white
+              rounded-xl
+              px-5
+              sm:px-6
+              py-3
+              sm:py-4
+              shadow-lg
+            "
           >
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/20"></div>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+              2 Years
+            </h2>
 
-            {/* Bottom Card */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-xl pl-6 pr-10 py-4 shadow-lg">
-              <h2 className="text-l font-bold text-gray-900">
-                2 Years
-              </h2>
-
-              <p className="text-gray-600">
-                Graduate Route Visa
-              </p>
-            </div>
+            <p className="text-sm sm:text-base text-gray-600">
+              Graduate Route Visa
+            </p>
           </div>
         </div>
+      </div>
 
-        <div>
+      {/* CONTENT */}
+      <div className="order-2 lg:order-2 min-w-0">
         {/* Heading */}
-      <Description
-        title="Study in United Kingdom"
-        description="The UK features prestigious universities, shorter programs, and the Graduate Route for post-study work, though costs and visa rules evolve."
-      />
-        {/* Left */}
-      <div>
-        <Table keyInfos={keyInfos} />
+        <Description
+          title="Study in United Kingdom"
+          description="The UK features prestigious universities, shorter programs, and the Graduate Route for post-study work, though costs and visa rules evolve."
+        />
+
+        {/* Table */}
+        <div className="w-full overflow-x-auto">
+          <Table keyInfos={keyInfos} />
         </div>
+
+        {/* Key Advantages */}
         <div>
-          <h1 className="py-5 font-bold text-[#0078BD] text-4xl">
+          <h1
+            className="
+              py-5
+              font-bold
+              text-[#0078BD]
+              text-2xl
+              sm:text-3xl
+              lg:text-4xl
+            "
+          >
             Key Advantages
           </h1>
 
-      <Key
-          heading="Shorter Degrees"
-          title="Bachelor's 3 years, Master's 1 year"
-        />
+          <Key
+            heading="Shorter Degrees"
+            title="Bachelor's 3 years, Master's 1 year"
+          />
 
-      <Key
-      heading="Graduate Route Visa"
-      title="2 years post-study (PhD 3 years; potential changes)"
-      />
+          <Key
+            heading="Graduate Route Visa"
+            title="2 years post-study (PhD 3 years; potential changes)"
+          />
 
-      <Key
-      heading="Globally Recognized Degrees"
-      title="High employability worldwide"
-      />
-      </div>
-      
-      <div className="border border-gray-200 shadow-md rounded-xl bg-[#F9FAFB] pl-5 mt-5">
-          <h1 className="py-5 font-bold">
+          <Key
+            heading="Globally Recognized Degrees"
+            title="High employability worldwide"
+          />
+        </div>
+
+        {/* Additional Details */}
+        <div
+          className="
+            border
+            border-gray-200
+            shadow-md
+            rounded-xl
+            bg-[#F9FAFB]
+            p-4
+            sm:p-5
+            mt-5
+          "
+        >
+          <h1 className="pb-5 font-bold text-lg sm:text-xl">
             Additional Details
           </h1>
-          <div className="grid grid-cols-2">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Intake */}
             <div>
               <h2 className="font-medium pb-2">
                 Intake
               </h2>
+
               <p className="text-[#1F2736]">
                 September (main), January, May
               </p>
             </div>
 
-           <div>
-            <h2 className="font-medium pb-2">
-              Popular Field
-            </h2> 
-            <p className="text-[#1F2736]">
-              Business, IT, Healthcare, <br /> Engineering, Law, Finance
-            </p>
-           </div>
+            {/* Popular Field */}
+            <div>
+              <h2 className="font-medium pb-2">
+                Popular Field
+              </h2>
 
-           <div className="py-5">
-            <h2 className="font-medium pb-2">
-              Living Cost
-            </h2> 
-            <p className="text-[#1F2736]">
-              GBP 10,800–16,800/year outside London (maintenance ~GBP 1,171-1,529/month from Nov 2025)
-            </p>
-           </div>
+              <p className="text-[#1F2736]">
+                Business, IT, Healthcare,
+                Engineering, Law, Finance
+              </p>
+            </div>
+
+            {/* Living Cost */}
+            <div className="sm:col-span-2">
+              <h2 className="font-medium pb-2">
+                Living Cost
+              </h2>
+
+              <p className="text-[#1F2736]">
+                GBP 10,800–16,800/year outside London
+                (maintenance ~GBP 1,171-1,529/month from Nov 2025)
+              </p>
+            </div>
           </div>
         </div>
-
       </div>
-
-      </section>
-    </>
+    </section>
   );
 };
 
