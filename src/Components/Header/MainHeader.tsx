@@ -52,7 +52,7 @@ const MainHeader = () => {
       >
         {/*  MOBILE / TABLET TOP BAR (sm, md)  */}
         <div className="flex lg:hidden h-full items-center justify-between px-6 text-white">
-          <NavLink to="" end className="flex items-center gap-2" onClick={closeMobileMenu}>
+          <NavLink to="/" end className="flex items-center gap-2" onClick={closeMobileMenu}>
             {/* Replace with your actual logo image if you have one */}
             <span className="font-bold text-sm tracking-wide">
               HIMA <span className="text-secondary">AUS</span>
@@ -74,21 +74,26 @@ const MainHeader = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
-              to=""
+              to="/"
               end
             >
               Home
             </NavLink>
           </li>
 
-          {/* About Us — hover dropdown, no click state needed */}
+          {/* About Us — hover dropdown, active state now reflects current route */}
           <li className="group relative">
             <NavLink
-              className="flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary text-white"
               to="/about/company-profile"
+              className={({ isActive }) =>
+                `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
+                }`
+              }
             >
               About us
               <FaChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180" />
@@ -107,7 +112,8 @@ const MainHeader = () => {
                       to={item.href}
                       end
                       className={({ isActive }) =>
-                        `block text-sm hover:text-secondary transition pb-1 border-b border-white/20 ${isActive ? "text-primary" : "text-white/90"
+                        `block text-sm hover:text-secondary transition pb-1 border-b border-white/20 ${
+                          isActive ? "text-secondary" : "text-white/90"
                         }`
                       }
                     >
@@ -123,7 +129,8 @@ const MainHeader = () => {
           <li className="group relative">
             <NavLink
               className={({ isActive }) =>
-                `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `flex items-center gap-1 uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
               to="/services"
@@ -147,7 +154,8 @@ const MainHeader = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
               to="/gallery"
@@ -160,7 +168,8 @@ const MainHeader = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
               to="/blog&news"
@@ -173,7 +182,8 @@ const MainHeader = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
               to="/find-us"
@@ -185,7 +195,8 @@ const MainHeader = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${isActive ? "text-secondary" : "text-white"
+                `uppercase text-sm px-2 py-1 transition hover:text-secondary ${
+                  isActive ? "text-secondary" : "text-white"
                 }`
               }
               to="/contact-us"
@@ -208,11 +219,12 @@ const MainHeader = () => {
         <ul className="max-h-[80vh] overflow-y-auto p-5 space-y-1">
           <li>
             <NavLink
-              to=""
+              to="/"
               end
               onClick={closeMobileMenu}
               className={({ isActive }) =>
-                `block rounded-xl px-4 py-3 uppercase text-sm font-semibold transition ${isActive ? "bg-white/10 text-secondary" : "text-white hover:text-secondary"
+                `block rounded-xl px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "bg-white/10 text-secondary" : "text-white hover:text-secondary"
                 }`
               }
             >
@@ -229,14 +241,16 @@ const MainHeader = () => {
             >
               About Us
               <FaChevronDown
-                className={`text-xs transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""
-                  }`}
+                className={`text-xs transition-transform duration-200 ${
+                  mobileAboutOpen ? "rotate-180" : ""
+                }`}
               />
             </button>
 
             <div
-              className={`grid transition-all duration-300 ease-in-out ${mobileAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
+              className={`grid transition-all duration-300 ease-in-out ${
+                mobileAboutOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
             >
               <ul className="overflow-hidden pl-6 pb-2 space-y-1 border-l border-white/20 ml-6">
                 {aboutLinks.map((item) => (
@@ -246,7 +260,8 @@ const MainHeader = () => {
                       end
                       onClick={closeMobileMenu}
                       className={({ isActive }) =>
-                        `block py-2 text-sm transition hover:text-secondary ${isActive ? "text-primary" : "text-white/80"
+                        `block py-2 text-sm transition hover:text-secondary ${
+                          isActive ? "text-secondary" : "text-white/80"
                         }`
                       }
                     >
@@ -265,7 +280,8 @@ const MainHeader = () => {
                 to="/services"
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
-                  `hover:text-secondary transition ${isActive ? "text-secondary" : "text-white"
+                  `hover:text-secondary transition ${
+                    isActive ? "text-secondary" : "text-white"
                   }`
                 }
               >
@@ -278,15 +294,17 @@ const MainHeader = () => {
                 aria-label="Toggle services submenu"
               >
                 <FaChevronDown
-                  className={`text-xs transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
-                    }`}
+                  className={`text-xs transition-transform duration-200 ${
+                    mobileServicesOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
             </div>
 
             <div
-              className={`grid transition-all duration-300 ease-in-out ${mobileServicesOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
+              className={`grid transition-all duration-300 ease-in-out ${
+                mobileServicesOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
             >
               <div className="overflow-hidden pl-6 pb-2 border-l border-white/20 ml-6">
                 <ServicesDropDown onItemClick={closeMobileMenu} />
@@ -300,7 +318,8 @@ const MainHeader = () => {
               end
               onClick={closeMobileMenu}
               className={({ isActive }) =>
-                `block px-4 py-3 uppercase text-sm font-semibold transition ${isActive ? "text-secondary" : "text-white hover:text-secondary"
+                `block px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "text-secondary" : "text-white hover:text-secondary"
                 }`
               }
             >
@@ -314,7 +333,8 @@ const MainHeader = () => {
               // no "end" — stays highlighted on /blog&news/:id detail pages too
               onClick={closeMobileMenu}
               className={({ isActive }) =>
-                `block px-4 py-3 uppercase text-sm font-semibold transition ${isActive ? "text-secondary" : "text-white hover:text-secondary"
+                `block px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "text-secondary" : "text-white hover:text-secondary"
                 }`
               }
             >
@@ -328,7 +348,8 @@ const MainHeader = () => {
               end
               onClick={closeMobileMenu}
               className={({ isActive }) =>
-                `block px-4 py-3 uppercase text-sm font-semibold transition ${isActive ? "text-secondary" : "text-white hover:text-secondary"
+                `block px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "text-secondary" : "text-white hover:text-secondary"
                 }`
               }
             >
@@ -341,7 +362,8 @@ const MainHeader = () => {
               end
               onClick={closeMobileMenu}
               className={({ isActive }) =>
-                `block px-4 py-3 uppercase text-sm font-semibold transition ${isActive ? "text-secondary" : "text-white hover:text-secondary"
+                `block px-4 py-3 uppercase text-sm font-semibold transition ${
+                  isActive ? "text-secondary" : "text-white hover:text-secondary"
                 }`
               }
             >
