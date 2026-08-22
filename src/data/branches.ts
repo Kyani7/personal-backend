@@ -77,15 +77,51 @@ const internationalOfficeDetails: Record<string, Partial<Branch>> = {
     hours: "Mon – Sat: 9:00 AM – 6:00 PM",
     image: "https://api.himaaus.com/media/Branch_office/anthony-ketland-y-uwLAuUESU-unsplash.jpg",
   },
-  Germany: { city: "BERLIN", address: "Visit our Germany office for personalized consultation" },
-  Denmark: { city: "COPENHAGEN", address: "Visit our Denmark office for personalized consultation" },
-  USA: { city: "NEW YORK", address: "Visit our USA office for personalized consultation" },
-  Canada: { city: "TORONTO", address: "Visit our Canada office for personalized consultation" },
-  UK: { city: "LONDON", address: "Visit our UK office for personalized consultation" },
-  Finland: { city: "HELSINKI", address: "Visit our Finland office for personalized consultation" },
-  Korea: { city: "SEOUL", address: "Visit our Korea office for personalized consultation" },
-  Japan: { city: "TOKYO", address: "Visit our Japan office for personalized consultation" },
-  "New Zealand": { city: "AUCKLAND", address: "Visit our New Zealand office for personalized consultation" },
+  Germany: {
+    city: "BERLIN",
+    address: "Visit our Germany office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80",
+  },
+  Denmark: {
+    city: "COPENHAGEN",
+    address: "Visit our Denmark office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=800&q=80",
+  },
+  USA: {
+    city: "NEW YORK",
+    address: "Visit our USA office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+  },
+  Canada: {
+    city: "TORONTO",
+    address: "Visit our Canada office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1542708993627-b6e5bbae43c4?auto=format&fit=crop&w=800&q=80",
+  },
+  UK: {
+    city: "LONDON",
+    address: "Visit our UK office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80",
+  },
+  Finland: {
+    city: "HELSINKI",
+    address: "Visit our Finland office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?auto=format&fit=crop&w=800&q=80",
+  },
+  "South Korea": {
+    city: "SEOUL",
+    address: "Visit our South Korea office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=800&q=80",
+  },
+  Japan: {
+    city: "TOKYO",
+    address: "Visit our Japan office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
+  },
+  "New Zealand": {
+    city: "AUCKLAND",
+    address: "Visit our New Zealand office for personalized consultation",
+    image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=800&q=80",
+  },
 };
 
 export const internationalBranches: Branch[] = HIGHLIGHTED_COUNTRIES.map((country) => {

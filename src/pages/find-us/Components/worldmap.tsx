@@ -1,22 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
-import { Home, Minus, Plus, Loader2 } from "lucide-react";
+import { Home, Minus, Plus, Loader2, MapPin, Building2 } from "lucide-react";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import type { GeometryCollection, Topology } from "topojson-specification";
 import { COUNTRY_COLORS, HIGHLIGHTED_COUNTRIES, MAP_ORIGIN } from "../../../data/mapLocations";
+import { allBranches, type Branch } from "../../../data/branches";
 
 const GEO_URL = "/data/countries-50m.json";
 const WIDTH = 1120;
-const HEIGHT = 700;
-const DEFAULT_FILL = "#eeeeee";
+const HEIGHT = 640;
+const DEFAULT_FILL = "#e2e8f0";
 const HOVER_FILL = "#cbd5e1";
 const MIN_ZOOM = 0.8;
 const MAX_ZOOM = 8.25;
-const ZOOM_STEP = 0.25;
-
-// Sensitivity factor — converts touchpad deltaY into a zoom multiplier.
-// Lower = smoother, higher = faster zoom per scroll.
+const ZOOM_STEP = 0.3;
 const TRACKPAD_SENSITIVITY = 0.005;
 
 type CountryFeature = Feature<Geometry, { name?: string }>;
@@ -37,12 +35,11 @@ function createConnectionPath(
   const midpointX = (x1 + x2) / 2;
   const midpointY = (y1 + y2) / 2;
   const distance = Math.hypot(x2 - x1, y2 - y1) || 1;
-  const curve = Math.min(distance * 0.22, 105);
+  const curve = Math.min(distance * 0.22, 100);
 
   return `M ${x1},${y1} Q ${midpointX},${midpointY - curve} ${x2},${y2}`;
 }
 
-// Clamp panning so you can't drag the map past its own edges.
 function clampPan(pan: Pan, zoom: number): Pan {
   if (zoom <= 1) return { x: 0, y: 0 };
   const maxX = (WIDTH * (zoom - 1)) / 2;
@@ -57,11 +54,9 @@ export default function FindUsWorldMap() {
   const [countries, setCountries] = useState<CountryFeature[]>([]);
   const [loading, setLoading] = useState(true);
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip>(null);
 
-  // Use refs for zoom/pan to avoid React batching delays during rapid
-  // touchpad scroll events. We drive the SVG transform directly via the DOM
-  // and sync React state only when the gesture settles.
   const zoomRef = useRef(MIN_ZOOM);
   const panRef = useRef<Pan>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(MIN_ZOOM);
@@ -79,7 +74,6 @@ export default function FindUsWorldMap() {
     dragging: false,
   });
 
-  // Apply the current zoom/pan refs directly to the DOM for buttery-smooth updates.
   const applyTransform = useCallback(() => {
     const g = transformGroupRef.current;
     if (!g) return;
@@ -91,7 +85,6 @@ export default function FindUsWorldMap() {
     );
   }, []);
 
-  // Flush ref values into React state (for button disabled states, cursor, etc.)
   const syncState = useCallback(() => {
     setZoom(zoomRef.current);
     setPan({ ...panRef.current });
@@ -111,11 +104,11 @@ export default function FindUsWorldMap() {
   const resetView = useCallback(() => {
     zoomRef.current = MIN_ZOOM;
     panRef.current = { x: 0, y: 0 };
+    setSelectedLocation(null);
     applyTransform();
     syncState();
   }, [applyTransform, syncState]);
 
-  // --- Load topology ---
   useEffect(() => {
     let mounted = true;
     fetch(GEO_URL)
@@ -129,22 +122,19 @@ export default function FindUsWorldMap() {
         if (mounted) setLoading(false);
       });
 
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  // --- Native wheel listener with { passive: false } so preventDefault works ---
   useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
+    const container = mapRef.current;
+    if (!container) return;
 
     const handleWheel = (event: WheelEvent) => {
       event.preventDefault();
-
-      // Determine zoom delta. Touchpads fire many small deltas; discrete mice
-      // fire larger ones with deltaMode === 1 (lines).
       let delta = -event.deltaY;
       if (event.deltaMode === 1) {
-        // Line-mode (standard mice) — treat each line as a bigger step
         delta *= 12;
       }
 
@@ -154,7 +144,6 @@ export default function FindUsWorldMap() {
       zoomRef.current = nextZoom;
       panRef.current = clampPan(panRef.current, nextZoom);
 
-      // Coalesce rapid events into a single rAF
       cancelAnimationFrame(rafId.current);
       rafId.current = requestAnimationFrame(() => {
         applyTransform();
@@ -162,87 +151,197 @@ export default function FindUsWorldMap() {
       });
     };
 
-    svg.addEventListener("wheel", handleWheel, { passive: false });
+    container.addEventListener("wheel", handleWheel, { passive: false });
     return () => {
-      svg.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("wheel", handleWheel);
       cancelAnimationFrame(rafId.current);
     };
   }, [applyTransform, syncState]);
 
   const projection = useMemo(
-    () => geoMercator().scale(178).center([18, 20]).translate([WIDTH / 2, HEIGHT / 2]),
+    () => geoMercator().scale(175).center([18, 20]).translate([WIDTH / 2, HEIGHT / 2]),
     [],
   );
   const path = useMemo(() => geoPath(projection), [projection]);
 
   const countryPaths = useMemo(
-    () => countries.map((country, index) => {
-      const id = String(country.id ?? "");
-      return { id, key: `${id || "country"}-${index}`, name: country.properties?.name ?? "Unknown country", d: path(country) ?? "", fill: COUNTRY_COLORS[id] ?? DEFAULT_FILL };
-    }),
+    () =>
+      countries.map((country, index) => {
+        const id = String(country.id ?? "");
+        return {
+          id,
+          key: `${id || "country"}-${index}`,
+          name: country.properties?.name ?? "Unknown country",
+          d: path(country) ?? "",
+          fill: COUNTRY_COLORS[id] ?? DEFAULT_FILL,
+        };
+      }),
     [countries, path],
   );
 
   const connections = useMemo(
-    () => HIGHLIGHTED_COUNTRIES.map((country) => ({ id: country.id, d: createConnectionPath(projection, MAP_ORIGIN.coordinates, country.coordinates) })),
-    [projection],
-  );
-  const markers = useMemo(
-    () => [MAP_ORIGIN, ...HIGHLIGHTED_COUNTRIES].map((location) => ({ ...location, position: projection(location.coordinates) })),
+    () =>
+      HIGHLIGHTED_COUNTRIES.map((country) => ({
+        id: country.id,
+        name: country.name,
+        d: createConnectionPath(projection, MAP_ORIGIN.coordinates, country.coordinates),
+      })),
     [projection],
   );
 
-  const showTooltip = (name: string, event: React.MouseEvent<SVGPathElement>) => {
+  const markers = useMemo(
+    () =>
+      [MAP_ORIGIN, ...HIGHLIGHTED_COUNTRIES].map((location) => ({
+        ...location,
+        position: projection(location.coordinates),
+      })),
+    [projection],
+  );
+
+  const activeBranches = useMemo(() => {
+    if (!selectedLocation) return [];
+    if (selectedLocation === "Nepal") {
+      return allBranches.filter((b) => b.country === "Nepal");
+    }
+    return allBranches.filter((b) => b.country.toLowerCase() === selectedLocation.toLowerCase());
+  }, [selectedLocation]);
+
+  const showTooltip = (name: string, event: React.MouseEvent) => {
     const bounds = mapRef.current?.getBoundingClientRect();
     if (!bounds) return;
     setHoveredCountry(name);
-    setTooltip({ name, x: event.clientX - bounds.left + 14, y: event.clientY - bounds.top - 38 });
+    setTooltip({ name, x: event.clientX - bounds.left + 12, y: event.clientY - bounds.top - 36 });
   };
 
-  // --- Drag to pan (mouse) ---
   const onPointerDown = (event: React.PointerEvent<SVGSVGElement>) => {
     if (zoomRef.current <= 1) return;
-    (event.target as Element).setPointerCapture(event.pointerId);
-    dragState.current = { startX: event.clientX, startY: event.clientY, panStart: { ...panRef.current }, dragging: true };
+    (event.target as Element).setPointerCapture?.(event.pointerId);
+    dragState.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      panStart: { ...panRef.current },
+      dragging: true,
+    };
   };
 
   const onPointerMove = (event: React.PointerEvent<SVGSVGElement>) => {
     if (!dragState.current.dragging) return;
     const bounds = mapRef.current?.getBoundingClientRect();
     if (!bounds) return;
-    // Convert screen-pixel drag delta into viewBox units.
     const scaleFactor = WIDTH / bounds.width;
     const dx = (event.clientX - dragState.current.startX) * scaleFactor;
     const dy = (event.clientY - dragState.current.startY) * scaleFactor;
-    panRef.current = clampPan({ x: dragState.current.panStart.x + dx, y: dragState.current.panStart.y + dy }, zoomRef.current);
+    panRef.current = clampPan(
+      { x: dragState.current.panStart.x + dx, y: dragState.current.panStart.y + dy },
+      zoomRef.current,
+    );
     applyTransform();
     syncState();
     setTooltip(null);
   };
 
-  const endDrag = () => { dragState.current.dragging = false; };
+  const endDrag = () => {
+    dragState.current.dragging = false;
+  };
+
+  const selectCountry = (countryName: string) => {
+    setSelectedLocation((prev) => (prev === countryName ? null : countryName));
+  };
 
   return (
     <section className="mt-16 md:mt-20">
-      <p className="text-lg font-medium text-gray-900 md:text-xl">We are Available in</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h3 className="text-xl font-bold text-gray-900 md:text-2xl">We are Available in</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Click any active pin on the map to highlight branches in that region
+          </p>
+        </div>
+        {selectedLocation && (
+          <button
+            type="button"
+            onClick={() => setSelectedLocation(null)}
+            className="self-start sm:self-auto rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-[#0078bd] hover:bg-blue-100 transition-colors"
+          >
+            Show All Locations ({selectedLocation}) ✕
+          </button>
+        )}
+      </div>
 
-      <div ref={mapRef} className="relative mt-5 overflow-hidden rounded-xl bg-gray-100 md:mt-7">
-        <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded border border-gray-200 bg-white shadow-sm">
-          <button type="button" aria-label="Reset view" disabled={zoom === MIN_ZOOM} onClick={resetView} className="flex h-9 w-9 items-center justify-center border-b border-gray-200 text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Home size={15} /></button>
-          <button type="button" aria-label="Zoom in" disabled={zoom >= MAX_ZOOM} onClick={() => applyZoom(zoomRef.current + ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center border-b border-gray-200 text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Plus size={16} /></button>
-          <button type="button" aria-label="Zoom out" disabled={zoom <= MIN_ZOOM} onClick={() => applyZoom(zoomRef.current - ZOOM_STEP)} className="flex h-9 w-9 items-center justify-center text-gray-600 hover:bg-gray-100 disabled:text-gray-300"><Minus size={16} /></button>
+      <div
+        ref={mapRef}
+        className="relative mt-5 overflow-hidden rounded-2xl border border-gray-200 bg-[#f8fafc] shadow-sm md:mt-7"
+      >
+        {/* Navigation Zoom / Reset Controls */}
+        <div className="absolute left-4 top-4 z-10 flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm shadow-md">
+          <button
+            type="button"
+            aria-label="Reset map view"
+            disabled={zoom === MIN_ZOOM && pan.x === 0 && pan.y === 0}
+            onClick={resetView}
+            className="flex h-9 w-9 items-center justify-center border-b border-gray-100 text-gray-700 transition-colors hover:bg-blue-50 hover:text-[#0078bd] disabled:opacity-40"
+            title="Reset View"
+          >
+            <Home size={15} />
+          </button>
+          <button
+            type="button"
+            aria-label="Zoom in"
+            disabled={zoom >= MAX_ZOOM}
+            onClick={() => applyZoom(zoomRef.current + ZOOM_STEP)}
+            className="flex h-9 w-9 items-center justify-center border-b border-gray-100 text-gray-700 transition-colors hover:bg-blue-50 hover:text-[#0078bd] disabled:opacity-40"
+            title="Zoom In"
+          >
+            <Plus size={16} />
+          </button>
+          <button
+            type="button"
+            aria-label="Zoom out"
+            disabled={zoom <= MIN_ZOOM}
+            onClick={() => applyZoom(zoomRef.current - ZOOM_STEP)}
+            className="flex h-9 w-9 items-center justify-center text-gray-700 transition-colors hover:bg-blue-50 hover:text-[#0078bd] disabled:opacity-40"
+            title="Zoom Out"
+          >
+            <Minus size={16} />
+          </button>
         </div>
 
-        <div className="min-h-[320px] sm:min-h-[440px] lg:min-h-[620px]">
+        {/* Selected Country Active Card overlay */}
+        {selectedLocation && activeBranches.length > 0 && (
+          <div className="absolute right-4 top-4 z-10 max-w-xs w-full rounded-xl border border-gray-200 bg-white/95 p-4 backdrop-blur shadow-lg transition-all animate-in fade-in slide-in-from-top-2">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-2 mb-2">
+              <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0078bd]">
+                <Building2 size={14} /> {selectedLocation} Office
+              </span>
+              <button
+                onClick={() => setSelectedLocation(null)}
+                className="text-gray-400 hover:text-gray-600 text-xs font-bold"
+              >
+                ✕
+              </button>
+            </div>
+            {activeBranches.map((b) => (
+              <div key={b.id} className="text-xs space-y-1 py-1">
+                <p className="font-semibold text-gray-900">{b.name}</p>
+                <p className="text-gray-600 line-clamp-1">{b.address}</p>
+                <p className="text-[#0078bd] font-medium">{b.phone}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="min-h-[360px] sm:min-h-[460px] lg:min-h-[580px]">
           {loading ? (
-            <div className="flex h-full min-h-[320px] w-full items-center justify-center">
-              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            <div className="flex h-full min-h-[360px] w-full items-center justify-center">
+              <Loader2 className="h-8 w-8 animate-spin text-[#0078bd]" />
             </div>
           ) : (
             <svg
               ref={svgRef}
               viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-              className={`block h-auto w-full ${zoom > 1 ? "cursor-grab active:cursor-grabbing" : ""}`}
+              className={`block h-auto w-full select-none ${
+                zoom > 1 ? "cursor-grab active:cursor-grabbing" : ""
+              }`}
               role="img"
               aria-label="Interactive world map showing Hima Aus office locations"
               preserveAspectRatio="xMidYMid meet"
@@ -251,25 +350,146 @@ export default function FindUsWorldMap() {
               onPointerUp={endDrag}
               onPointerLeave={endDrag}
             >
-              <rect width={WIDTH} height={HEIGHT} fill="#f7f7f7" />
+              <defs>
+                {/* Glow Filter */}
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <rect width={WIDTH} height={HEIGHT} fill="#f8fafc" />
+
               <g
                 ref={transformGroupRef}
                 transform={`translate(${WIDTH / 2 + pan.x} ${HEIGHT / 2 + pan.y}) scale(${zoom}) translate(${-WIDTH / 2} ${-HEIGHT / 2})`}
               >
+                {/* Country Shapes */}
                 {countryPaths.map((country) => {
-                  const selected = COUNTRY_COLORS[country.id] !== undefined;
-                  const hovered = hoveredCountry === country.name;
-                  return <path key={country.key} d={country.d} fill={hovered ? HOVER_FILL : country.fill} stroke="#ffffff" strokeWidth={hovered || selected ? 1.05 : 0.65} strokeLinejoin="round" vectorEffect="non-scaling-stroke" className="cursor-pointer transition-[fill] duration-150" onMouseMove={(event) => showTooltip(country.name, event)} onMouseLeave={() => { setHoveredCountry(null); setTooltip(null); }} />;
+                  const isHighlighted = COUNTRY_COLORS[country.id] !== undefined;
+                  const isHovered = hoveredCountry === country.name;
+                  const isSelected =
+                    selectedLocation &&
+                    (selectedLocation === country.name ||
+                      (selectedLocation === "Nepal" && country.name === "Nepal"));
+
+                  return (
+                    <path
+                      key={country.key}
+                      d={country.d}
+                      fill={
+                        isSelected
+                          ? "#0078bd"
+                          : isHovered
+                            ? HOVER_FILL
+                            : country.fill
+                      }
+                      stroke="#ffffff"
+                      strokeWidth={isHovered || isHighlighted ? 1.1 : 0.65}
+                      strokeLinejoin="round"
+                      vectorEffect="non-scaling-stroke"
+                      className="cursor-pointer transition-colors duration-200"
+                      onClick={() => isHighlighted && selectCountry(country.name)}
+                      onMouseMove={(event) => showTooltip(country.name, event)}
+                      onMouseLeave={() => {
+                        setHoveredCountry(null);
+                        setTooltip(null);
+                      }}
+                    />
+                  );
                 })}
 
-                {connections.map((connection) => <path key={connection.id} d={connection.d} fill="none" stroke="#087bc1" strokeWidth={1.35} strokeDasharray="5 5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />)}
-                {markers.map((marker) => marker.position && <g key={marker.id}><circle cx={marker.position[0]} cy={marker.position[1]} r={6.5} fill="#087bc1" opacity={0.18} /><circle cx={marker.position[0]} cy={marker.position[1]} r={3.5} fill="#087bc1" stroke="#ffffff" strokeWidth={1.2} vectorEffect="non-scaling-stroke" /></g>)}
+                {/* Animated Dash Connection Lines */}
+                {connections.map((connection) => {
+                  const isConnectedActive =
+                    !selectedLocation ||
+                    selectedLocation === "Nepal" ||
+                    selectedLocation === connection.name;
+                  return (
+                    <path
+                      key={connection.id}
+                      d={connection.d}
+                      fill="none"
+                      stroke={isConnectedActive ? "#0078bd" : "#cbd5e1"}
+                      strokeWidth={isConnectedActive ? 1.6 : 0.8}
+                      strokeDasharray="4 4"
+                      strokeLinecap="round"
+                      opacity={isConnectedActive ? 0.85 : 0.3}
+                      vectorEffect="non-scaling-stroke"
+                      className="transition-all duration-300"
+                    />
+                  );
+                })}
+
+                {/* Location Markers with Pulsing Rings */}
+                {markers.map((marker) => {
+                  if (!marker.position) return null;
+                  const [cx, cy] = marker.position;
+                  const isSelected = selectedLocation === marker.name;
+                  const isHovered = hoveredCountry === marker.name;
+                  const isNepal = marker.id === MAP_ORIGIN.id;
+
+                  return (
+                    <g
+                      key={marker.id}
+                      className="cursor-pointer group"
+                      onClick={() => selectCountry(marker.name)}
+                      onMouseEnter={(e) => showTooltip(marker.name, e as unknown as React.MouseEvent)}
+                      onMouseLeave={() => {
+                        setHoveredCountry(null);
+                        setTooltip(null);
+                      }}
+                    >
+                      {/* Hover / Selected Outer Aura */}
+                      {(isHovered || isSelected) && (
+                        <circle
+                          cx={cx}
+                          cy={cy}
+                          r={10}
+                          fill={isNepal ? "#e63838" : "#0078bd"}
+                          opacity={0.35}
+                        />
+                      )}
+
+                      {/* Main Marker Circle */}
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={isNepal ? 6 : isSelected ? 5.5 : 4.5}
+                        fill={isNepal ? "#e63838" : marker.color || "#0078bd"}
+                        stroke="#ffffff"
+                        strokeWidth={1.5}
+                        vectorEffect="non-scaling-stroke"
+                        className="transition-all duration-200 group-hover:scale-125"
+                        filter="url(#glow)"
+                      />
+
+                      {/* Inner Dot */}
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={1.8}
+                        fill="#ffffff"
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    </g>
+                  );
+                })}
               </g>
             </svg>
           )}
         </div>
 
-        {tooltip && <div className="pointer-events-none absolute z-20 rounded bg-[#0078bd] px-3 py-1.5 text-sm font-medium text-white shadow-md" style={{ left: tooltip.x, top: tooltip.y }}>{tooltip.name}</div>}
+        {/* Hover Tooltip */}
+        {tooltip && (
+          <div
+            className="pointer-events-none absolute z-30 flex items-center gap-1.5 rounded-lg bg-gray-900/90 px-3 py-1.5 text-xs font-semibold text-white shadow-xl backdrop-blur-sm transition-all"
+            style={{ left: tooltip.x, top: tooltip.y }}
+          >
+            <MapPin size={12} className="text-[#0078bd]" />
+            {tooltip.name}
+          </div>
+        )}
       </div>
     </section>
   );

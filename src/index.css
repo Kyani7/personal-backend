@@ -17,7 +17,6 @@
   --color-brand-text: #333333;
   --color-brand-heading: #111111;
 
-<<<<<<< HEAD
   /* About Us Theme colors to prevent collision */
   --color-about-primary: hsl(202 100% 37%);
   --color-about-primary-foreground: hsl(0 0% 100%);
@@ -36,10 +35,6 @@
   --color-about-card: hsl(0 0% 100%);
 
   --radius-about-lg: 0.5rem;
-=======
-  --color-primary: #ffffff;
-  --color-secondary: #FFFF00;
->>>>>>> origin/kyani
 }
 
 
