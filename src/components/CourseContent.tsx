@@ -36,7 +36,7 @@ export default function CourseContent({
           >
             {course.heading}
           </h2>
-          <p className="mb-12 max-w-4xl text-[17px] leading-8 text-brand-text">
+          <p className="mb-12 max-w-4xl text-[17px] leading-8 text-brand-text text-justify">
             {course.description}
           </p>
         </>
@@ -50,17 +50,17 @@ export default function CourseContent({
             {course.subheading}
           </h3>
 
-          <p className="mb-4 text-[14.5px] leading-[1.78] text-brand-text">
+          <p className="mb-4 text-[14.5px] leading-[1.78] text-brand-text text-justify">
     {course.intro}
           </p>
-          <p className="mb-6 text-[14.5px] leading-[1.78] text-brand-text">
+          <p className="mb-6 text-[14.5px] leading-[1.78] text-brand-text text-justify">
     {course.intro2}
           </p>
 
           <FeatureList features={course.features} />
 
     {course.intro3 && (
-    <p className="mb-6 text-[14.5px] leading-[1.78] text-brand-text">
+    <p className="mb-6 text-[14.5px] leading-[1.78] text-brand-text text-justify">
       {course.intro3}
     </p>
 )}
