@@ -12,7 +12,7 @@ export default function CoursesIntro() {
         English Test Preparation for Study Abroad
       </h2>
 
-      <p className="max-w-3xl text-[15px] leading-relaxed text-brand-text">
+      <p className="max-w-7xl text-[16px] leading-relaxed text-brand-text">
         We offer structured English test preparation programs to help students
         achieve the required scores for international study, with expert
         guidance and proven strategies.
