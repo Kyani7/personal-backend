@@ -16,11 +16,11 @@ export const ieltsData: CourseData = {
     "Achieve your target band score with our comprehensive, results-driven IELTS preparation program",
   subheading: "Your Pathway to Global Education & Migration Success",
   intro:
-    "Our specialised IELTS preparation program is meticulously designed to help you achieve the high band scores required for university admissions, professional registration, and visa applications worldwide. With a proven track record of student success across 50+ countries, we provide the strategic advantage needed to excel in all four test components.",
+    "Our specialized IELTS preparation program is meticulously designed to help you achieve the high band scores required for university admissions, professional registration, and visa applications worldwide. With a proven track record of student success across 50+ countries, we provide the strategic advantage needed to excel in all four test components.",
   intro2:
-    "Our curriculum blends expert instruction, authentic practice materials, and personalised feedback across both the Academic and General Training modules, so you know exactly what to expect on test day and how to approach every question type with confidence.",
+    "Our comprehensive approach includes advanced vocabulary building, structured writing frameworks, global accent exposure, and extensive practice with official Cambridge materials to build confidence and exam familiarity.",
   intro3:
-    "We provide end-to-end support throughout your IELTS journey, including post-course assistance with university applications, SOP reviews, and visa documentation. Our structured curriculum and British Council-aligned practice materials ensure you're fully prepared to achieve the band score that opens doors to global education and career opportunities.",
+    "Whether you're preparing for Academic or General Training modules, our personalized mentoring, mock exams, and detailed feedback ensure you're fully equipped to reach your target band score and beyond.",
   features: [
     {
       title: "Listening Mastery",
@@ -39,6 +39,8 @@ export const ieltsData: CourseData = {
       desc: "One-on-one mock interviews with expert tutors to build fluency, pronunciation, and natural, confident delivery.",
     },
   ],
+
+
   advantageTitle: "Why IELTS?",
   advantage: [
     {
