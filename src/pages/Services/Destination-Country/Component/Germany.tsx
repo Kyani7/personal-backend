@@ -70,7 +70,7 @@ const Germany = () => {
     <section className="mt-8 mb-20 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-35">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
 
-        {/* ================= IMAGE ================= */}
+        {/*  IMAGE  */}
         <div className="w-full lg:sticky lg:top-24">
           <div
             className="relative overflow-hidden rounded-2xl shadow-xl h-[280px] sm:h-[350px] lg:h-[410px]"
@@ -96,7 +96,7 @@ const Germany = () => {
           </div>
         </div>
 
-        {/* ================= CONTENT ================= */}
+        {/*  CONTENT  */}
         <div className="min-w-0">
 
           {/* Description */}

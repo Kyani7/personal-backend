@@ -16,11 +16,11 @@ export const ieltsData: CourseData = {
     "Achieve your target band score with our comprehensive, results-driven IELTS preparation program",
   subheading: "Your Pathway to Global Education & Migration Success",
   intro:
-    "Our specialised IELTS preparation program is meticulously designed to help you achieve the high band scores required for university admissions, professional registration, and visa applications worldwide. With a proven track record of student success across 50+ countries, we provide the strategic advantage needed to excel in all four test components.",
+    "Our specialized IELTS preparation program is meticulously designed to help you achieve the high band scores required for university admissions, professional registration, and visa applications worldwide. With a proven track record of student success across 50+ countries, we provide the strategic advantage needed to excel in all four test components.",
   intro2:
-    "Our curriculum blends expert instruction, authentic practice materials, and personalised feedback across both the Academic and General Training modules, so you know exactly what to expect on test day and how to approach every question type with confidence.",
+    "Our comprehensive approach includes advanced vocabulary building, structured writing frameworks, global accent exposure, and extensive practice with official Cambridge materials to build confidence and exam familiarity.",
   intro3:
-    "We provide end-to-end support throughout your IELTS journey, including post-course assistance with university applications, SOP reviews, and visa documentation. Our structured curriculum and British Council-aligned practice materials ensure you're fully prepared to achieve the band score that opens doors to global education and career opportunities.",
+    "Whether you're preparing for Academic or General Training modules, our personalized mentoring, mock exams, and detailed feedback ensure you're fully equipped to reach your target band score and beyond.",
   features: [
     {
       title: "Listening Mastery",
@@ -39,6 +39,8 @@ export const ieltsData: CourseData = {
       desc: "One-on-one mock interviews with expert tutors to build fluency, pronunciation, and natural, confident delivery.",
     },
   ],
+
+
   advantageTitle: "Why IELTS?",
   advantage: [
     {
@@ -224,11 +226,11 @@ export const greData: CourseData = {
     "Achieve your target GRE score to unlock admissions at top global graduate programs",
   subheading: "Prepare Today for a Brighter Academic Tomorrow",
   intro:
-    "Our comprehensive GRE preparation program is designed to help you master both the Verbal and Quantitative Reasoning sections through strategic learning approaches. We focus on building advanced vocabulary with intelligent flashcards, developing critical reading skills through challenging academic texts, and implementing personalised study plans with regular full-length practice tests.",
+    "Our comprehensive GRE preparation program is designed to help you master both the Verbal and Quantitative Reasoning sections through strategic learning approaches. We focus on building advanced vocabulary with intelligent flashcards, developing critical reading skills through challenging academic texts, and implementing personalized study plans with regular full-length practice tests.",
   intro2:
     "The GRE assesses your readiness for graduate-level work by testing analytical writing, quantitative reasoning, and verbal reasoning skills. Our proven methodology combines targeted content review with test-taking strategies specifically designed for the computer-adaptive format. We help you master complex question types including Text Completion, Sentence Equivalence, Reading Comprehension, and Quantitative Comparison.",
   intro3:
-    "Our expert instructors bring first-hand ETS scoring experience to every session, giving you an insider's view of what graders and adaptive algorithms are really looking for — so you walk into test day with a clear strategy for every section.",
+    "Whether you're targeting competitive MBA programs, STEM graduate degrees, or professional advancement, our structured curriculum, authentic ETS-aligned practice materials, and personalized coaching ensure you're fully prepared to achieve a score that opens doors to the world's leading universities and career opportunities.",
   features: [
     {
       title: "Master Vocabulary Building",
