@@ -5,7 +5,7 @@ interface QuickFactsCardProps {
 
 export default function QuickFactsCard({ label, facts }: QuickFactsCardProps) {
   return (
-    <div className="rounded-lg border border-[#e8d270] bg-[#fffbe8] p-5">
+    <div className="rounded-lg border border-red-500 bg-[#fffbe8] p-5">
       <p className="mb-3 text-[14px] font-bold text-brand-blue">
         {label} Quick Facts:
       </p>
