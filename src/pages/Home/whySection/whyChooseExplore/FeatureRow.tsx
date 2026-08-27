@@ -55,10 +55,11 @@ export default function FeatureRow({
 
         <Link
           to={`/why-choose-us-learn/${slug}`}
-          className="inline-flex items-center gap-2 rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue-dark active:bg-brand-gold"
+          onTouchStart={() => {}}
+          className="inline-flex items-center gap-2.5 rounded-xl bg-brand-blue px-7 py-3.5 text-base font-semibold text-white shadow-sm transition-colors duration-300 hover:bg-[#ffb800] active:bg-[#e69700] active:scale-95 touch-manipulation select-none"
         >
           Learn More
-          <ArrowRight size={16} />
+          <ArrowRight size={18} />
         </Link>
       </div>
     </div>
